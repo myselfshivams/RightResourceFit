@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/Register.css';
 
-const RegisterPage: React.FC = () => {
+const Register: React.FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -105,4 +105,4 @@ const RegisterPage: React.FC = () => {
   );
 };
 
-export default RegisterPage;
+export default Register;

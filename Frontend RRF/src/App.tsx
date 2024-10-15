@@ -4,11 +4,14 @@ import Register from './pages/Register';
 
 function App() {
   return (
+    <>
+    <Register />
     <Router>
       <Routes>
         <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
+    </>
   );
 }
 
