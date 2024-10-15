@@ -8,6 +8,11 @@ const Register: React.FC = () => {
   const [mobile, setMobile] = useState('');
   const [name, setName] = useState('');
 
+  const handleBackToLogin = () => {
+    // Redirect to the login page
+    window.location.href = '/login';
+  };
+
 
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -95,9 +100,11 @@ const Register: React.FC = () => {
 </div>
 
 
-        <div className="back-to-login">
+<div className="back-to-login">
           <span className="usernamegmailcom">Back to Login?</span>
-          <span className="login">Login</span>
+          <button onClick={handleBackToLogin} className="login-btn">
+            Login
+          </button>
         </div>
       </form>
 

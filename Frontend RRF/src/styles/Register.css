@@ -96,10 +96,27 @@
   	height: 15px;
   	display: flex;
   	flex-direction: row;
-  	align-items: flex-start;
+  	align-items: center;
   	justify-content: flex-start;
-  	gap: 3px;
+  	gap: 1px;
 }
+
+
+ 
+ .login-btn {
+	background-color: transparent; 
+	color: #2e073f;
+	border: none;
+	cursor: pointer;
+	text-decoration: underline; 
+	font-size: 12px; 
+ }
+ 
+ .login-btn:hover {
+	text-decoration: none; 
+	color: #1c0526; 
+ }
+ 
 .register-heading {
   	position: absolute;
   	top: calc(50% - 286px);
@@ -244,4 +261,3 @@
   	color: var(--color-darkslategray);
   	font-family: var(--font-adamina);
 }
-
