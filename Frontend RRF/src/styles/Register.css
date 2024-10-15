@@ -143,24 +143,41 @@
   	gap: var(--gap-5xs);
 }
 .sign-up-button {
-  	position: absolute;
-  	top: 516px;
-  	left: 36px;
-  	border-radius: var(--br-3xs);
-  	background-color: #2e073f;
-  	width: 276px;
-  	height: 37px;
-  	overflow: hidden;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: center;
-  	padding: var(--padding-base);
-  	box-sizing: border-box;
-  	font-size: 14.23px;
-  	color: var(--color-white);
-  	font-family: var(--font-amethysta);
-}
+	position: absolute;
+	top: 516px;
+	left: 36px;
+	width: 276px;
+	height: 37px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+  }
+  
+  .sign-up-btn {
+	border-radius: var(--br-3xs);
+	background-color: #2e073f;
+	width: 100%; 
+	height: 100%;
+	font-size: 14.23px;
+	color: var(--color-white);
+	font-family: var(--font-amethysta);
+	border: none; 
+	cursor: pointer; 
+	transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+
+  .sign-up-btn:hover {
+	background-color: #4f0c5f;
+	transform: translateY(-2px); 
+  }
+  
+
+  .sign-up-btn:active {
+	transform: translateY(1px); 
+  }
+  
 .confirm-password {
   	position: absolute;
   	top: 429px;

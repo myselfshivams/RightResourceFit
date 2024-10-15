@@ -91,8 +91,9 @@ const Register: React.FC = () => {
        
 
         <div className="sign-up-button">
-          <button type="submit" className="usernamegmailcom">Sign Up</button>
-        </div>
+  <button type="submit" className="sign-up-btn">Sign Up</button>
+</div>
+
 
         <div className="back-to-login">
           <span className="usernamegmailcom">Back to Login?</span>
