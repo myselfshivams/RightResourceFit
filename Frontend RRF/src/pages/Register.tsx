@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import '../styles/Login.css';
+import '../styles/Register.css';
 
 const RegisterPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [mobile, setMobile] = useState('');
   const [name, setName] = useState('');
 
-  const handlePasswordToggle = () => {
-    setShowPassword(!showPassword);
-  };
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
