@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Adamina:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bevan:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amethysta:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil:wght@400&display=swap');
+body {
+  	margin: 0; line-height: normal;
+}
+:root {
+  	
+  	/* fonts */
+  	--font-allerta-stencil: 'Allerta Stencil';
+  	--font-adamina: Adamina;
+  	--font-amethysta: Amethysta;
+  	--font-bevan: Bevan;
+  	
+  	/* font sizes */
+  	--font-size-29xl: 3rem;
+  	--font-size-smi: 0.813rem;
+  	--font-size-3xs: 0.625rem;
+  	
+  	/* Colors */
+  	--color-white: #fff;
+  	--color-silver: #bfbfbf;
+  	--color-darkslategray: #333;
+  	
+  	/* Gaps */
+  	--gap-5xs: 0.5rem;
+  	
+  	/* Paddings */
+  	--padding-base: 1rem;
+  	
+  	/* Border radiuses */
+  	--br-3xs: 10px;
+  	
+}
