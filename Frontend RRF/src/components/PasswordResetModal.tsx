@@ -21,11 +21,15 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
     onClose(); 
   };
 
-  if (!isOpen) return null; 
+  if (!isOpen) return null;
 
   return (
     <div className="modalOverlay">
       <div className="modalContent">
+        {/* Close Button as X */}
+        <span className="closeIcon" onClick={onClose}>
+          &times;
+        </span>
         <h2>Password Reset</h2>
         <p>Enter your email to receive a password reset link:</p>
         <input
@@ -38,9 +42,6 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
         />
         <button className="resetButton" onClick={handlePasswordReset}>
           Send Password Reset Link
-        </button>
-        <button className="closeButton" onClick={onClose}>
-          Close
         </button>
       </div>
     </div>
