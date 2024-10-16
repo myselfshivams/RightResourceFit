@@ -224,3 +224,16 @@
 .swipeRight .rightSection {
     transform: translateX(0%);
 }
+
+.eyeIcon {
+    position: absolute;
+    right: 10px;
+    top: 55%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #000;
+  }
+  .inputContainer {
+    position: relative;
+  }
+  
