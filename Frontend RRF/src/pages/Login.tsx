@@ -2,6 +2,8 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/Login.css";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import PasswordResetModal from "../components/PasswordResetModal"; 
 
 const Login: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -27,6 +29,18 @@ const Login: React.FC = () => {
     console.log("Login Functionality");
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isPasswordResetOpen, setIsPasswordResetOpen] = useState(false);
+
+  const openPasswordResetModal = () => {
+    setIsPasswordResetOpen(true);
+  };
+
+  const closePasswordResetModal = () => {
+    setIsPasswordResetOpen(false);
+  };
+
   return (
     <div className="bgg">
       <div className={`loginPage ${isSignUp ? "swipeLeft" : "swipeRight"}`}>
@@ -36,7 +50,7 @@ const Login: React.FC = () => {
         </div>
         <div className="rightSection">
           <div className="loginContainer">
-            <h1 className="heading">{isSignUp ? "Sign Up" : "Sign In"}</h1>
+            <h1 className="heading">{isSignUp ? "Register" : "Log In"}</h1>
             <form onSubmit={handleSubmit}>
               {isSignUp && (
                 <>
@@ -78,7 +92,7 @@ const Login: React.FC = () => {
                   </div>
                   <div className="inputContainer">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       placeholder="Password"
                       value={formData.password}
@@ -87,19 +101,39 @@ const Login: React.FC = () => {
                       required
                     />
                     <label className="inputLabel">Password</label>
+                    <span
+                      className="eyeIcon"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </span>
                   </div>
-                  <div className="inputContainer">
-                    <input
-                      type="password"
-                      name="confirmPassword"
-                      placeholder="Confirm Password"
-                      value={formData.confirmPassword}
-                      onChange={handleInputChange}
-                      className="inputField"
-                      required
-                    />
-                    <label className="inputLabel">Confirm Password</label>
-                  </div>
+                  {isSignUp && (
+                    <div className="inputContainer">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        value={formData.confirmPassword}
+                        onChange={handleInputChange}
+                        className="inputField"
+                        required
+                      />
+                      <label className="inputLabel">Confirm Password</label>
+                      <span
+                        className="eyeIcon"
+                        onClick={() =>
+                          setShowConfirmPassword((prev) => !prev)
+                        }
+                      >
+                        {showConfirmPassword ? (
+                          <AiFillEyeInvisible />
+                        ) : (
+                          <AiFillEye />
+                        )}
+                      </span>
+                    </div>
+                  )}
                 </>
               )}
               {!isSignUp && (
@@ -118,7 +152,7 @@ const Login: React.FC = () => {
                   </div>
                   <div className="inputContainer">
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       name="password"
                       placeholder="Password"
                       value={formData.password}
@@ -127,6 +161,20 @@ const Login: React.FC = () => {
                       required
                     />
                     <label className="inputLabel">Password</label>
+                    <span
+                      className="eyeIcon"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </span>
+                  </div>
+                  <div className="forgotPasswordContainer">
+                    <span
+                      className="forgotPassword"
+                      onClick={openPasswordResetModal}
+                    >
+                      Forgot Password?
+                    </span>
                   </div>
                 </>
               )}
@@ -135,16 +183,20 @@ const Login: React.FC = () => {
               </button>
               <p className="toggleText">
                 {isSignUp
-                  ? "Already have an account?"
-                  : "Don’t have an account?"}
+                  ? "Already have an account? "
+                  : "Don’t have an account? "}
                 <span className="toggleLink" onClick={toggleSignUp}>
-                  {isSignUp ? "Login here" : "Sign Up here"}
+                  {isSignUp ? "Login here" : "Register here"}
                 </span>
               </p>
             </form>
           </div>
         </div>
       </div>
+      <PasswordResetModal
+        isOpen={isPasswordResetOpen}
+        onClose={closePasswordResetModal}
+      />
       <ToastContainer />
     </div>
   );

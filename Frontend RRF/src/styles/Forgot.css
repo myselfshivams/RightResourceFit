@@ -1,0 +1,112 @@
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.539);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  h2 {
+    color: #2E073F;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 16px;
+}
+  .modalContent {
+    background: rgba(255, 255, 255, 0.451);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+  }
+  
+ 
+.inputContainer {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.emailInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+    color: #008404;
+}
+
+.emailInput:focus {
+    border-color: #2E073F;
+}
+
+.inputLabel {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 16px;
+    color: #66666600;
+    transition: 0.2s ease all;
+    pointer-events: none;
+
+}
+
+.emailInput:focus+.inputLabel,
+.emailInput:not(:placeholder-shown)+.inputLabel {
+    top: -8px;
+    left: 12px;
+    font-size: 12px;
+    color: #2E073F;
+    background: #fff;
+    padding: 0 4px;
+}
+
+  
+
+.resetButton, .closeButton {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #2E073F;
+    color: rgb(255, 255, 255);
+    font-weight: 530;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+}
+
+.resetButton:hover {
+    background-color: #000000;
+    color: #fff;
+}
+  
+.closeIcon {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.closeIcon:hover {
+    color: #a1a1a1;
+}
+
+  
