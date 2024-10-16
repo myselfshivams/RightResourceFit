@@ -32,6 +32,8 @@ app.use('/api', uploadRoutes);
 // Route for User Registration and Authentication
 app.use("/api/user", require("./routes/userRoutes"));
 
+app.use("/api/jobs", require("./routes/jobRoutes")); // Use job routes for /api/jobs
+
 
 
 
