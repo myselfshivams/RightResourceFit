@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/Login.css";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import PasswordResetModal from "../components/PasswordResetModal"; 
 
 const Login: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -28,8 +29,17 @@ const Login: React.FC = () => {
     console.log("Login Functionality");
   };
 
-const [showPassword, setShowPassword] = useState(false);
-const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isPasswordResetOpen, setIsPasswordResetOpen] = useState(false);
+
+  const openPasswordResetModal = () => {
+    setIsPasswordResetOpen(true);
+  };
+
+  const closePasswordResetModal = () => {
+    setIsPasswordResetOpen(false);
+  };
 
   return (
     <div className="bgg">
@@ -81,44 +91,49 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
                     <label className="inputLabel">E-mail</label>
                   </div>
                   <div className="inputContainer">
-  <input
-    type={showPassword ? "text" : "password"}
-    name="password"
-    placeholder="Password"
-    value={formData.password}
-    onChange={handleInputChange}
-    className="inputField"
-    required
-  />
-  <label className="inputLabel">Password</label>
-  <span
-    className="eyeIcon"
-    onClick={() => setShowPassword((prev) => !prev)}
-  >
-    {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-  </span>
-</div>
-{isSignUp && (
-  <div className="inputContainer">
-    <input
-      type={showConfirmPassword ? "text" : "password"}
-      name="confirmPassword"
-      placeholder="Confirm Password"
-      value={formData.confirmPassword}
-      onChange={handleInputChange}
-      className="inputField"
-      required
-    />
-    <label className="inputLabel">Confirm Password</label>
-    <span
-      className="eyeIcon"
-      onClick={() => setShowConfirmPassword((prev) => !prev)}
-    >
-      {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-    </span>
-  </div>
-)}
-
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Password"
+                      value={formData.password}
+                      onChange={handleInputChange}
+                      className="inputField"
+                      required
+                    />
+                    <label className="inputLabel">Password</label>
+                    <span
+                      className="eyeIcon"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </span>
+                  </div>
+                  {isSignUp && (
+                    <div className="inputContainer">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        value={formData.confirmPassword}
+                        onChange={handleInputChange}
+                        className="inputField"
+                        required
+                      />
+                      <label className="inputLabel">Confirm Password</label>
+                      <span
+                        className="eyeIcon"
+                        onClick={() =>
+                          setShowConfirmPassword((prev) => !prev)
+                        }
+                      >
+                        {showConfirmPassword ? (
+                          <AiFillEyeInvisible />
+                        ) : (
+                          <AiFillEye />
+                        )}
+                      </span>
+                    </div>
+                  )}
                 </>
               )}
               {!isSignUp && (
@@ -136,23 +151,31 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
                     <label className="inputLabel">E-mail</label>
                   </div>
                   <div className="inputContainer">
-  <input
-    type={showPassword ? "text" : "password"}
-    name="password"
-    placeholder="Password"
-    value={formData.password}
-    onChange={handleInputChange}
-    className="inputField"
-    required
-  />
-  <label className="inputLabel">Password</label>
-  <span
-    className="eyeIcon"
-    onClick={() => setShowPassword((prev) => !prev)}
-  >
-    {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-  </span>
-</div>
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Password"
+                      value={formData.password}
+                      onChange={handleInputChange}
+                      className="inputField"
+                      required
+                    />
+                    <label className="inputLabel">Password</label>
+                    <span
+                      className="eyeIcon"
+                      onClick={() => setShowPassword((prev) => !prev)}
+                    >
+                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </span>
+                  </div>
+                  <div className="forgotPasswordContainer">
+                    <span
+                      className="forgotPassword"
+                      onClick={openPasswordResetModal}
+                    >
+                      Forgot Password?
+                    </span>
+                  </div>
                 </>
               )}
               <button type="submit" className="loginBtn" disabled={false}>
@@ -170,6 +193,10 @@ const [showConfirmPassword, setShowConfirmPassword] = useState(false);
           </div>
         </div>
       </div>
+      <PasswordResetModal
+        isOpen={isPasswordResetOpen}
+        onClose={closePasswordResetModal}
+      />
       <ToastContainer />
     </div>
   );
