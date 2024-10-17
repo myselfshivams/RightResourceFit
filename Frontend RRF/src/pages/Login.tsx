@@ -32,15 +32,18 @@ const Login = () => {
     setIsForgotPassword(false);
   };
 
-  const performApiRequest = async (url: string, data: { name: string; email: string; password: string; phoneNumber: string; } | { email: string; password: string; name?: undefined; phoneNumber?: undefined; } | { email: string; }, successMessage: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | ((props: ToastContentProps<unknown>) => React.ReactNode) | null | undefined) => {
+  const performApiRequest = async (url: string, data: any, successMessage: any) => {
     try {
       setIsLoading(true);
-      const response = await axios.post(url, data, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-      });
+      const response = await axios.post(url, data);
       setIsLoading(false);
-      toast.success(successMessage);
+      
+      const token = response.data.token;
+      if (token) {
+        localStorage.setItem("token", token);
+      }
 
+      toast.success(successMessage);
       navigate('/dashboard');
       return response.data;
     } catch (error) {
@@ -103,6 +106,7 @@ const Login = () => {
               <form onSubmit={handleSubmit}>
                 {isSignUp && (
                   <>
+                    {/* SignUp Fields */}
                     <div className="inputContainer">
                       <input
                         type="text"
@@ -185,6 +189,7 @@ const Login = () => {
                 )}
                 {!isSignUp && (
                   <>
+                    {/* Login Fields */}
                     <div className="inputContainer">
                       <input
                         type="text"
@@ -247,6 +252,7 @@ const Login = () => {
           </div>
         )}
 
+        {/* Forgot Password Section */}
         {isForgotPassword && (
           <div className="rightSection">
             <div className="loginContainer">
@@ -272,21 +278,20 @@ const Login = () => {
                   {isLoading ? (
                     <PulseLoader color="#fff" size={10} />
                   ) : (
-                    "Send Password Reset Link"
+                    "Send Reset Link"
                   )}
                 </button>
-                <p className="toggleText">
-                  Remembered your password?{" "}
-                  <span className="toggleLink" onClick={goBackToLogin}>
-                    Go back to Login
-                  </span>
-                </p>
               </form>
+              <p className="toggleText">
+                <span className="toggleLink" onClick={goBackToLogin}>
+                  Go back to login
+                </span>
+              </p>
             </div>
           </div>
         )}
-        <ToastContainer />
       </div>
+      <ToastContainer />
     </div>
   );
 };
