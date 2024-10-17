@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";  
-import { ToastContainer, ToastContentProps, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
