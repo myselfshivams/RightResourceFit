@@ -1,13 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";  
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer,toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/Login.css";
 
-const API_BASE_URL = "http://localhost:8000";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,16 +22,63 @@ const Login = () => {
     email: "",
   });
 
+  const [errors, setErrors] = useState({
+    userID:"",
+    name: "",
+    phoneNumber: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // Clear the error when the user starts typing
+    setErrors({ ...errors, [e.target.name]: "" });
   };
 
+  const validateInputs = () => {
+    const newErrors: any = {};
+    const nameRegex = /^[a-zA-Z\s]{3,}$/; // At least 3 characters, letters and spaces only
+    const phoneRegex = /^[6-9]\d{9}$/; // Indian phone number validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Password validation
+
+    if (isSignUp) {
+      if (!nameRegex.test(formData.name)) {
+        newErrors.name = "Name must contain at least 3 characters.";
+      }
+      if (!phoneRegex.test(formData.phoneNumber)) {
+        newErrors.phoneNumber = "Please enter a valid 10-digit phone number.";
+      }
+      if (!emailRegex.test(formData.email)) {
+        newErrors.email = "Please enter a valid email address.";
+      }
+      if (!passwordRegex.test(formData.password)) {
+        newErrors.password = "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character.";
+      }
+      if (formData.password !== formData.confirmPassword) {
+        newErrors.confirmPassword = "Passwords do not match.";
+      }
+    } else {
+      if (!emailRegex.test(formData.userId)) {
+        newErrors.userID = "Please enter a valid email address.";
+      }
+      if (!passwordRegex.test(formData.password)) {
+        newErrors.password = "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character.";
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Return true if there are no errors
+  };
   const toggleSignUp = () => {
     setIsSignUp(!isSignUp);
     setIsForgotPassword(false);
   };
 
-  const performApiRequest = async (url: string, data: any, successMessage: any) => {
+  const performApiRequest = async (url: string, data: any, successMessage: string) => {
     try {
       setIsLoading(true);
       const response = await axios.post(url, data);
@@ -55,7 +101,10 @@ const Login = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const url = `${API_BASE_URL}/api/user/${isSignUp ? 'register' : 'login'}`;
+    if (!validateInputs()) {
+      return; // Do not proceed if validation fails
+    }
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/${isSignUp ? 'register' : 'login'}`;
     const data = isSignUp ? { 
       name: formData.name, 
       email: formData.email, 
@@ -70,7 +119,13 @@ const Login = () => {
 
   const handlePasswordReset = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const url = `${API_BASE_URL}/api/user/forgot-password`;
+    
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      setErrors({ ...errors, email: "Please enter a valid email address." });
+      return;
+    }
+
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/forgot-password`;
     const data = { email: formData.email };
     performApiRequest(url, data, "Password reset link sent!");
   };
@@ -118,6 +173,7 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">Full Name</label>
+                      {errors.name && <p className="error">{errors.name}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -130,6 +186,7 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">Mobile Number</label>
+                      {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -142,6 +199,7 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">E-mail</label>
+                      {errors.email && <p className="error">{errors.email}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -160,6 +218,7 @@ const Login = () => {
                       >
                         {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                       </span>
+                      {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -184,6 +243,17 @@ const Login = () => {
                           <AiFillEye />
                         )}
                       </span>
+                      {errors.confirmPassword && (
+                        <p className="error">{errors.confirmPassword}</p>
+                      )}
+                    </div>
+                    <div className="forgotPasswordContainer">
+                      <span
+                        className="forgotPassword"
+                        onClick={toggleForgotPassword}
+                      >
+                        Forgot Password?
+                      </span>
                     </div>
                   </>
                 )}
@@ -201,6 +271,7 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">E-mail</label>
+                      {errors.userID && <p className="error">{errors.userID}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -219,6 +290,7 @@ const Login = () => {
                       >
                         {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                       </span>
+                      {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className="forgotPasswordContainer">
                       <span
@@ -269,6 +341,7 @@ const Login = () => {
                     required
                   />
                   <label className="inputLabel">E-mail</label>
+                  {errors.email && <p className="error">{errors.email}</p>}
                 </div>
                 <button
                   type="submit"
