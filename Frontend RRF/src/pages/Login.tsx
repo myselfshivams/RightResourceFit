@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "../styles/Login.css";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { PulseLoader } from "react-spinners"; // Spinner component
+import "../styles/Login.css";
 
 const Login: React.FC = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [isForgotPassword, setIsForgotPassword] = useState(false); 
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // For button loader
   const [formData, setFormData] = useState({
     userId: "",
     password: "",
@@ -22,21 +24,30 @@ const Login: React.FC = () => {
 
   const toggleSignUp = () => {
     setIsSignUp(!isSignUp);
-    setIsForgotPassword(false); 
+    setIsForgotPassword(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Submitted");
+    setIsLoading(true);
+    // Simulate backend call delay
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.error("Internal server error");
+    }, 2000);
   };
 
   const handlePasswordReset = async () => {
-    console.log(`Password reset link sent to: ${formData.email}`);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      toast.error("Internal server error");
+    }, 2000);
   };
 
   const toggleForgotPassword = () => {
     setIsForgotPassword(true);
-    setIsSignUp(false); 
+    setIsSignUp(false);
   };
 
   const goBackToLogin = () => {
@@ -149,7 +160,6 @@ const Login: React.FC = () => {
                 )}
                 {!isSignUp && (
                   <>
- 
                     <div className="inputContainer">
                       <input
                         type="text"
@@ -177,7 +187,11 @@ const Login: React.FC = () => {
                         className="eyeIcon"
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
-                        {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                        {showPassword ? (
+                          <AiFillEyeInvisible />
+                        ) : (
+                          <AiFillEye />
+                        )}
                       </span>
                     </div>
                     <div className="forgotPasswordContainer">
@@ -190,8 +204,14 @@ const Login: React.FC = () => {
                     </div>
                   </>
                 )}
-                <button type="submit" className="loginBtn" disabled={false}>
-                  {isSignUp ? "Sign Up" : "Login"}
+                <button type="submit" className="loginBtn" disabled={isLoading}>
+                  {isLoading ? (
+                    <PulseLoader color="#fff" size={10} />
+                  ) : isSignUp ? (
+                    "Sign Up"
+                  ) : (
+                    "Login"
+                  )}
                 </button>
                 <p className="toggleText">
                   {isSignUp
@@ -223,8 +243,16 @@ const Login: React.FC = () => {
                   />
                   <label className="inputLabel">E-mail</label>
                 </div>
-                <button type="submit" className="loginBtn">
-                  Send Password Reset Link
+                <button
+                  type="submit"
+                  className="loginBtn"
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <PulseLoader color="#fff" size={10} />
+                  ) : (
+                    "Send Password Reset Link"
+                  )}
                 </button>
                 <p className="toggleText">
                   Remember your password?{" "}
