@@ -1,14 +1,19 @@
-import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";  
+import { ToastContainer, ToastContentProps, toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { PulseLoader } from "react-spinners"; // Spinner component
+import { PulseLoader } from "react-spinners";
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/Login.css";
 
-const Login: React.FC = () => {
+const API_BASE_URL = "http://localhost:8000";
+
+const Login = () => {
+  const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // For button loader
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     userId: "",
     password: "",
@@ -18,7 +23,7 @@ const Login: React.FC = () => {
     email: "",
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -27,22 +32,47 @@ const Login: React.FC = () => {
     setIsForgotPassword(false);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    // Simulate backend call delay
-    setTimeout(() => {
+  const performApiRequest = async (url: string, data: any, successMessage: any) => {
+    try {
+      setIsLoading(true);
+      const response = await axios.post(url, data);
       setIsLoading(false);
-      toast.error("Internal server error");
-    }, 2000);
+      
+      const token = response.data.token;
+      if (token) {
+        localStorage.setItem("token", token);
+      }
+
+      toast.success(successMessage);
+      navigate('/dashboard');
+      return response.data;
+    } catch (error) {
+      setIsLoading(false);
+      const errorMessage = (error as any).response?.data?.message || "Internal server error";
+      toast.error(errorMessage);
+    }
   };
 
-  const handlePasswordReset = async () => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      toast.error("Internal server error");
-    }, 2000);
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const url = `${API_BASE_URL}/api/user/${isSignUp ? 'register' : 'login'}`;
+    const data = isSignUp ? { 
+      name: formData.name, 
+      email: formData.email, 
+      password: formData.password, 
+      phoneNumber: formData.phoneNumber 
+    } : {
+      email: formData.userId, 
+      password: formData.password
+    };
+    performApiRequest(url, data, isSignUp ? "Registered successfully!" : "Logged in successfully!");
+  };
+
+  const handlePasswordReset = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    const url = `${API_BASE_URL}/api/user/forgot-password`;
+    const data = { email: formData.email };
+    performApiRequest(url, data, "Password reset link sent!");
   };
 
   const toggleForgotPassword = () => {
@@ -76,6 +106,7 @@ const Login: React.FC = () => {
               <form onSubmit={handleSubmit}>
                 {isSignUp && (
                   <>
+                    {/* SignUp Fields */}
                     <div className="inputContainer">
                       <input
                         type="text"
@@ -130,36 +161,35 @@ const Login: React.FC = () => {
                         {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                       </span>
                     </div>
-                    {isSignUp && (
-                      <div className="inputContainer">
-                        <input
-                          type={showConfirmPassword ? "text" : "password"}
-                          name="confirmPassword"
-                          placeholder="Confirm Password"
-                          value={formData.confirmPassword}
-                          onChange={handleInputChange}
-                          className="inputField"
-                          required
-                        />
-                        <label className="inputLabel">Confirm Password</label>
-                        <span
-                          className="eyeIcon"
-                          onClick={() =>
-                            setShowConfirmPassword((prev) => !prev)
-                          }
-                        >
-                          {showConfirmPassword ? (
-                            <AiFillEyeInvisible />
-                          ) : (
-                            <AiFillEye />
-                          )}
-                        </span>
-                      </div>
-                    )}
+                    <div className="inputContainer">
+                      <input
+                        type={showConfirmPassword ? "text" : "password"}
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        value={formData.confirmPassword}
+                        onChange={handleInputChange}
+                        className="inputField"
+                        required
+                      />
+                      <label className="inputLabel">Confirm Password</label>
+                      <span
+                        className="eyeIcon"
+                        onClick={() =>
+                          setShowConfirmPassword((prev) => !prev)
+                        }
+                      >
+                        {showConfirmPassword ? (
+                          <AiFillEyeInvisible />
+                        ) : (
+                          <AiFillEye />
+                        )}
+                      </span>
+                    </div>
                   </>
                 )}
                 {!isSignUp && (
                   <>
+                    {/* Login Fields */}
                     <div className="inputContainer">
                       <input
                         type="text"
@@ -187,11 +217,7 @@ const Login: React.FC = () => {
                         className="eyeIcon"
                         onClick={() => setShowPassword((prev) => !prev)}
                       >
-                        {showPassword ? (
-                          <AiFillEyeInvisible />
-                        ) : (
-                          <AiFillEye />
-                        )}
+                        {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                       </span>
                     </div>
                     <div className="forgotPasswordContainer">
@@ -226,6 +252,7 @@ const Login: React.FC = () => {
           </div>
         )}
 
+        {/* Forgot Password Section */}
         {isForgotPassword && (
           <div className="rightSection">
             <div className="loginContainer">
@@ -251,16 +278,15 @@ const Login: React.FC = () => {
                   {isLoading ? (
                     <PulseLoader color="#fff" size={10} />
                   ) : (
-                    "Send Password Reset Link"
+                    "Send Reset Link"
                   )}
                 </button>
-                <p className="toggleText">
-                  Remember your password?{" "}
-                  <span className="toggleLink" onClick={goBackToLogin}>
-                    Go back to login
-                  </span>
-                </p>
               </form>
+              <p className="toggleText">
+                <span className="toggleLink" onClick={goBackToLogin}>
+                  Go back to login
+                </span>
+              </p>
             </div>
           </div>
         )}
