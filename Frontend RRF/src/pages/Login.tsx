@@ -1,12 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";  
-import { ToastContainer,toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
 import "../styles/Login.css";
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,57 +21,55 @@ const Login = () => {
     email: "",
   });
 
-  const [errors, setErrors] = useState({
-    userID:"",
-    name: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
+  const handleInputChange = (e: { target: { name: any; value: any } }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-
-    // Clear the error when the user starts typing
-    setErrors({ ...errors, [e.target.name]: "" });
   };
 
   const validateInputs = () => {
-    const newErrors: any = {};
-    const nameRegex = /^[a-zA-Z\s]{3,}$/; // At least 3 characters, letters and spaces only
-    const phoneRegex = /^[0-9]{10}$/; // Indian phone number validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Password validation
+    const nameRegex = /^[a-zA-Z\s]{3,}$/; 
+    const phoneRegex = /^[0-9]{10}$/; 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; 
 
     if (isSignUp) {
       if (!nameRegex.test(formData.name)) {
-        newErrors.name = "Name must contain at least 3 characters.";
+        toast.error("Name must contain at least 3 characters.");
+        return false;
       }
       if (!phoneRegex.test(formData.phoneNumber)) {
-        newErrors.phoneNumber = "Please enter a valid 10-digit phone number.";
+        toast.error("Please enter a valid 10-digit phone number.");
+        return false;
       }
       if (!emailRegex.test(formData.email)) {
-        newErrors.email = "Please enter a valid email address.";
+        toast.error("Please enter a valid email address.");
+        return false;
       }
       if (!passwordRegex.test(formData.password)) {
-        newErrors.password = "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character.";
+        toast.error(
+          "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character."
+        );
+        return false;
       }
       if (formData.password !== formData.confirmPassword) {
-        newErrors.confirmPassword = "Passwords do not match.";
+        toast.error("Passwords do not match.");
+        return false;
       }
     } else {
       if (!emailRegex.test(formData.userId)) {
-        newErrors.userID = "Please enter a valid email address.";
+        toast.error("Please enter a valid email address.");
+        return false;
       }
       if (!passwordRegex.test(formData.password)) {
-        newErrors.password = "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character.";
+        toast.error(
+          "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character."
+        );
+        return false;
       }
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Return true if there are no errors
+    return true; 
   };
+
   const toggleSignUp = () => {
     setIsSignUp(!isSignUp);
     setIsForgotPassword(false);
@@ -83,14 +80,14 @@ const Login = () => {
       setIsLoading(true);
       const response = await axios.post(url, data);
       setIsLoading(false);
-      
+
       const token = response.data.token;
       if (token) {
         localStorage.setItem("token", token);
       }
 
       toast.success(successMessage);
-      navigate('/dashboard');
+      navigate("/dashboard");
       return response.data;
     } catch (error) {
       setIsLoading(false);
@@ -99,29 +96,23 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (!validateInputs()) {
-      return; // Do not proceed if validation fails
+      return; 
     }
-    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/${isSignUp ? 'register' : 'login'}`;
-    const data = isSignUp ? { 
-      name: formData.name, 
-      email: formData.email, 
-      password: formData.password, 
-      phoneNumber: formData.phoneNumber 
-    } : {
-      email: formData.userId, 
-      password: formData.password
-    };
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/${isSignUp ? "register" : "login"}`;
+    const data = isSignUp
+      ? { name: formData.name, email: formData.email, password: formData.password, phoneNumber: formData.phoneNumber }
+      : { email: formData.userId, password: formData.password };
     performApiRequest(url, data, isSignUp ? "Registered successfully!" : "Logged in successfully!");
   };
 
-  const handlePasswordReset = async (e: { preventDefault: () => void; }) => {
+  const handlePasswordReset = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    
+
     if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      setErrors({ ...errors, email: "Please enter a valid email address." });
+      toast.error("Please enter a valid email address.");
       return;
     }
 
@@ -144,11 +135,7 @@ const Login = () => {
 
   return (
     <div className="bgg">
-      <div
-        className={`loginPage ${
-          isSignUp ? "swipeLeft" : isForgotPassword ? "swipeLeft" : "swipeRight"
-        }`}
-      >
+      <div className={`loginPage ${isSignUp ? "swipeLeft" : isForgotPassword ? "swipeLeft" : "swipeRight"}`}>
         <div className="leftSection">
           <img src="/login.png" alt="Hero Image" className="heroImage" />
           <h1>Right Resource Fit</h1>
@@ -173,7 +160,6 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">Full Name</label>
-                      {errors.name && <p className="error">{errors.name}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -186,7 +172,6 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">Mobile Number</label>
-                      {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -199,7 +184,6 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">E-mail</label>
-                      {errors.email && <p className="error">{errors.email}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -212,13 +196,9 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">Password</label>
-                      <span
-                        className="eyeIcon"
-                        onClick={() => setShowPassword((prev) => !prev)}
-                      >
+                      <span className="eyeIcon" onClick={() => setShowPassword((prev) => !prev)}>
                         {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                       </span>
-                      {errors.password && <p className="error">{errors.password}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -231,28 +211,8 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">Confirm Password</label>
-                      <span
-                        className="eyeIcon"
-                        onClick={() =>
-                          setShowConfirmPassword((prev) => !prev)
-                        }
-                      >
-                        {showConfirmPassword ? (
-                          <AiFillEyeInvisible />
-                        ) : (
-                          <AiFillEye />
-                        )}
-                      </span>
-                      {errors.confirmPassword && (
-                        <p className="error">{errors.confirmPassword}</p>
-                      )}
-                    </div>
-                    <div className="forgotPasswordContainer">
-                      <span
-                        className="forgotPassword"
-                        onClick={toggleForgotPassword}
-                      >
-                        Forgot Password?
+                      <span className="eyeIcon" onClick={() => setShowConfirmPassword((prev) => !prev)}>
+                        {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                       </span>
                     </div>
                   </>
@@ -271,7 +231,6 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">E-mail</label>
-                      {errors.userID && <p className="error">{errors.userID}</p>}
                     </div>
                     <div className="inputContainer">
                       <input
@@ -284,25 +243,26 @@ const Login = () => {
                         required
                       />
                       <label className="inputLabel">Password</label>
-                      <span
-                        className="eyeIcon"
-                        onClick={() => setShowPassword((prev) => !prev)}
-                      >
+                      <span className="eyeIcon" onClick={() => setShowPassword((prev) => !prev)}>
                         {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
-                      </span>
-                      {errors.password && <p className="error">{errors.password}</p>}
-                    </div>
-                    <div className="forgotPasswordContainer">
-                      <span
-                        className="forgotPassword"
-                        onClick={toggleForgotPassword}
-                      >
-                        Forgot Password?
                       </span>
                     </div>
                   </>
                 )}
-                <button type="submit" className="loginBtn" disabled={isLoading}>
+                  {!isSignUp && (
+                  <div className="forgotPasswordContainer">
+                  <span
+                    className="forgotPassword"
+                    onClick={toggleForgotPassword}
+                  >
+                    Forgot Password?
+                  </span>
+                </div>
+                )}
+                {isLoading ? (
+                  <PulseLoader color="#36d7b7" loading={isLoading} size={10} />
+                ) : (
+                  <button type="submit" className="loginBtn" disabled={isLoading}>
                   {isLoading ? (
                     <PulseLoader color="#fff" size={10} />
                   ) : isSignUp ? (
@@ -311,7 +271,10 @@ const Login = () => {
                     "Login"
                   )}
                 </button>
-                <p className="toggleText">
+                )}
+              
+              </form>
+              <p className="toggleText">
                   {isSignUp
                     ? "Already have an account? "
                     : "Don’t have an account? "}
@@ -319,12 +282,10 @@ const Login = () => {
                     {isSignUp ? "Login here" : "Register here"}
                   </span>
                 </p>
-              </form>
             </div>
           </div>
         )}
 
-        {/* Forgot Password Section */}
         {isForgotPassword && (
           <div className="rightSection">
             <div className="loginContainer">
@@ -334,16 +295,18 @@ const Login = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder="E-mail"
                     value={formData.email}
                     onChange={handleInputChange}
                     className="inputField"
                     required
                   />
                   <label className="inputLabel">E-mail</label>
-                  {errors.email && <p className="error">{errors.email}</p>}
                 </div>
-                <button
+                {isLoading ? (
+                  <PulseLoader color="#36d7b7" loading={isLoading} size={10} />
+                ) : (
+                  <button
                   type="submit"
                   className="loginBtn"
                   disabled={isLoading}
@@ -354,6 +317,7 @@ const Login = () => {
                     "Send Reset Link"
                   )}
                 </button>
+                )}
               </form>
               <p className="toggleText">
                 <span className="toggleLink" onClick={goBackToLogin}>
