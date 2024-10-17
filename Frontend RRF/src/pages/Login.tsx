@@ -41,7 +41,7 @@ const Login = () => {
   const validateInputs = () => {
     const newErrors: any = {};
     const nameRegex = /^[a-zA-Z\s]{3,}$/; // At least 3 characters, letters and spaces only
-    const phoneRegex = /^[6-9]\d{9}$/; // Indian phone number validation
+    const phoneRegex = /^[0-9]{10}$/; // Indian phone number validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Password validation
 
