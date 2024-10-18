@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import ProtectedRoute from "./components/protectedRoute"; 
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Login />} />
           <Route path="/home" element={<Home />} />
-          
+          <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
           <Route 
             path="/dashboard" 
             element={
