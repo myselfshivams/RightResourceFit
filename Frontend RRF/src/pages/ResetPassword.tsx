@@ -50,7 +50,7 @@ const ResetPassword = () => {
       await axios.patch(url, data);
       setIsLoading(false);
       toast.success("Password reset successful! Please log in.");
-      navigate("/login");
+      navigate("/register");
     } catch (error) {
       setIsLoading(false);
       const errorMessage =
