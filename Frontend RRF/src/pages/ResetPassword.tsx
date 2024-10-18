@@ -43,7 +43,7 @@ const ResetPassword = () => {
     if (!validateInputs()) return;
 
     const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/reset-password/${resetToken}`;
-    const data = { newPassword: formData.newPassword };
+    const data = { password: formData.newPassword };
 
     try {
       setIsLoading(true);
