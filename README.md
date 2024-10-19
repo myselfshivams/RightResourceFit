@@ -72,7 +72,7 @@ node server.js
 
 <hr>
 
-### Team 👥
+## Our Team 👥
 - Mentor: [Pavan Sir](https://github.com/springboardmentor106)
 - [Shivam](https://github.com/myselfshivams) 
 - [Pranav](https://github.com/PRANAVGUPTA0806)
@@ -80,10 +80,14 @@ node server.js
 - [Rashmi](https://github.com/rashmis8)
 - [Padmaja](https://github.com/Padmaja3457)
 
-### Support or Contact
+## Our Contributors ❤️✨
+
+[![Contributors](https://contrib.rocks/image?repo=springboardmentor106/RightResourceFit_Infosys_Internship_Oct2024_Team_04)](https://github.com/springboardmentor106/RightResourceFit_Infosys_Internship_Oct2024_Team_04/contributors)
+
+## Support or Contact
 
 For any inquiries or support regarding the project, feel free to Contact us.
 
-### Acknowledgments
+## Acknowledgments
 
 Special thanks to our Mentor for providing tools and support assisted in creating this Project.
