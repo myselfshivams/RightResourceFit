@@ -6,7 +6,7 @@ const Sidebar: React.FC = () => {
   return (
     <div className="sidebar">
       <div className="logo-container">
-        <img src="/logo.png" alt="Logo" className="sidebar-logo" />
+        <img src="/Landing/logo.svg" alt="Logo" className="sidebar-logo" />
         <h2>Right Resource Fit</h2>
       </div>
 
