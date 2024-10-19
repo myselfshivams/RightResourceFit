@@ -19,7 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: auto;
     min-height: 100vh;
     background-image: url('/bg.png');
     background-repeat: no-repeat;
