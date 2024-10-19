@@ -1,13 +1,9 @@
 import React from "react";
 import '../styles/errorpage.css'; 
 import { Link } from "react-router-dom";
-import Footer3 from "./Footer3";
-import Navbar3 from "./Navbar3";
 
-const ErrorPage: React.FC = () => {
+const Custom404: React.FC = () => {
   return (
-    <>
-    <Navbar3/>
     <div className="errorPageMainContainer">
       <div className="errorMsgContent">
         <h2 className="error">404</h2>
@@ -25,4 +21,4 @@ const ErrorPage: React.FC = () => {
   );
 };
 
-export default ErrorPage;
+export default Custom404;
