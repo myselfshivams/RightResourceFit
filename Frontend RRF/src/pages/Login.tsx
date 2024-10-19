@@ -164,7 +164,6 @@ const Login = () => {
       setIsLoading(true);
       await axios.post(url, data);
       setIsLoading(false);
-  
       toast.success("Password reset link sent!");
   
       // Navigate after a delay
