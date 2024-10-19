@@ -1,0 +1,47 @@
+/* App.css */
+.app-container {
+  display: flex; /* Ensure main container is flex */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Main content styling */
+.main-content {
+  flex: 1; /* Allow main content to take full width */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Styling for dashboard content */
+.dashboard-content {
+  flex: 1; /* Take the available space */
+  padding: 20px; /* Optional padding */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Flexbox styling for charts and table */
+.charts-and-table {
+  display: flex; /* Use flexbox for horizontal layout */
+  justify-content: space-between; /* Space out the components */
+  align-items: flex-start; /* Align items at the top */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Adjust individual chart and job posts width */
+.application-chart {
+  flex: 1; /* Take equal space */
+  margin-right: 20px; /* Space between chart and job posts */
+  box-sizing: border-box; /* Include margin in width calculation */
+}
+
+/* Ensure no extra space on the right */
+.recent-job-posts {
+  flex: 1; /* Take equal space */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Optional: Adjust the pie chart size */
+.application-chart .recharts-wrapper {
+  width: 100%; /* Ensure pie chart fits within its container */
+  height: auto;
+}
