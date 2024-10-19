@@ -23,7 +23,7 @@ transporter.verify((error, success) => {
     if (error) {
         console.log('Error connecting to SMTP:', error);
     } else {
-        console.log('SMTP1 connection successful:', success);
+        console.log('SMTP connection successful:', success);
     }
 });
 
@@ -172,7 +172,7 @@ const requestPasswordReset = asyncHandler(async (req, res) => {
       If you did not request a password reset, please ignore this email.<br>
       Thank you!<br><br>
       Best regards,<br>
-      The NutriiNuts Team`,
+      The Right Resource Fit Team`,
   };
 
   // Send the email

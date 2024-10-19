@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -10,6 +10,7 @@ import "../styles/Login.css";
 const ResetPassword = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const { resetToken } = useParams();
   const [formData, setFormData] = useState({
     newPassword: "",
     confirmNewPassword: "",
@@ -41,15 +42,15 @@ const ResetPassword = () => {
     e.preventDefault();
     if (!validateInputs()) return;
 
-    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/reset-password`;
-    const data = { newPassword: formData.newPassword };
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/reset-password/${resetToken}`;
+    const data = { password: formData.newPassword };
 
     try {
       setIsLoading(true);
-      await axios.post(url, data);
+      await axios.patch(url, data);
       setIsLoading(false);
       toast.success("Password reset successful! Please log in.");
-      navigate("/login");
+      navigate("/register");
     } catch (error) {
       setIsLoading(false);
       const errorMessage =
