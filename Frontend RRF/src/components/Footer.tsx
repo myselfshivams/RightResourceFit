@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
       <div className="footer-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
-        <a href="#">Contact Us</a>
+        <a href="/contact">Contact Us</a>
       </div>
     </div>
   );

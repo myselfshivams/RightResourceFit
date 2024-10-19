@@ -7,6 +7,7 @@ import AdminProtectedRoute from "./components/adminprotectedroute";
 import ErrorPage from "./components/ErrorPage";
 import ResetPassword from "./pages/ResetPassword";
 import UserDashboard from "./pages/UserDashboard";
+import Contactus from "./pages/Contactus";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+          <Route path="/reset-password/:resetToken" element={<ResetPassword />} />\
+          <Route path="/contact" element={<Contactus />} />
           <Route path="/user-dashboard" element={<ProtectedRoute><UserDashboard /> </ProtectedRoute>} />
           <Route 
             path="/dashboard" 
