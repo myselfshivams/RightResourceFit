@@ -162,7 +162,7 @@ const Login = () => {
   
     try {
       setIsLoading(true);
-      const response = await axios.post(url, data);
+      await axios.post(url, data);
       setIsLoading(false);
   
       toast.success("Password reset link sent!");
