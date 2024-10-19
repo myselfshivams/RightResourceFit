@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <div className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <img src="/logo.png" alt="Right Resource Fit Logo" />
+          <img src="/Landing/logo.svg" alt="Right Resource Fit Logo" />
         </div>
         <div className="footer-text">
           &copy; 2024 Right Resource Fit. All rights reserved.
