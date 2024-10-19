@@ -74,8 +74,8 @@ node server.js
 
 ## Our Team 👥
 - Mentor: [Pavan Sir](https://github.com/springboardmentor106)
+- Team Leader: [Pranav](https://github.com/PRANAVGUPTA0806)
 - Team Leader: [Shivam](https://github.com/myselfshivams) 
-- [Pranav](https://github.com/PRANAVGUPTA0806)
 - [Akash](https://github.com/akashbalodi)
 - [Rashmi](https://github.com/rashmis8)
 - [Padmaja](https://github.com/Padmaja3457)
