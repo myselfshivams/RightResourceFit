@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import ProtectedRoute from "./components/protectedRoute";
 import AdminProtectedRoute from "./components/adminprotectedroute"; 
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./components/Custom404";
 import ResetPassword from "./pages/ResetPassword";
 import UserDashboard from "./pages/UserDashboard";
 import Contactus from "./pages/Contactus";
