@@ -35,7 +35,7 @@ interface Job {
 
   return (
     <div>
-      <section className="favorite-jobs-section">
+      <section className="favorite-jobs-section1">
         <h2 className="section-title">Favorite Jobs</h2>
         <h3 className="section-subtitle">Right Resource Fit: Find Your Dream Job</h3>
         <div className="jobs-grid">

@@ -4,7 +4,7 @@ import HeroSection from "./HeroSection";
 import FavJobs from "./FavJobs";
 import ReserveSpot from "./ReserveSpot";
 import MapSection from "./MapSection";
-// import Footer from "./Footer";
+import Footer from '../components/Footer3';
 import Testimonials from "./Testimonials";
 import Feedback from "./Feedback";
 
@@ -18,7 +18,7 @@ const Landing = () => {
    <MapSection />
    <Testimonials/>
    <Feedback/>
-   {/* <Footer /> */}
+   <Footer />
 </>
   )
 }

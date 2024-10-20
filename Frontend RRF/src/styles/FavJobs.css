@@ -1,55 +1,88 @@
-.favorite-jobs-section {
-    padding: 25px;
-    background-color: white;
-  }
-  
-  .section-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #621ea2;
-    margin-bottom: 10px;
-  }
-  
-  .section-subtitle {
-    font-size: 30px;
-    color: #621ea2;
-    margin-bottom: 20px;
-  }
-  
+.favorite-jobs-section1 {
+  padding: 25px;
+  background-color: white;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #621ea2;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  color: #621ea2;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Responsive design for tablets */
+@media (max-width: 1024px) {
   .jobs-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
-  
-  .job-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding-left: 0%;
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
+}
+
+/* Responsive design for mobile phones */
+@media (max-width: 600px) {
+  .jobs-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
   }
-  
-  .job-card:hover {
-    transform: scale(1.05);
+
+  .section-title {
+    font-size: 20px;
   }
-  
-  .job-image {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  
-  .job-info h4 {
+
+  .section-subtitle {
     font-size: 16px;
-    font-weight: bold;
-    margin-top: 0px;
   }
-  
-  .job-info p {
-    font-size: 14px;
-    color: #888;
+}
+
+.jobs-grid .job-card {
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.job-card:hover {
+  transform: scale(1.05);
+}
+
+.jobs-grid .job-card .job-image {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .jobs-grid .job-card .job-image {
+    height: 200px;
   }
-  
+}
+
+.job-info h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.job-info p {
+  font-size: 14px;
+  color: #888;
+}

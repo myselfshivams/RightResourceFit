@@ -12,12 +12,12 @@ footer {
     padding: 20px 0;
   }
   
-  .footer-left, .footer-right {
+  .footerleft, .footer-right {
     flex: 1;
     min-width: 250px;
   }
   
-  .footer-left {
+  .footerleft {
     margin-right: 20px;
   }
   
@@ -73,7 +73,7 @@ footer {
       flex-direction: column;
     }
     
-    .footer-left, .footer-right {
+    .footerleft, .footer-right {
       min-width: 100%;
       text-align: center;
     }

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="footer-container">
-        <div className="footer-left">
+        <div className="footerleft">
           <h3>Right Resource Fit</h3><br />
           <p>
             Empower your HR team with Right Resource Fit, where we simplify recruitment,

@@ -10,12 +10,12 @@ const Navbar = () => {
         <h2 className="CompanyName">Right Resource Fit</h2>
       </div>
       <ul className="navbar-links">
-        <li>Home</li>
-        <li>About us</li>
-        <li>Contact us</li>
+        <Link to="/"><li>Home</li></Link>
+        <Link to="#"><li>About us</li></Link>
+        <Link to="/contact"><li>Contact us</li></Link>
       </ul>
       <div className="Button">
-        <button><Link className="Login" to="/register">Login</Link></button>
+        <button><Link className="Login" to="/login">Login</Link></button>
          <button><Link to="/register"> Register</Link></button> 
       </div>
     </nav>

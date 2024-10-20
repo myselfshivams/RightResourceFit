@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "../styles/Feedback.css"
 
 const Feedback = () => {
@@ -9,7 +10,7 @@ const Feedback = () => {
         <p className="description">
           Your opinion helps us improve our services. Share your thoughts and let us know how we can serve you better.
         </p>
-        <button className="button">Leave Feedback →</button>
+        <Link to='/contact'><button className="button">Leave Feedback →</button></Link>
       </div>
       <div className="imageContainer">
         {/* Replace with your image source */}

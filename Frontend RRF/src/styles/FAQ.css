@@ -32,7 +32,7 @@
     align-items: center;
   }
   
-  p{
+  .faq-answer p{
     color: rgb(67, 64, 64);
     text-align: justify;
   }

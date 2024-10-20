@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route ,Navigate} from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import Home from "./pages/Home";
+import Home from "./pages/Landing";
 import ProtectedRoute from "./components/protectedRoute";
 import AdminProtectedRoute from "./components/adminprotectedroute"; 
 import ErrorPage from "./components/Custom404";
 import ResetPassword from "./pages/ResetPassword";
 import UserDashboard from "./pages/UserDashboard";
 import Contactus from "./pages/Contactus";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Login />} />
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/reset-password/:resetToken" element={<ResetPassword />} />\
           <Route path="/contact" element={<Contactus />} />
           <Route path="/user-dashboard" element={<ProtectedRoute><UserDashboard /> </ProtectedRoute>} />
