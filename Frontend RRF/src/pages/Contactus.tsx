@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "../styles/Contactus.css";
-import Navbar3 from '../components/Navbar3';
+import Navbar3 from './Navbar';
 import Footer from '../components/Footer3';
 import { PulseLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
