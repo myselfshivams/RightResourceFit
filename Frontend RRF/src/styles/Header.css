@@ -1,0 +1,73 @@
+/* Top Header Container for Dashboard, Search, Notifications, and Profile */
+.top-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color:#EBD3F8; /* Purple background */
+  color: dark purple;
+}
+
+/* Dashboard Label */
+.dashboard-label {
+  font-size: 18px;  /* Make this a bit larger */
+  font-weight: bold;
+}
+
+/* Right Section: Search Bar and Icons */
+.top-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;  /* Space between search, notification, and profile */
+}
+
+/* Search Bar Styling */
+.search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-bar input {
+  padding: 8px 40px 8px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  color: #333;
+  width: 250px; /* Adjust width of the search bar */
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  right: 10px;
+  color: purple;
+  font-size: 16px;
+}
+
+/* Notification Icon Styling */
+.notification-icon {
+  position: relative;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+/* Profile Icon Styling */
+.profile-icon {
+  display: flex;
+  align-items: center; /* Center align icon vertically */
+  justify-content: center; /* Center align icon horizontally */
+  cursor: pointer;
+}

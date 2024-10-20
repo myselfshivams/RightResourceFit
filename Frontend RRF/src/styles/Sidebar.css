@@ -1,0 +1,75 @@
+.sidebar {
+  width: 250px;
+  background-color: #f7f0fc;
+  padding: 20px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sidebar-logo {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+h2 {
+  font-size: 22px;
+  color: #333;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 18px;
+  color: #333;
+  position: relative; /* Allows absolute positioning of badges */
+}
+
+.sidebar-item span {
+  margin-left: 5px; /* Small space between icon and text */
+}
+
+.sidebar-item svg {
+  margin-right: 8px; /* Minimal gap between icon and text */
+}
+
+/* Badge positioning */
+.badge {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  position: absolute; /* Position badges absolutely */
+  right: 0; /* Align badges to the far right */
+  top: 50%;
+  transform: translateY(-50%); /* Center the badges vertically */
+}
+
+/* Badge color classes */
+.badge.purple {
+  background-color: #6a1b9a;
+}
+
+.badge.purple {
+  background-color: #6a1b9a;
+}
+
+.badge.purple {
+  background-color: #6a1b9a;
+}
+
+.badge.purple {
+  background-color: #6a1b9a;
+}

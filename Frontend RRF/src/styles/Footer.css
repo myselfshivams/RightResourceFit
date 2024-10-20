@@ -1,0 +1,47 @@
+.footer {
+    background-color: #f4f4f4;
+    padding: 10px; /* Reduced padding to make the footer smaller */
+    text-align: center;
+    color: #333;
+    font-size: 12px; /* Slightly smaller font size for compactness */
+    border-top: 1px solid #ddd;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center; /* Aligns logo and text vertically */
+    justify-content: center; /* Centers logo and text */
+    gap: 5px; /* Reduced space between logo and text */
+}
+
+.footer-logo img {
+    width: 50px;  /* Adjusted logo size */
+    margin: 0; /* Remove margin for better alignment */
+}
+
+.footer-text {
+    font-size: 14px; /* Adjusted to be slightly smaller */
+    margin: 0; /* Removed bottom margin for compactness */
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Slightly reduced gap between links */
+}
+
+.footer-links a {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}

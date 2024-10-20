@@ -1,0 +1,77 @@
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e0135;
+    padding: 15px 40px;
+    color: white;
+    font-family: 'Martel Sans', sans-serif;
+  }
+  
+  /* Logo Styles */
+/* Logo Container */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust gap between logo and title */
+  }
+  
+  /* Logo Image Styles */
+  .navbar-logo img {
+    height: 50px;  /* Adjust the height of the logo */
+    width: auto;  /* Maintain aspect ratio */
+    cursor: pointer;
+  }
+  
+  /* Title Styles */
+  .navbar-logo h2 {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'Martel Sans', sans-serif;
+    color: white;
+    cursor: pointer;
+  }
+  
+  
+  /* Navbar Links */
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-links li {
+    margin: 0;
+  }
+  
+  .navbar-links a, .navbar-links button {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .navbar-links button:hover, .navbar-links a:hover {
+    color: #ffcc00;  /* Highlight on hover */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .navbar-logo h2 {
+      margin-bottom: 10px;
+    }
+  }
+  

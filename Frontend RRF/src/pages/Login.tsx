@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { PulseLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "js-cookie"; // Import js-cookie
 import "../styles/Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
   const [isSignUp, setIsSignUp] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const location = useLocation(); // Get the location object
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     userId: "",
@@ -20,6 +22,21 @@ const Login = () => {
     phoneNumber: "",
     email: "",
   });
+
+  const [rememberMe, setRememberMe] = useState(false);
+  useEffect(() => {
+    // Check if the current pathname is '/register' to determine if sign-up is active
+    if (location.pathname === "/register") {
+      setIsSignUp(true);
+    } else {
+      setIsSignUp(false);
+    }
+    const savedEmail = Cookies.get("userEmail");
+    if (savedEmail) {
+      setFormData((prev) => ({ ...prev, userId: savedEmail }));
+      setRememberMe(true); // Check the checkbox if there's a saved email
+    }
+  }, [location.pathname]);
 
   const handleInputChange = (e: { target: { name: any; value: any } }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -73,7 +90,16 @@ const Login = () => {
   const toggleSignUp = () => {
     setIsSignUp(!isSignUp);
     setIsForgotPassword(false);
+    setFormData({
+      userId: "",
+      password: "",
+      confirmPassword: "",
+      name: "",
+      phoneNumber: "",
+      email: "",
+    });
   };
+  
 
   const performApiRequest = async (url: string, data: any, successMessage: string) => {
     try {
@@ -84,10 +110,25 @@ const Login = () => {
       const token = response.data.token;
       if (token) {
         localStorage.setItem("token", token);
+        localStorage.setItem("role",response.data.role );
       }
 
+      if (rememberMe) {
+        Cookies.set("userEmail", formData.userId, { expires: 7 }); // Expires in 7 days
+      } else {
+        Cookies.remove("userEmail"); // Remove the cookie if not remembered
+      }
       toast.success(successMessage);
-      navigate("/dashboard");
+      setTimeout(() => {
+        if (response.data.role === "admin") {
+          navigate("/dashboard");
+        } else if (response.data.role === "user") {
+          navigate("/user-dashboard");
+        } else {
+          navigate("/user-dashboard");
+        }
+      }, 2000); 
+      
       return response.data;
     } catch (error) {
       setIsLoading(false);
@@ -110,16 +151,42 @@ const Login = () => {
 
   const handlePasswordReset = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
+  
     if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       toast.error("Please enter a valid email address.");
       return;
     }
-
+  
     const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/forgot-password`;
     const data = { email: formData.email };
-    performApiRequest(url, data, "Password reset link sent!");
+  
+    try {
+      setIsLoading(true);
+      await axios.post(url, data);
+      setIsLoading(false);
+      toast.success("Password reset link sent!");
+  
+      // Navigate after a delay
+      setTimeout(() => {
+        setIsForgotPassword(false);
+        setFormData({
+          userId: "",
+          password: "",
+          confirmPassword: "",
+          name: "",
+          phoneNumber: "",
+          email: "",
+        });
+        // Navigate back to the login page or another desired route
+        navigate("/login"); // Adjust the route as necessary
+      }, 2000); // Adjust the duration as needed (2000 ms = 2 seconds)
+    } catch (error) {
+      setIsLoading(false);
+      const errorMessage = (error as any).response?.data?.message || "Internal server error";
+      toast.error(errorMessage);
+    }
   };
+  
 
   const toggleForgotPassword = () => {
     setIsForgotPassword(true);
@@ -248,6 +315,17 @@ const Login = () => {
                       </span>
                     </div>
                   </>
+                )}
+                {!isSignUp && (
+                  <div className="rememberMeContainer">
+                    <input
+                      type="checkbox"
+                      checked={rememberMe}
+                      onChange={() => setRememberMe(!rememberMe)}
+                      id="rememberMe"
+                    />
+                    <label htmlFor="rememberMe">Remember Me</label>
+                  </div>
                 )}
                   {!isSignUp && (
                   <div className="forgotPasswordContainer">

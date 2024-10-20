@@ -91,15 +91,26 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // Check if user exists
   const user = await User.findOne({ email });
+
+  // If user doesn't exist
+  if (!user) {
+    return res.status(401).json({ message: "Invalid email or password" });
+  }
+
+  // Check if the user is deleted
   if (user.isDeleted) {
     return res.status(400).json({ success: false, error: "User account is deleted. Please contact support." });
   }
-  if (user && (await bcrypt.compare(password, user.password))) {
+
+  // Validate password
+  if (await bcrypt.compare(password, user.password)) {
     const tokenExpiry = rememberMe ? "7d" : "1d";
     // Generate JWT
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: tokenExpiry,
     });
+    
+    let role1 = user.isAdmin ? 'admin' : 'user';
 
     res.json({
       _id: user._id,
@@ -107,11 +118,13 @@ const loginUser = asyncHandler(async (req, res) => {
       email: user.email,
       imageUrl: user.imageUrl,
       token,
+      role: role1,
     });
   } else {
     return res.status(401).json({ message: "Invalid email or password" });
   }
 });
+
 
 // @desc    Get user profile
 // @route   GET /api/user/profile

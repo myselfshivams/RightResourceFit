@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route ,Navigate} from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import Home from "./pages/Landing";
+import Home from "./pages/Home";
 import ProtectedRoute from "./components/protectedRoute";
 import AdminProtectedRoute from "./components/adminprotectedroute"; 
 import ErrorPage from "./components/Custom404";
@@ -14,7 +14,6 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-    
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Login />} />
           <Route path="/" element={<Home />} />

@@ -26,7 +26,7 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
   return (
     <div className="modalOverlay">
       <div className="modalContent">
-        {/* Close Button as X */}
+
         <span className="closeIcon" onClick={onClose}>
           &times;
         </span>

@@ -1,0 +1,48 @@
+.recent-job-posts {
+  margin: 20px 0; /* Optional: add some margin for spacing */
+}
+
+.tab-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Space between the tabs and the table */
+}
+
+.tab-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f0f0f0; /* Default button color */
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.tab-button.active {
+  background-color: #63ff9f; /* Active tab color */
+  color: white;
+}
+
+.tab-button:hover {
+  background-color: #d3d3d3; /* Hover effect */
+}
+
+.recent-job-posts table {
+  width: 100%;
+  height: auto; /* Change to auto for dynamic height based on content */
+  border-collapse: collapse;
+}
+
+.recent-job-posts th,
+.recent-job-posts td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.recent-job-posts .active {
+  color: green;
+}
+
+.recent-job-posts .inactive {
+  color: red;
+}
