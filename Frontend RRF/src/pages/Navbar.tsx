@@ -16,7 +16,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
       <div className="navbar-logo">
-        <img src="src/assets/Vector.png" alt="Right Resource Fit Logo" />
+        <img src="/assets/Vector.png" alt="Right Resource Fit Logo" />
         <h2 className="CompanyName">Right Resource Fit</h2>
       </div>
       <ul className="navbar-links">

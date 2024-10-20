@@ -13,21 +13,21 @@ interface TestimonialItem {
       name: "Shivam Singh",
       role: "HR",
       testimonial: "Right Resource Fit has streamlined our hiring process! It's user-friendly and saves us so much time.",
-      avatarUrl: "src/assets/uxer avtar/WhatsApp Image 2023-08-27 at 07.48.31.png",  
+      avatarUrl: "/assets/uxer avtar/WhatsApp Image 2023-08-27 at 07.48.31.png",  
       rating: 5
     },
     {
       name: "Pranav Gupta",
       role: "Recruitment Specialist",
       testimonial: "A game changer! The analytics and tracking features have improved our recruitment efficiency significantly.",
-      avatarUrl: "src/assets/uxer avtar/ai-generated-8772393_1280.png",  
+      avatarUrl: "/assets/uxer avtar/ai-generated-8772393_1280.png",  
       rating: 5
     },
     {
       name: "Rashmi",
       role: "Talent Acquisition",
       testimonial: "We've attracted higher-quality candidates and reduced our time-to-hire. Very satisfied with the results!",
-      avatarUrl: "src/assets/uxer avtar/compressed_fc7d2208a932c3899f0093cb7eee32c7.png",
+      avatarUrl: "/assets/uxer avtar/compressed_fc7d2208a932c3899f0093cb7eee32c7.png",
       rating: 5
     }
   ];

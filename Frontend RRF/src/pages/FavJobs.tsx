@@ -12,22 +12,22 @@ interface Job {
       {
         companyName: 'Meta',
         jobTitle: 'DevOps Engineer',
-        imageUrl: 'src/assets/company/360_F_482385584_Dv6qBsdFeUvVZoZSzCCUm09pZv4cnkw4.png',
+        imageUrl: '/assets/company/360_F_482385584_Dv6qBsdFeUvVZoZSzCCUm09pZv4cnkw4.png',
       },
       {
         companyName: 'Google',
         jobTitle: 'Full Stack Developer',
-        imageUrl: 'src/assets/company/Google.png',
+        imageUrl: '/assets/company/Google.png',
       },
       {
         companyName: 'Microsoft',
         jobTitle: 'Data Scientist',
-        imageUrl: 'src/assets/company/3.png',
+        imageUrl: '/assets/company/3.png',
       },
       {
         companyName: 'Infosys',
         jobTitle: 'Back-End Developer',
-        imageUrl: 'src/assets/company/infosys-leases-5-lakh-square-feet-in-bengaluru.png',
+        imageUrl: '/assets/company/infosys-leases-5-lakh-square-feet-in-bengaluru.png',
       },
     ];
   

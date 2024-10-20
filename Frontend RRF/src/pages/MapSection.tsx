@@ -15,12 +15,12 @@ const MapSection = () => {
       </div>
 
       <div className="map-section">
-        <img src="src/assets/Screenshot 2024-10-13 at 14.05.09.png" alt="Map" />
+        <img src="/assets/Screenshot 2024-10-13 at 14.05.09.png" alt="Map" />
       </div>
 
       <div className="features-section">
         <div className="feature-item">
-          <img src="src/assets/48px.png" alt="Applicant Tracking System" />
+          <img src="/assets/48px.png" alt="Applicant Tracking System" />
           <h4>Applicant Tracking System (ATS)</h4>
           <p>
             Streamlines the recruitment process by tracking candidates from application to hiring, 
@@ -29,7 +29,7 @@ const MapSection = () => {
         </div>
 
         <div className="feature-item">
-          <img src="src/assets/49px.png" alt="User-Friendly Interface" />
+          <img src="/assets/49px.png" alt="User-Friendly Interface" />
           <h4>User-Friendly Interface</h4>
           <p>
             Designed with an intuitive interface that makes it easy for HR professionals to navigate 
@@ -38,7 +38,7 @@ const MapSection = () => {
         </div>
 
         <div className="feature-item">
-          <img src="src/assets/50px.png" alt="Candidate Profiles" />
+          <img src="/assets/50px.png" alt="Candidate Profiles" />
           <h4>Candidate Profiles</h4>
           <p>
             Allows for detailed candidate profiles that include resumes, interview notes, and assessments, 

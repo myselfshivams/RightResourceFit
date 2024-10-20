@@ -15,7 +15,7 @@ const Feedback = () => {
       <div className="imageContainer">
         {/* Replace with your image source */}
         <img
-          src="src/assets/7.png"
+          src="/assets/7.png"
           alt="Feedback illustration"
           className="image"
         />
