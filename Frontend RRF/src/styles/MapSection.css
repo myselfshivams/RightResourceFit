@@ -1,0 +1,70 @@
+ .find-job-opportunities {
+    padding: 40px;
+    background-color: white;
+  }
+  
+  .header-section {
+    margin-top: auto;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .header-section h3 {
+    color: #a36fd1;
+    font-size: 1.2rem;
+  }
+  
+  .header-section h1 {
+    color: #a258e7;
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .header-section p {
+    color: #777;
+  } 
+  
+  .map-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+  
+  .map-section img {
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .features-section{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+  }
+
+  .feature-item {
+    width: 25%;
+    
+  }
+  
+  .feature-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    margin-left: 45%;
+  } 
+  
+   .feature-item h4 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+  } 
+  
+    .feature-item p {
+    color: #777;
+    font-size: 0.9rem;
+    text-align: center;
+  }

@@ -1,0 +1,50 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-logo{
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .navbar-logo img {
+    height: 30px;
+  }
+  
+  .companyName{
+    font-size: bold;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 40px;
+    list-style-type: none;
+  }
+  
+  .navbar-links li {
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+
+  .Button button {
+    background-color: #a258e7;
+    margin-left: 14px;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  a {
+    color: white;
+    font-size: larger;
+    text-decoration: none;
+  }
+  
