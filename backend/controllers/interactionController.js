@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const Interaction = require('../models/interactionModel');
+const Application = require('../models/applicationModel');
 
 // @desc    Track application by ID
 // @route   GET /interaction/status/:applicationID
@@ -24,17 +25,25 @@ const updateApplicationStatus = asyncHandler(async (req, res) => {
 // @desc    Send notification
 // @route   POST /interaction/notify
 const sendNotification = asyncHandler(async (req, res) => {
-  const { applicationID, message } = req.body;
-
-  const interaction = await Interaction.create({
-    applicationID,
-    status: 'Notified',
-    message,
-    notifiedAt: Date.now(),
+    const { applicationID, message } = req.body;
+  
+    // Check if application exists
+    const applicationExists = await Application.findById(applicationID);
+    if (!applicationExists) {
+      res.status(404);
+      throw new Error('Application not found');
+    }
+  
+    const interaction = await Interaction.create({
+      applicationID,
+      status: 'Notified',
+      message,
+      notifiedAt: Date.now(),
+    });
+  
+    res.status(200).json({ message: 'Notification sent', interaction });
   });
-
-  res.status(200).json({ message: 'Notification sent', interaction });
-});
+  
 
 module.exports = {
   trackApplication,
