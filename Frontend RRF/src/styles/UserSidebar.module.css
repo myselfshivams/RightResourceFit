@@ -80,7 +80,7 @@
   .navItem:hover {
     background-color: #333;
     color: #ffffff;
-    border-left: 4px solid #00a8ff;
+    border-left: 4px solid #c97dff;
   }
   
   .navItem .icon {
@@ -98,8 +98,8 @@
   
   .active {
     background-color: #333333;
-    color: #00a8ff;
-    border-left: 4px solid #00a8ff;
+    color: #c97dff;
+    border-left: 4px solid #c97dff;
   }
   
   /* FooterNav */
@@ -131,17 +131,17 @@
     }
   
     .footerNav a:hover {
-      color: #3498db;
+      color: #c97dff;
     }
   
     .footerNav a.active {
-      color: #3498db;
+      color: #c97dff;
     }
   
     .active {
       background-color: #1c1c1e;
-      color: #00a8ff;
-      border-left: 0px solid #00a8ff;
+      color: #c97dff;
+      border-left: 0px solid #c97dff;
     }
   }
   

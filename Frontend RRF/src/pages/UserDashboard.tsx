@@ -7,30 +7,10 @@ const UserDashboard: React.FC = () => {
     <>
    <Sidebar />
     <div className="app-container">
-      {/* <header className="app-header">
-        <div className="logo">
-          <h3>Right Resource Fit</h3>
-        </div>
-
-        <div className="search-bar">
-          <input type="text" placeholder="Search Job..." />
-        </div>
-        <div className="location">
-          <span>New Delhi, India</span>
-        </div>
-      </header> */}
+ 
 
       <main className="app-main">
-        <aside className="sidebar">
-          <div className="profile-card">
-            <div className="avatar">
-              <img src="./images/profile.jpeg" alt="profile" />
-            </div>
-            <h2>APPLICANT1</h2>
-            <p>Ambitious Engineering Student</p>
-            <p>ABC Engineering College</p>
-          </div>
-        </aside>
+   
 
         <section className="content">
           <div className="ai-interview-section">
