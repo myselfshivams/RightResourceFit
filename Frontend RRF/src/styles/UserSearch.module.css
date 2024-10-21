@@ -1,5 +1,7 @@
 .SearchContentPage {
-  background-color: #EBD3F8 ;
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   position: relative;
@@ -25,7 +27,7 @@
 .mainHeading {
   font-size: 2.2rem;
   font-weight: 600;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 40px;
   margin-top: 20px;
   font-family: 'poppins', sans-serif;
@@ -33,7 +35,7 @@
 }
 
 .mainHeading span{
-  color: #7A1CAC;
+  color: #ffffff;
 }
 
 .searchWrapper {
@@ -78,9 +80,9 @@
 }
 
 .searchButton {
-  background-color: #7A1CAC;
+  background-color: #ffffff;
   border: none;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 18px 40px;
   border-radius: 20px;
   font-size: 1.2rem;
@@ -89,7 +91,8 @@
 }
 
 .searchButton:hover {
-  background-color: #357ae8;
+  background-color: #000000;
+  color: #fff;
 }
 
 .searchContainer:hover {
