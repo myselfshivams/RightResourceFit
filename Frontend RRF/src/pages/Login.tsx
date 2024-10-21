@@ -112,7 +112,7 @@ const Login = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("username",response.data.name );
         localStorage.setItem("role",response.data.role );
-        localStorage.setItem('avatar', response.data.imageUrl|| "https://res.cloudinary.com/dwprhpk9r/image/upload/v1728546051/uploads/product_1728546048771.png.png"
+        localStorage.setItem('avatar', response.data.imageUrl|| "https://res.cloudinary.com/dwprhpk9r/image/upload/v1729516355/uploads/default_image.png"
         );
       }
 

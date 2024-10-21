@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema(
     },
     imageUrl:{
       type: String,
-      default:"https://res.cloudinary.com/dfagcn631/image/upload/v1727625796/uploads/defaultavatar.png",
+      default:"https://res.cloudinary.com/dwprhpk9r/image/upload/v1729516355/uploads/default_image.png",
     },
     password: {
       type: String,
