@@ -19,7 +19,12 @@ const applyJob = asyncHandler(async (req, res) => {
 // @desc    Get application by ID
 // @route   GET /applications/:id
 const getApplicationById = asyncHandler(async (req, res) => {
-  const application = await Application.findById(req.params.id).populate('jobID').populate('applicantID');
+  const application = await Application.findById(req.params.id)
+    .populate('jobID')
+    .populate({
+      path: 'applicantID',
+      select: '-password', // Exclude the password field
+    });
 
   if (!application) {
     res.status(404);
