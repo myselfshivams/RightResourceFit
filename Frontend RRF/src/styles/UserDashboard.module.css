@@ -1,6 +1,6 @@
 .AdminPage {
   display: flex;
-  background-color: rgb(195, 238, 255);
+  background-color: #EBD3F8;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -41,7 +41,7 @@
 }
 
 .welcomeText span {
-  color: #0124a2;
+  color: #7A1CAC;
 }
 
 .subText {
@@ -62,7 +62,7 @@
   padding: 20px;
   border-radius: 20px;
   width: 30%;
-  box-shadow: 0 8px 15px rgb(168, 226, 249);
+  box-shadow: 0 8px 15px rgba(200, 152, 214, 0.399);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -77,7 +77,7 @@
 .icon {
   margin-top: 10px;
   font-size: 24px;
-  color: #0124a2;
+  color: #7A1CAC;
 }
 
 .card h2 {

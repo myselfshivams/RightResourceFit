@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faUserCheck, faBell } from "@fortawesome/free-solid-svg-icons";
 import styles from "../styles/UserDashboard.module.css"; 
 
-const AdminDashboard: React.FC = () => {
+const UserDashboard: React.FC = () => {
   const [currentTime, setCurrentTime] = useState<string>("");
   const [sidebarCollapsed] = useState(false);
  
@@ -19,7 +19,7 @@ const AdminDashboard: React.FC = () => {
         day: "2-digit",
         hour: "2-digit",
         minute: "2-digit",
-        second: "2-digit",
+   
       };
       const formattedTime = now
         .toLocaleString("en-GB", options)
@@ -51,7 +51,7 @@ const AdminDashboard: React.FC = () => {
             <h1 className={styles.welcomeText}>
               Welcome, <span>Mr. Shivam Singh</span>
             </h1>
-            <p className={styles.subText}>Current time: {currentTime}</p>
+            <p className={styles.subText}>Last Login: {currentTime}</p>
 
             <div className={styles.infoCards}>
               <div className={styles.card}>
@@ -79,4 +79,4 @@ const AdminDashboard: React.FC = () => {
   );
 };
 
-export default AdminDashboard;
+export default UserDashboard;
