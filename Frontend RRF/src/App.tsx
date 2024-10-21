@@ -9,6 +9,7 @@ import ResetPassword from "./pages/ResetPassword";
 import UserDashboard from "./pages/UserDashboard";
 import Contactus from "./pages/Contactus";
 import About from "./pages/About";
+import Logout from "./pages/Logout"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

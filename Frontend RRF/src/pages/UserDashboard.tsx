@@ -1,8 +1,11 @@
 import React from "react";
 import "../styles/UserDashboard.css";
+import Sidebar from "../components/UserSidebar";
 
 const UserDashboard: React.FC = () => {
   return (
+    <>
+   <Sidebar />
     <div className="app-container">
       {/* <header className="app-header">
         <div className="logo">
@@ -84,6 +87,7 @@ const UserDashboard: React.FC = () => {
         </section>
       </main>
     </div>
+    </>
   );
 }
 
