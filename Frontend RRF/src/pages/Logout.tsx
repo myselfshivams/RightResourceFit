@@ -21,7 +21,7 @@ const Logout: React.FC = () => {
     <div className={styles.logoutPage}>
       <div className={styles.container}>
         <div className={styles.innerContainer}>
-          <ClipLoader color="#007BFF" size={60} />
+          <ClipLoader color="#fff" size={60} />
           <p className={styles.message}>Logging out...</p>
         </div>
       </div>
