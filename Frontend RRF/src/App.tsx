@@ -10,6 +10,13 @@ import UserDashboard from "./pages/UserDashboard";
 import Contactus from "./pages/Contactus";
 import About from "./pages/About";
 import Logout from "./pages/Logout"
+import UserNotifications from "./pages/notifications";
+import UserSettings from "./pages/UserSettings";
+import UserJobs from "./pages/UserJob";
+import UserApplications from "./pages/UserApplications";
+import UserSearch from "./pages/search";
+import UserManageApplications from "./pages/UserManageApplications";
+
 
 function App() {
   return (
@@ -24,6 +31,12 @@ function App() {
           <Route path="/reset-password/:resetToken" element={<ResetPassword />} />\
           <Route path="/contact" element={<Contactus />} />
           <Route path="/user-dashboard" element={<ProtectedRoute><UserDashboard /> </ProtectedRoute>} />
+          <Route path="/user/search" element={<ProtectedRoute><UserSearch /> </ProtectedRoute>} />
+          <Route path="/user/jobs" element={<ProtectedRoute><UserJobs /> </ProtectedRoute>} />
+          <Route path="/user/applications" element={<ProtectedRoute><UserApplications /> </ProtectedRoute>} />
+          <Route path="/user/settings" element={<ProtectedRoute><UserSettings /> </ProtectedRoute>} />
+          <Route path="/user/notifications" element={<ProtectedRoute><UserNotifications /> </ProtectedRoute>} />
+          <Route path="/user/manage" element={<ProtectedRoute><UserManageApplications /> </ProtectedRoute>} />
           <Route 
             path="/dashboard" 
             element={

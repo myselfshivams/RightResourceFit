@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
           <a
             onClick={() => navigate("/user-dashboard")}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user" ? styles.active : ""
+              window.location.pathname === "/user-dashboard" ? styles.active : ""
             }`}
           >
             <FaHome className={styles.icon} />
@@ -72,36 +72,36 @@ const Sidebar: React.FC = () => {
             {!collapsed && <span>My Appilications</span>}
           </a>
           <a
-            onClick={() => navigate("/user/subject")}
+            onClick={() => navigate("/user/jobs")}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user/subject" ? styles.active : ""
+              window.location.pathname === "/user/jobs" ? styles.active : ""
             }`}
           >
-            <FaFileAlt className={styles.icon} />
+            <IoMdPersonAdd className={styles.icon} />
             {!collapsed && <span>Active Jobs</span>}
           </a>
           <a
-            onClick={() => navigate("/manage")}
+            onClick={() => navigate("/user/manage")}
             className={`${styles.navItem} ${
-              window.location.pathname === "/manage" ? styles.active : ""
+              window.location.pathname === "/user/manage" ? styles.active : ""
             }`}
           >
             <FaUsers className={styles.icon} />
             {!collapsed && <span>Manage Applications</span>}
           </a>
           <a
-            onClick={() => navigate("/user/notification")}
+            onClick={() => navigate("/user/notifications")}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user/notification" ? styles.active : ""
+              window.location.pathname === "/user/notifications" ? styles.active : ""
             }`}
           >
             <FaBell className={styles.icon} />
             {!collapsed && <span>Notifications</span>}
           </a>
           <a
-            onClick={() => navigate("/settings")}
+            onClick={() => navigate("/user/settings")}
             className={`${styles.navItem} ${
-              window.location.pathname === "/settings" ? styles.active : ""
+              window.location.pathname === "/user/settings" ? styles.active : ""
             }`}
           >
             <FaCog className={styles.icon} />
@@ -116,16 +116,16 @@ const Sidebar: React.FC = () => {
 
       <div className={styles.footerNav}>
         <a
-          onClick={() => navigate("/user")}
-          className={window.location.pathname === "/user" ? styles.active : ""}
+          onClick={() => navigate("/user-dashboard")}
+          className={window.location.pathname === "/user-dashboard" ? styles.active : ""}
         >
           <FaHome className={styles.icon} />
         </a>
         <a
-          onClick={() => navigate("/manage")}
+          onClick={() => navigate("/user/applications")}
           className={window.location.pathname === "/manage" ? styles.active : ""}
         >
-          <FaUsers className={styles.icon} />
+          <FaFileAlt className={styles.icon} />
         </a>
         <a
           onClick={() => navigate("/user/search")}
@@ -134,7 +134,7 @@ const Sidebar: React.FC = () => {
           <FaSearch className={styles.icon} />
         </a>
         <a
-          onClick={() => navigate("/notifications")}
+          onClick={() => navigate("/user/notifications")}
           className={window.location.pathname === "/notifications" ? styles.active : ""}
         >
           <FaBell className={styles.icon} />
