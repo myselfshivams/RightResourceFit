@@ -125,6 +125,7 @@ const Login = () => {
         } else if (response.data.role === "user") {
           navigate("/user-dashboard");
         } else {
+          localStorage.setItem("role","user" );
           navigate("/user-dashboard");
         }
       }, 2000); 
