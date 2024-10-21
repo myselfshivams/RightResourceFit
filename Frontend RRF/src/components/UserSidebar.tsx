@@ -36,13 +36,12 @@ const Sidebar: React.FC = () => {
 
         <div className={styles.userSection}>
           <img
-            src="/assets/user.png"
+            src={localStorage.getItem("avatar") || "/assets/user.png"}
             alt="User Avatar"
             className={styles.userImage}
           />
-          {!collapsed && <span className={styles.userName}>Shivam</span>}
+          {!collapsed && <span className={styles.userName}>{localStorage.getItem("username")}</span>}
         </div>
-
         <nav className={styles.nav}>
           <a
             onClick={() => navigate("/user-dashboard")}

@@ -49,7 +49,7 @@ const UserDashboard: React.FC = () => {
         >
           <div className={styles.centerContainer}>
             <h1 className={styles.welcomeText}>
-              Welcome, <span>Mr. Shivam Singh</span>
+              Welcome, <span>{localStorage.getItem("username")}</span>
             </h1>
             <p className={styles.subText}>Last Login: {currentTime}</p>
 
