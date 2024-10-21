@@ -35,7 +35,14 @@ app.use("/api/user", require("./routes/userRoutes"));
 app.use("/api/jobs", require("./routes/jobRoutes")); // Use job routes for /api/jobs
 
 // Route for Feedback
-app.use('/api', require('./routes/feedbackRoutes')); 
+app.use('/api', require('./routes/feedbackRoutes'));
+
+// Route for application 
+app.use('/api/application', require('./routes/applicationRoutes')); 
+// Route for interaction
+app.use('/api/interaction', require('./routes/interactionRoutes')); 
+// Route for report
+app.use('/api/report', require('./routes/reportRoutes')); 
 
 
 

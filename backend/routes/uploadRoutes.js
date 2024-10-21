@@ -1,15 +1,14 @@
-// uploadRoutes.js
 const express = require('express');
 const multer = require('multer');
-const { uploadImage } = require('../controllers/uploadController');
+const { uploadFile } = require('../controllers/uploadController'); // Adjust the path as needed
 
 const router = express.Router();
 
-// Multer Configuration (Memory storage)
-const storage = multer.memoryStorage();  // Store files in memory
-const upload = multer({ storage });
+// Set up multer for file uploads
+const storage = multer.memoryStorage(); // Store files in memory
+const upload = multer({ storage: storage });
 
-// POST route for image upload
-router.post('/upload', upload.single('image'), uploadImage);
+// Route for uploading files (images and PDFs)
+router.post('/upload', upload.single('image'), uploadFile); // 'file' is the field name
 
 module.exports = router;
