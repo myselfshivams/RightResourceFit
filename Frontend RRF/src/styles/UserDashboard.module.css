@@ -1,6 +1,8 @@
 .AdminPage {
   display: flex;
-  background-color: #EBD3F8;
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -35,19 +37,19 @@
 
 .welcomeText {
   font-size: 3rem;
-  font-weight: 600;
+  font-weight: 900;
   margin-bottom: 20px;
-  color: #030303;
+  color: #000000;
 }
 
 .welcomeText span {
-  color: #7A1CAC;
+  color: #ffffff;
 }
 
 .subText {
   font-size: 1rem;
   margin-bottom: 40px;
-  color: #4d4d4d;
+  color: #ffffff;
 }
 
 .infoCards {
@@ -58,7 +60,9 @@
 }
 
 .card {
-  background-color: #f9f9f9;
+  background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 20px;
   border-radius: 20px;
   width: 30%;
@@ -77,20 +81,20 @@
 .icon {
   margin-top: 10px;
   font-size: 24px;
-  color: #7A1CAC;
+  color: #ffffff;
 }
 
 .card h2 {
   font-size: 1rem;
   margin-bottom: 10px;
-  color: #646464;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .card p {
   font-size: 2.4rem;
   font-weight: 600;
-  color: #0c0c0c;
+  color: #000000;
 }
 
 @media screen and (max-width: 768px) {
