@@ -1,5 +1,7 @@
 .NotificationContentPage {
-    background-color: #EBD3F8;
+    background-image: url('/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     min-height: 100vh;
     display: flex;
     position: relative;
@@ -28,7 +30,7 @@
 .mainHeading {
     font-size: 2.2rem;
     font-weight: 600;
-    color: #000000;
+    color: #ffffff;
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: 'Poppins', sans-serif;
@@ -36,7 +38,7 @@
 }
 
 .mainHeading span {
-    color: #7A1CAC;
+    color: #ffffff;
 }
 
 .notificationListContainer {
@@ -54,7 +56,9 @@
 }
 
 .notificationCard {
-    background-color: white;
+    background: rgba(255, 255, 255, 0.565);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     width: 90%;
     padding: 16px;
@@ -67,7 +71,7 @@
 
 .icon {
     font-size: 1.2rem;
-    color: #7A1CAC;
+    color: #000000;
 }
 
 .notificationText {
@@ -85,7 +89,7 @@
 
 .date {
     font-size: 0.75rem;
-    color: #888;
+    color: #767676;
     font-family: 'Poppins', sans-serif;
 }
 
