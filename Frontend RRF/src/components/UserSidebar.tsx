@@ -5,7 +5,6 @@ import {
   FaUsers,
   FaBell,
   FaCog,
-  FaBars,
   FaFileAlt,
   FaSignOutAlt,
 } from "react-icons/fa";
@@ -15,13 +14,11 @@ import styles from "../styles/UserSidebar.module.css";
 import LogoutModal from "../components/LogoutModal";
 
 const Sidebar: React.FC = () => {
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [collapsed] = useState<boolean>(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const toggleSidebar = () => {
-    setCollapsed(!collapsed);
-  };
+
 
   const handleLogoutClick = () => {
     setIsLogoutModalOpen(true);
@@ -30,9 +27,7 @@ const Sidebar: React.FC = () => {
   return (
     <>
       <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ""}`}>
-        <button className={styles.collapseButton} onClick={toggleSidebar}>
-          <FaBars />
-        </button>
+       
 
         <div className={styles.userSection}>
           <img
