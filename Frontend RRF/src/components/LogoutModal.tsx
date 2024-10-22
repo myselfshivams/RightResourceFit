@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import styles from '../styles/LogoutModal.module.css';
 
@@ -8,6 +8,7 @@ interface LogoutModalProps {
 
 const LogoutModal: React.FC<LogoutModalProps> = ({ setIsLogoutModalOpen }) => {
   const navigate = useNavigate(); 
+  const [modalHidden, setModalHidden] = useState(false); 
 
   const handleConfirmLogout = () => {
     setIsLogoutModalOpen(false);
@@ -15,12 +16,16 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ setIsLogoutModalOpen }) => {
   };
 
   const handleCancelLogout = () => {
-    setIsLogoutModalOpen(false);
+    setModalHidden(true); 
+
+    setTimeout(() => {
+      setIsLogoutModalOpen(false);
+    }, 400); 
   };
 
   return (
     <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
+      <div className={`${styles.modal} ${modalHidden ? styles.hidden : ''}`}>
         <h2>Confirm Logout</h2>
         <p>Are you sure you want to log out?</p>
         <div className={styles.buttonGroup}>

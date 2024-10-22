@@ -116,3 +116,55 @@
     transform: scale(0.5) translateY(20px); 
   }
 }
+
+
+@media (max-width: 1024px) {
+  .modal {
+    width: 70%;
+    padding: 40px; 
+    margin-left: 0; 
+  }
+  
+  .modal h2 {
+    font-size: 2rem;
+  }
+  
+  .modal p {
+    font-size: 1rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column; 
+    gap: 10px;
+  }
+
+  .confirmButton, .cancelButton {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .modal {
+    width: 90%;
+    padding: 30px; 
+    margin-left: 0; 
+  }
+  
+  .modal h2 {
+    font-size: 1.8rem;
+  }
+  
+  .modal p {
+    font-size: 0.9rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column; 
+    gap: 10px;
+  }
+
+  .confirmButton, .cancelButton {
+    width: 100%; 
+  }
+}
