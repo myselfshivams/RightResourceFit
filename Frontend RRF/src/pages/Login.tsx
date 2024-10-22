@@ -320,27 +320,28 @@ const Login = () => {
                     </div>
                   </>
                 )}
-                {!isSignUp && (
-                  <div className="rememberMeContainer">
-                    <input
-                      type="checkbox"
-                      checked={rememberMe}
-                      onChange={() => setRememberMe(!rememberMe)}
-                      id="rememberMe"
-                    />
-                    <label htmlFor="rememberMe">Remember Me</label>
-                  </div>
-                )}
-                  {!isSignUp && (
-                  <div className="forgotPasswordContainer">
-                  <span
-                    className="forgotPassword"
-                    onClick={toggleForgotPassword}
-                  >
-                    Forgot Password?
-                  </span>
-                </div>
-                )}
+            {!isSignUp && (
+  <div className="authOptionsContainer">
+    <div className="rememberMeContainer">
+      <input
+        type="checkbox"
+        checked={rememberMe}
+        onChange={() => setRememberMe(!rememberMe)}
+        id="rememberMe"
+      />
+      <label htmlFor="rememberMe">Remember Me</label>
+    </div>
+    <div className="forgotPasswordContainer">
+      <span
+        className="forgotPassword"
+        onClick={toggleForgotPassword}
+      >
+        Forgot Password?
+      </span>
+    </div>
+  </div>
+)}
+
                 {isLoading ? (
                   <PulseLoader color="#36d7b7" loading={isLoading} size={10} />
                 ) : (
