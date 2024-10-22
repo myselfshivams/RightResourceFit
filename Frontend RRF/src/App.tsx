@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Landing";
 import ProtectedRoute from "./components/protectedRoute";
 import AdminProtectedRoute from "./components/adminprotectedroute"; 
+import LoginProtectedRoute from "./components/Loginprotectedroute"; 
 import ErrorPage from "./components/Custom404";
 import ResetPassword from "./pages/ResetPassword";
 import UserDashboard from "./pages/UserDashboard";
@@ -23,12 +24,18 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginProtectedRoute>
+                <Login />
+              </LoginProtectedRoute>} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/register" element={<Login />} />
+          <Route path="/register" element={<LoginProtectedRoute>
+                <Login />
+              </LoginProtectedRoute>} />
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/reset-password/:resetToken" element={<ResetPassword />} />\
+          <Route path="/reset-password/:resetToken" element={<LoginProtectedRoute>
+                <ResetPassword />
+              </LoginProtectedRoute>} />
           <Route path="/contact" element={<Contactus />} />
           <Route path="/user-dashboard" element={<ProtectedRoute><UserDashboard /> </ProtectedRoute>} />
           <Route path="/user/search" element={<ProtectedRoute><UserSearch /> </ProtectedRoute>} />
