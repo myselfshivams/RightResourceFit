@@ -33,9 +33,9 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <a href="/">Home</a>
-        <a href="/login">Login/Signup</a>
+        <a href="/about">About</a>
         <a href="#">Privacy & Policy</a>
-        <a href="#">Sitemap</a>
+        <a href="/contact">Contact Us</a>
         <a href="#">Terms & Conditions</a>
       </div>
     </footer>
