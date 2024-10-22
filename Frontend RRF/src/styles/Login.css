@@ -241,7 +241,6 @@
   .forgotPasswordContainer {
     display: flex;
     justify-content: flex-end;
-    margin-top: 5px;
   }
   
   .forgotPassword {
@@ -249,4 +248,21 @@
     font-size: 0.9rem;
     text-decoration: underline;
   }
+
+  .authOptionsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+  }
+  
+  .rememberMeContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .forgotPasswordContainer {
+    cursor: pointer;
+  }
+  
   
