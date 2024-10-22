@@ -1,0 +1,230 @@
+.AddPage {
+    background-color: #F5C2C1;
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  .addPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 240px;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .pageHeading {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #000000;
+  }
+  
+  .pageHeading span {
+    color: #B21807;
+  }
+  
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 90%;
+    padding: 10px 30px;
+  }
+  
+  .card {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 8px 15px #d09c9b;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .leftSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .userIcon {
+    font-size: 24px;
+    color: #B21807;
+  }
+  
+  .cardText {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .rightSection {
+    display: flex;
+    align-items: center;
+  }
+  
+  .addIcon {
+    font-size: 2rem;
+    color: #B21807;
+  }
+  
+  .addCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .addText {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.705);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContent {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 620px;
+    position: relative;
+    font-family: 'popins', sans-serif;
+    margin-left: 240px;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .formContainer {
+    padding: 10px;
+    border-radius: 30px;
+    width: 100%;
+  }
+  
+  
+  .closeButton:hover {
+    color: #f00;
+  }
+  
+  
+  .formContainer h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    font-weight: 550;
+    color: #000000;
+  }
+  
+  .formGroup {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .inputField:focus {
+    border-color: #eb605e;
+  }
+  
+  
+
+  
+  .formGroupCheckbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .formGroupCheckbox input {
+    margin-right: 10px;
+  }
+  
+  .submitButton {
+    width: 100%;
+    padding: 12px;
+    background-color: #B21807;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submitButton:hover {
+    background-color: #000000;
+  }
+  
+  @media (max-width: 768px) {
+    .cardContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card {
+      width: 100%;
+      max-width: 100%;
+    }
+  
+    .addPage {
+      margin-left: 0;
+    }
+  
+    .modalContent {
+      margin-left: 0;
+    }
+  }
+
+  .profileImage {
+    max-width: 200px;  
+    max-height: 200px; 
+    border-radius: 50%; 
+    margin-top: 10px; 
+    object-fit: cover; 
+  }
+  
