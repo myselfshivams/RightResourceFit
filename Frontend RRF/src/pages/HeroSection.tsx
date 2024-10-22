@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import "../styles/HeroSection.css"
 
 const HeroSection = () => {
+  const token = localStorage.getItem("token");
   return (
     <div>
       <section className="hero-section">
@@ -17,10 +18,14 @@ const HeroSection = () => {
           Right Resource Fit keeps you updated with the latest job opportunities by following industry trends
           and top professionals on social media.
         </p>
-        <div className="hero-buttons">
-          <button className="btn-get-started"><Link to="/register">Get Started</Link></button>
-          <button className="btn-watch-demo">Watch Demo</button>
-        </div>
+        {!token && (  // Only show if token is not available
+              <div className="hero-buttons">
+                <button className="btn-get-started">
+                  <Link to="/register">Get Started</Link>
+                </button>
+                <button className="btn-watch-demo">Watch Demo</button>
+              </div>
+            )}
         </div>
       </div>
       <div className="hero-image">
