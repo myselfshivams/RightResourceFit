@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaBell, FaTrash } from "react-icons/fa";
 import Sidebar from "../components/UserSidebar";
 import styles from "../styles/UserNotifications.module.css";
+import styles2 from "../styles/LogoutModal.module.css";
 
 interface Notification {
   id: number;
@@ -23,60 +24,90 @@ const Notification: React.FC = () => {
     { id: 10, text: "Reminder: Job fair on 2024-10-25", date: "2024-10-11" },
   ]);
 
+  const [showModal, setShowModal] = useState(false);
+  const [fadeOut, setFadeOut] = useState(false);
+
   const handleDelete = (id: number) => {
     setNotifications(notifications.filter((notification) => notification.id !== id));
   };
 
   const handleClearAll = () => {
-    if (window.confirm("Are you sure you want to clear all notifications?")) {
-      setNotifications([]);
-    }
+    setShowModal(true);
+  };
+
+  const confirmClearAll = () => {
+    setNotifications([]);
+    setShowModal(false);
+  };
+
+  const cancelClearAll = () => {
+    setFadeOut(true); 
+    setTimeout(() => {
+      setShowModal(false);
+      setFadeOut(false);
+    }, 400); 
   };
 
   return (
-
-      <div className={styles.NotificationContentPage}>
-        <Sidebar />
-        <div className={styles.mainContent}>
-          <h1 className={styles.mainHeading}>
-            Your <span>Notifications</span>
-          </h1>
-          <div className={styles.notificationListContainer}>
-            <div className={styles.notificationHeader}>
-              {notifications.length > 0 && (
-                <button className={styles.clearAllButton} onClick={handleClearAll}>
-                  Clear All
-                </button>
-              )}
-            </div>
-            <div className={styles.notificationList}>
-              {notifications.length === 0 ? (
-                <p className={styles.noNotifications}>No notifications available.</p>
-              ) : (
-                notifications.map((notification) => (
-                  <div key={notification.id} className={styles.notificationCard}>
-                    <div className={styles.icon}>
-                      <FaBell />
-                    </div>
-                    <div className={styles.notificationText}>
-                      <p>{notification.text}</p>
-                      <span className={styles.date}>{notification.date}</span>
-                    </div>
-                    <button
-                      className={styles.deleteButton}
-                      onClick={() => handleDelete(notification.id)}
-                      aria-label="Delete Notification"
-                    >
-                      <FaTrash />
-                    </button>
+    <div className={styles.NotificationContentPage}>
+      <Sidebar />
+      <div className={styles.mainContent}>
+        <h1 className={styles.mainHeading}>
+          Your <span>Notifications</span>
+        </h1>
+        <div className={styles.notificationListContainer}>
+          <div className={styles.notificationHeader}>
+            {notifications.length > 0 && (
+              <button className={styles.clearAllButton} onClick={handleClearAll}>
+                Clear All
+              </button>
+            )}
+          </div>
+          <div className={styles.notificationList}>
+            {notifications.length === 0 ? (
+              <p className={styles.noNotifications}>No notifications available.</p>
+            ) : (
+              notifications.map((notification) => (
+                <div key={notification.id} className={styles.notificationCard}>
+                  <div className={styles.icon}>
+                    <FaBell />
                   </div>
-                ))
-              )}
-            </div>
+                  <div className={styles.notificationText}>
+                    <p>{notification.text}</p>
+                    <span className={styles.date}>{notification.date}</span>
+                  </div>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => handleDelete(notification.id)}
+                    aria-label="Delete Notification"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
 
+
+      {showModal && (
+        <div className={styles2.modalOverlay}>
+          <div className={`${styles2.modal} ${fadeOut ? styles2.hidden : ""}`}>
+            <h2>Clear All Notifications</h2>
+            <p>Are you sure you want to clear all notifications? This action cannot be undone.</p>
+            <div className={styles2.buttonGroup}>
+              <button className={styles2.confirmButton} onClick={confirmClearAll}>
+                Clear
+              </button>
+              <button className={styles2.cancelButton} onClick={cancelClearAll}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
