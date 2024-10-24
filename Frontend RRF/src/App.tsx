@@ -49,25 +49,25 @@ function App() {
           <Route 
             path="/dashboard" 
             element={
-              // <AdminProtectedRoute>
+              <AdminProtectedRoute>
                 <Dashboard />
-              /* </AdminProtectedRoute> */
+              </AdminProtectedRoute> 
             } 
           />
           <Route 
             path="/admin/notifications" 
             element={
-              // <AdminProtectedRoute>
+              <AdminProtectedRoute>
                 <AdminNotifications />
-              /* </AdminProtectedRoute> */
+              </AdminProtectedRoute>
             }
           />
           <Route 
             path="/admin/jobs" 
             element={
-              // <AdminProtectedRoute>
+              <AdminProtectedRoute>
                 <AdminPostJob />
-              /* </AdminProtectedRoute> */
+              </AdminProtectedRoute> 
             }
           />
           <Route path="error" element={<ErrorPage />} />
