@@ -17,6 +17,7 @@ import UserJobs from "./pages/UserJob";
 import UserApplications from "./pages/UserApplications";
 import UserSearch from "./pages/search";
 import UserManageApplications from "./pages/UserManageApplications";
+import AdminNotifications from "./pages/AdminNotifications";
 
 
 function App() {
@@ -47,10 +48,18 @@ function App() {
           <Route 
             path="/dashboard" 
             element={
-              <AdminProtectedRoute>
+              // <AdminProtectedRoute>
                 <Dashboard />
-              </AdminProtectedRoute>
+              /* </AdminProtectedRoute> */
             } 
+          />
+          <Route 
+            path="/admin/notifications" 
+            element={
+              // <AdminProtectedRoute>
+                <AdminNotifications />
+              /* </AdminProtectedRoute> */
+            }
           />
           <Route path="error" element={<ErrorPage />} />
           <Route path="*" element={<Navigate to="/error" />} />

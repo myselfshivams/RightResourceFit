@@ -14,7 +14,7 @@ const Search: React.FC = () => {
       <div className={styles.SearchContentPage}>
         <Sidebar />
         <div className={styles.mainContent}>
-          <h1 className={styles.mainHeading}>Search <span>Users</span></h1>
+          <h1 className={styles.mainHeading}>Search <span>Jobs</span></h1>
           <div className={styles.searchWrapper}>
             <div className={styles.searchContainer}>
               <FaSearch className={styles.searchIcon} />

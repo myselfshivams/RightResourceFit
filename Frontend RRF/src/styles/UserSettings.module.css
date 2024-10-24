@@ -1,5 +1,5 @@
 .AddPage {
-    background-color: #F5C2C1;
+    background-color: #eac1f5;
     display: flex;
     min-height: 100vh;
     width: 100%;
@@ -24,7 +24,7 @@
   }
   
   .pageHeading span {
-    color: #B21807;
+    color: #8a07b2;
   }
   
   .cardContainer {
@@ -187,7 +187,7 @@
   .submitButton {
     width: 100%;
     padding: 12px;
-    background-color: #B21807;
+    background-color: #6b07b2;
     color: white;
     border: none;
     border-radius: 12px;

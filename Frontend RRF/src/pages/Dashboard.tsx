@@ -1,19 +1,19 @@
 import React from 'react';
 import '../styles/App.css';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
+import Sidebar from '../components/AdminSidebar';
+
 import SummaryCards from '../components/SummaryCards';
 import WelcomeHeader from '../components/WelcomeHeader';
 import ApplicationChart from '../components/ApplicationChart';
 import RecentJobPosts from '../components/RecentJobPosts';
-import Footer from '../components/Footer'; 
+
 
 const App: React.FC = () => {
   return (
     <div className="app-container">
       <Sidebar />
       <div className="main-content">
-        <Header />
+  
 
         <WelcomeHeader />
         
@@ -29,7 +29,7 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        <Footer />
+
       </div>
     </div>
   );
