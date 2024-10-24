@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaBell, FaTrash } from "react-icons/fa";
-import Sidebar from "../components/UserSidebar";
+import Sidebar from "../components/AdminSidebar";
 import styles from "../styles/UserNotifications.module.css";
 import styles2 from "../styles/LogoutModal.module.css";
 
