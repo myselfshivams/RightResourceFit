@@ -18,6 +18,7 @@ import UserApplications from "./pages/UserApplications";
 import UserSearch from "./pages/search";
 import UserManageApplications from "./pages/UserManageApplications";
 import AdminNotifications from "./pages/AdminNotifications";
+import AdminPostJob from "./pages/PostJob";
 
 
 function App() {
@@ -58,6 +59,14 @@ function App() {
             element={
               // <AdminProtectedRoute>
                 <AdminNotifications />
+              /* </AdminProtectedRoute> */
+            }
+          />
+          <Route 
+            path="/admin/jobs" 
+            element={
+              // <AdminProtectedRoute>
+                <AdminPostJob />
               /* </AdminProtectedRoute> */
             }
           />
