@@ -1,0 +1,94 @@
+
+.background {
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 250px; 
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+
+}
+.head {
+  font-size: 3.2rem;
+  font-weight: bolder;
+  color: #ffffff;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.searchBar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  flex-grow: 1;
+  font-family: 'poppins', sans-serif;
+  border: 1px solid #ddd;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.searchBar input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  width: 90%;
+  background-color: transparent;
+  padding: 10px;
+  color: #333;
+}
+
+.jobList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.jobCard {
+  background-color: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.jobCard h3 {
+  color: #17002b;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.jobCard p {
+  line-height: 1.6;
+  color: #3c3c3c;
+  margin-bottom: 5px;
+}
+
+.jobCard strong {
+  color: #2d0040;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-left: 0;
+  }
+  
+}
