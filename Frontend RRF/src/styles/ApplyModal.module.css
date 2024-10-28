@@ -170,3 +170,29 @@
     width: 100%; 
   }
 }
+
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid #000;
+  border-radius: 50%;
+  width: 60px; /* Size of the spinner */
+  height: 60px; /* Size of the spinner */
+  animation: spin 1s linear infinite;
+  margin: 20px auto; /* Center the spinner */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.closeButton {
+  margin-top: 20px;
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 500;
+}
