@@ -63,7 +63,6 @@ const ActiveJobPage = () => {
     <Sidebar />
     <div className={styles.background}>
       <div className={styles.container}>
-   
         <div className={styles.content}>
           <h1 className={styles.head}>Active Jobs</h1>
           <div className={styles.searchBar}>
@@ -91,7 +90,10 @@ const ActiveJobPage = () => {
               ))}
             </div>
           ) : (
-            <p>No job postings available.</p>
+            <div className={styles.noJobs}>
+              <img src="/no.png" alt="No jobs available" className={styles.noJobsImage} />
+              <p>No Jobs available right now. Try looking after a few days.</p>
+            </div>
           )}
         </div>
       </div>
