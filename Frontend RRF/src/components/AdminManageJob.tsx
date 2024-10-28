@@ -32,7 +32,7 @@ const AdminManageJob = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/jobs/postings', {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -145,7 +145,7 @@ const AdminManageJob = () => {
     const confirmEditing = window.confirm("Do you really want to edit it?");
     if (confirmEditing) {
       try {
-        const response = await axios.put(`http://localhost:8000/api/jobs/postings/${currentProduct._id}`, currentProduct, {
+        const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings/${currentProduct._id}`, currentProduct, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -183,7 +183,7 @@ const AdminManageJob = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8000/api/jobs/postings/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },

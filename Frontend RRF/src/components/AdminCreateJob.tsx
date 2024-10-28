@@ -73,7 +73,7 @@ const AdminCreateJob = () => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/jobs/postings",
+        `${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings`,
         {
           title,
           description,
