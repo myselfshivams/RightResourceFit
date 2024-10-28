@@ -63,9 +63,7 @@ const updateJob = asyncHandler(async (req, res) => {
   }
 
   // Check if the user is the one who posted the job or is an admin
-  if (
-    !req.user.isAdmin
-  ) {
+  if (!req.user.isAdmin) {
     res.status(401);
     throw new Error("Not authorized to update this job");
   }

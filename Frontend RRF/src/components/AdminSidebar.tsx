@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
             <FaHome className={styles.icon} />
             {!collapsed && <span>Home</span>}
           </a>
-          <a
+          {/* <a
             onClick={() => navigate("/admin/search")}
             className={`${styles.navItem} ${
               window.location.pathname === "/admin/search" ? styles.active : ""
@@ -55,6 +55,35 @@ const Sidebar: React.FC = () => {
           >
             <FaSearch className={styles.icon} />
             {!collapsed && <span>Search</span>}
+          </a> */}
+          
+          <a
+            onClick={() => navigate("/admin/createJob")}
+            className={`${styles.navItem} ${
+              window.location.pathname === "/admin/createJob" ? styles.active : ""
+            }`}
+          >
+            <FaFileAlt className={styles.icon} />
+            {!collapsed && <span>Post Jobs</span>}
+          </a>
+          <a
+            onClick={() => navigate("/admin/manageJob")}
+            className={`${styles.navItem} ${
+              window.location.pathname === "/admin/manageJob" ? styles.active : ""
+            }`}
+          >
+            
+            <FaCog className={styles.icon} />
+            {!collapsed && <span>Manage Jobs</span>}
+          </a>
+          <a
+            onClick={() => navigate("/admin/userManage")}
+            className={`${styles.navItem} ${
+              window.location.pathname === "/admin/userManage" ? styles.active : ""
+            }`}
+          >
+            <IoMdPersonAdd className={styles.icon} />
+            {!collapsed && <span>User Manage</span>}
           </a>
           <a
             onClick={() => navigate("/admin/applications")}
@@ -62,26 +91,8 @@ const Sidebar: React.FC = () => {
               window.location.pathname === "/admin/applications" ? styles.active : ""
             }`}
           >
-            <FaFileAlt className={styles.icon} />
-            {!collapsed && <span>My Appilications</span>}
-          </a>
-          <a
-            onClick={() => navigate("/admin/jobs")}
-            className={`${styles.navItem} ${
-              window.location.pathname === "/admin/jobs" ? styles.active : ""
-            }`}
-          >
-            <IoMdPersonAdd className={styles.icon} />
-            {!collapsed && <span>Post Jobs</span>}
-          </a>
-          <a
-            onClick={() => navigate("/admin/manage")}
-            className={`${styles.navItem} ${
-              window.location.pathname === "/admin/manage" ? styles.active : ""
-            }`}
-          >
             <FaUsers className={styles.icon} />
-            {!collapsed && <span>Manage Jobs</span>}
+            {!collapsed && <span>All Appilications</span>}
           </a>
           <a
             onClick={() => navigate("/admin/notifications")}
@@ -91,15 +102,6 @@ const Sidebar: React.FC = () => {
           >
             <FaBell className={styles.icon} />
             {!collapsed && <span>Notifications</span>}
-          </a>
-          <a
-            onClick={() => navigate("/admin/settings")}
-            className={`${styles.navItem} ${
-              window.location.pathname === "/admin/settings" ? styles.active : ""
-            }`}
-          >
-            <FaCog className={styles.icon} />
-            {!collapsed && <span>Settings</span>}
           </a>
           <a onClick={handleLogoutClick} className={styles.navItem}>
             <FaSignOutAlt className={styles.icon} />

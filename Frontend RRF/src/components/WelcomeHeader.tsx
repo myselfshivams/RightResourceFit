@@ -9,7 +9,7 @@ const WelcomeHeader: React.FC = () => {
 
       </div>
       <div className="welcome-image">
-        <img src="/welcomeimage.png" alt="Welcome" />
+        {/* <img src="/welcomeimage.png" alt="Welcome" /> */}
       </div>
     </div>
   );

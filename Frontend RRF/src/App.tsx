@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route ,Navigate} from "react-router-dom";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
+// import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Landing";
 import ProtectedRoute from "./components/protectedRoute";
 import AdminProtectedRoute from "./components/adminprotectedroute"; 
@@ -17,8 +17,15 @@ import UserJobs from "./pages/UserJob";
 import UserApplications from "./pages/UserApplications";
 import UserSearch from "./pages/search";
 import UserManageApplications from "./pages/UserManageApplications";
-import AdminNotifications from "./pages/AdminNotifications";
-import AdminPostJob from "./pages/PostJob";
+
+import AdminDashboard from "./pages/AdminDashboard";
+// import Notification from "./pages/notifications";
+
+import AdminManageJob from "./components/AdminManageJob";
+import AdminCreateJob from "./components/AdminCreateJob";
+import AdminUserManage from "./components/AdminUserManage";
+import AdminNotification from "./pages/AdminNotification";
+import AdminApplication from "./pages/AdminApplication";
 
 
 function App() {
@@ -39,6 +46,9 @@ function App() {
                 <ResetPassword />
               </LoginProtectedRoute>} />
           <Route path="/contact" element={<Contactus />} />
+          
+          
+
           <Route path="/user-dashboard" element={<ProtectedRoute><UserDashboard /> </ProtectedRoute>} />
           <Route path="/user/search" element={<ProtectedRoute><UserSearch /> </ProtectedRoute>} />
           <Route path="/user/jobs" element={<ProtectedRoute><UserJobs /> </ProtectedRoute>} />
@@ -46,11 +56,12 @@ function App() {
           <Route path="/user/settings" element={<ProtectedRoute><UserSettings /> </ProtectedRoute>} />
           <Route path="/user/notifications" element={<ProtectedRoute><UserNotifications /> </ProtectedRoute>} />
           <Route path="/user/manage" element={<ProtectedRoute><UserManageApplications /> </ProtectedRoute>} />
+
           <Route 
             path="/dashboard" 
             element={
               <AdminProtectedRoute>
-                <Dashboard />
+                <AdminDashboard />
               </AdminProtectedRoute> 
             } 
           />
@@ -58,15 +69,39 @@ function App() {
             path="/admin/notifications" 
             element={
               <AdminProtectedRoute>
-                <AdminNotifications />
+                <AdminNotification />
               </AdminProtectedRoute>
             }
           />
           <Route 
-            path="/admin/jobs" 
+            path="/admin/createJob" 
             element={
               <AdminProtectedRoute>
-                <AdminPostJob />
+                <AdminCreateJob />
+              </AdminProtectedRoute> 
+            }
+          />
+          <Route 
+            path="/admin/userManage" 
+            element={
+              <AdminProtectedRoute>
+                <AdminUserManage />
+              </AdminProtectedRoute> 
+            }
+          />
+          <Route 
+            path="/admin/applications" 
+            element={
+              <AdminProtectedRoute>
+                <AdminApplication />
+              </AdminProtectedRoute> 
+            }
+          />
+          <Route 
+            path="/admin/manageJob" 
+            element={
+              <AdminProtectedRoute>
+                <AdminManageJob />
               </AdminProtectedRoute> 
             }
           />

@@ -1,0 +1,243 @@
+.job-posting-container {
+    display: flex;
+  }
+  
+  .content {
+    margin-left: 240px;
+    transition: margin-left 0.3s ease;
+    padding: 45px;
+    width: 100%;
+  }
+  
+  
+  .content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .job-posting-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 700px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+
+  /* Add this to your AdminCreateJob.css file */
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 8px;
+  border: 1px solid #bcbbbb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.checkbox-container input[type="checkbox"] {
+  /* appearance: none; */
+  width: 20px;
+  height: 20px;
+  border: 1px solid #bcbbbb;
+  border-radius: 4px;
+  margin-top: 3px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* .checkbox-container input[type="checkbox"]:checked {
+  background-color: #01060b;
+  border-color: #000409;
+} */
+
+/* .checkbox-container input[type="checkbox"]:checked::before {
+  content: "✔";
+  color: white;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* .checkbox-container:hover {
+  border-color: #03080e;
+  background-color: #e9f3ff;
+} */
+
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .HiringMultiple{
+    font-weight: bold;
+  }
+  /* .Hourly{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+  } */
+  
+  .checkbox-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  /* .salary-options {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .Salary input,
+  .Salary select{
+    width: 50%;
+    display: flex;
+  }
+
+  .Salary p{
+    margin-top: 5px;
+  }
+  /* .amount{
+    display: flex;
+  } */
+
+  /* .Salary input{
+    margin-right: 6%;
+  } */
+
+  /* Add this to your AdminCreateJob.css file */
+
+.salary-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* margin-top: 2px; */
+}
+
+.salary-options {
+  display: flex;
+  gap: 16px;
+ 
+}
+
+.radio-container {
+ /* margin-top: 2px;  */
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  border: 1px solid #bcbbbb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.radio-container input[type="radio"] {
+  /* appearance: none; */
+  margin-right: 8px;
+}
+
+.radio-container input[type="radio"]:checked + .icon {
+  color: #007bff;
+}
+
+.radio-container:hover {
+  border-color: #0056b3;
+}
+
+.icon {
+  font-size: 18px;
+  margin-right: 4px;
+}
+
+.salary-inputs {
+  display: flex;
+  gap: 16px;
+}
+
+.salary-inputs .form-group {
+  flex: 1;
+}
+
+.negotiable-checkbox {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 6px;
+  border: 1px solid #bcbbbb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.negotiable-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #bcbbbb;
+  border-radius: 4px;
+  margin-top: 2px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+  button {
+    margin-top: 20px;
+    background-color: #542eb3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #542eb3;
+  }
+
+  .clear-btn{
+    margin-top: 20px;
+    background-color: white;
+    color: #542eb3;
+    padding: 10px 20px;
+    /* border: none; */
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid #542eb3;
+    /* border-color: ; */
+    font-weight: bold;
+    margin-right: 29.9rem;
+  }
+
+  .clear-btn:hover{
+    background-color: white;
+  }
