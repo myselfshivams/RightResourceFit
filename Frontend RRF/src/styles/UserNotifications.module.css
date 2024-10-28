@@ -160,3 +160,15 @@
 .notificationListContainer::-webkit-scrollbar-thumb:hover {
     background: #c905f0;
 }
+
+.StatusButton {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 8px;
+    margin-left: 70%;
+    margin-bottom: 2%;
+}
