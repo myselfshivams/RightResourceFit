@@ -86,6 +86,7 @@ const ActiveJobPage = () => {
                   <p><strong>Working Schedule:</strong> {job.workingSchedule.join(", ")}</p>
                   <p><strong>Salary:</strong> {job.salary.amount} {job.salary.type} ({job.salary.frequency})</p>
                   <p><strong>Hiring Multiple Candidates:</strong> {job.isHiringMultiple ? "Yes" : "No"}</p>
+                  <button className={styles.applyButton}>Apply</button>
                 </div>
               ))}
             </div>
