@@ -14,20 +14,20 @@ const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, isOpen, onClose, onCo
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    if (!isOpen) {
-      setIsAnimating(true);
+    if (isOpen) {
+      setIsAnimating(false);
+    } else if (!isOpen && isAnimating) {
       const timer = setTimeout(() => {
         setIsAnimating(false);
         onClose();
-      }, 400); 
+      }, 400);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, onClose]);
+  }, [isOpen, isAnimating, onClose]);
 
   const handleConfirm = () => {
     setIsApplying(true);
     setIsSuccess(false);
-    onConfirm();
     setTimeout(() => {
       setIsApplying(false);
       setIsSuccess(true);

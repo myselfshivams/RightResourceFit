@@ -6,7 +6,7 @@ import styles from "../styles/UserActiveJobs.module.css";
 
 interface Salary {
   amount: number;
-  type: string;
+  type: string; 
   frequency: string;
 }
 
