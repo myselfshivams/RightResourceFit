@@ -4,7 +4,8 @@ import SummaryCards from '../components/SummaryCards';
 import WelcomeHeader from '../components/WelcomeHeader';
 import ApplicationChart from '../components/ApplicationChart';
 import RecentJobPosts from '../components/RecentJobPosts';
-
+import Footer from '../components/Footer3';
+import Navbar from "./Navbar";
 
 const AdminDashboard = () => {
 
@@ -12,7 +13,9 @@ const AdminDashboard = () => {
     <div className="app-container">
         <AdminSidebar></AdminSidebar>
       <div className="main-content">
- 
+        <div className="Heder">
+      <Navbar/>
+      </div>
         <WelcomeHeader />
         
         <div className="dashboard-content">
@@ -26,7 +29,9 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-   
+        <div className="Futer">
+      <Footer/>
+      </div>
 
       </div>
     </div>
