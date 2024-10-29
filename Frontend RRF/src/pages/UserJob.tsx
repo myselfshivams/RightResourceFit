@@ -27,7 +27,8 @@ const ActiveJobPage = () => {
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [selectedJobTitle, setSelectedJobTitle] = useState<string>(""); 
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [appliedJobs, setAppliedJobs] = useState<{ [jobId: string]: boolean }>({});
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -61,20 +62,21 @@ const ActiveJobPage = () => {
     setFilteredJobs(filtered);
   };
 
-  const handleApplyClick = (jobTitle: string) => {
-    setSelectedJobTitle(jobTitle); 
-    setModalOpen(true); 
+  const handleApplyClick = (job: Job) => {
+    setSelectedJob(job);
+    setModalOpen(true);
   };
 
   const handleModalClose = () => {
-    setModalOpen(false); 
-    setSelectedJobTitle(""); 
+    setModalOpen(false);
+    setSelectedJob(null);
   };
 
   const handleConfirmApply = () => {
-    console.log(`Applying for job: ${selectedJobTitle}`);
-    setModalOpen(false); 
-    setSelectedJobTitle(""); 
+    if (selectedJob) {
+      setAppliedJobs((prev) => ({ ...prev, [selectedJob._id]: true }));
+      setModalOpen(false);
+    }
   };
 
   return (
@@ -104,9 +106,13 @@ const ActiveJobPage = () => {
                     <p><strong>Working Schedule:</strong> {job.workingSchedule.join(", ")}</p>
                     <p><strong>Salary:</strong> {job.salary.amount} {job.salary.type} ({job.salary.frequency})</p>
                     <p><strong>Hiring Multiple Candidates:</strong> {job.isHiringMultiple ? "Yes" : "No"}</p>
-                    <button className={styles.applyButton} onClick={() => handleApplyClick(job.title)}>
-                      Apply
-                    </button>
+                    {appliedJobs[job._id] ? (
+                      <p className={styles.appliedMessage}>Successfully Applied!</p>
+                    ) : (
+                      <button className={styles.applyButton} onClick={() => handleApplyClick(job)}>
+                        Apply
+                      </button>
+                    )}
                   </div>
                 ))}
               </div>
@@ -119,12 +125,14 @@ const ActiveJobPage = () => {
           </div>
         </div>
       </div>
-      <ApplyModal 
-        jobTitle={selectedJobTitle} 
-        isOpen={isModalOpen} 
-        onClose={handleModalClose} 
-        onConfirm={handleConfirmApply} 
-      />
+      {selectedJob && (
+        <ApplyModal 
+          jobTitle={selectedJob.title} 
+          isOpen={isModalOpen} 
+          onClose={handleModalClose} 
+          onConfirm={handleConfirmApply} 
+        />
+      )}
     </>
   );
 };
