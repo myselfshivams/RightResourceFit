@@ -1,4 +1,4 @@
-import Navbar from "./Navbar";
+import Navbar from "../components/Navbar3";
 import "../styles/Landing.css"
 import HeroSection from "./HeroSection";
 import FavJobs from "./FavJobs";
