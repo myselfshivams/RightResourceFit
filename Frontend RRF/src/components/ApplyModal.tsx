@@ -23,7 +23,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, isOpen, onClose, onCo
       }, 400);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, isAnimating, onClose]);
+  }, [isOpen, isAnimating, onClose,onConfirm]);
 
   const handleConfirm = () => {
     setIsApplying(true);
