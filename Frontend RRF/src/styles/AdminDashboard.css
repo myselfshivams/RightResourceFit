@@ -135,15 +135,19 @@
 
 /* Main content styling */
 .main-content {
-  padding: 20px;
-  margin-left: 20px;
   flex: 1; /* Allow main content to take full width */
   display: flex;
   flex-direction: column; /* Stack children vertically */
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
+.Heder{
+  margin-left: 240px;
+}
 
+.Futer{
+  margin-left: 240px;
+}
 /* Styling for dashboard content */
 .dashboard-content {
   flex: 1; /* Take the available space */
