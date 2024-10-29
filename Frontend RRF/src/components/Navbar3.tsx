@@ -84,7 +84,12 @@ const NavBar: React.FC = () => {
       <div id="main-nav-content" className={loaded ? styles.loaded : ''}>
         <nav className={styles.navbar}>
           <div className={styles['navbar-container']}>
-            <img src={logo} alt="logo" className='logo'  />
+          <img
+  src={logo}
+  alt="logo"
+  style={{ width: '50px', height: 'auto' }} 
+className='logo'
+/>
             <div className={styles['navbar-logo']}>
               <h2>RightResourceFit</h2>
             </div>
