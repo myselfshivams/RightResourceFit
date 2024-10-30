@@ -118,16 +118,28 @@ const Sidebar: React.FC = () => {
           <FaHome className={styles.icon} />
         </a>
         <a
-          onClick={() => navigate("/admin/applications")}
-          className={window.location.pathname === "/admin/applications" ? styles.active : ""}
+          onClick={() => navigate("/admin/createJob")}
+          className={window.location.pathname === "/admin/createJob" ? styles.active : ""}
         >
           <FaFileAlt className={styles.icon} />
         </a>
         <a
-          onClick={() => navigate("/admin/search")}
-          className={window.location.pathname === "/admin/search" ? styles.active : ""}
+          onClick={() => navigate("/admin/manageJob")}
+          className={window.location.pathname === "/admin/manageJob" ? styles.active : ""}
         >
-          <FaSearch className={styles.icon} />
+          <FaCog className={styles.icon} />
+        </a>
+        <a
+          onClick={() => navigate("/admin/userManage")}
+          className={window.location.pathname === "/admin/userManage" ? styles.active : ""}
+        >
+          <IoMdPersonAdd className={styles.icon} />
+        </a>
+        <a
+          onClick={() => navigate("/admin/applications")}
+          className={window.location.pathname === "/admin/applications" ? styles.active : ""}
+        >
+          <FaUsers className={styles.icon} />
         </a>
         <a
           onClick={() => navigate("/admin/notifications")}
