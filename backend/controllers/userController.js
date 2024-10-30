@@ -99,7 +99,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // Check if the user is deleted
   if (user.isDeleted) {
-    return res.status(400).json({ success: false, error: "User account is deleted. Please contact support." });
+    return res.status(400).json({ success: false, message: "User account is deleted. Please contact support." });
   }
 
   // Validate password
