@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route ,Navigate} from "react-router-dom";
 import Login from "./pages/Login";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Landing";
 import ProtectedRoute from "./components/protectedRoute";
