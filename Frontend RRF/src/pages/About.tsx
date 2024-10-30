@@ -3,13 +3,13 @@ import garg1 from '/pics3/hhh.avif';
 import mov from '/pics3/mov.jpg';
 import images from '/pics3/images.jpg';
 import download from '/pics3/download.jpg';
-import Navbar3 from './Navbar';
+import Navbar from "../components/Navbar3";
 import Footer from '../components/Footer3';
 
 const Header1: React.FC = () => {
     return (
         <header id='byy'>
-            <Navbar3 />
+            <Navbar />
             <div className="banner">
                 <div id="container5">
                     <h1 id="banner-title1">

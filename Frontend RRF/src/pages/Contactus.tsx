@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "../styles/Contactus.css";
-import Navbar3 from './Navbar';
+import Navbar from "../components/Navbar3";
 import Footer from '../components/Footer3';
 import { PulseLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
@@ -86,7 +86,7 @@ const ContactUs: React.FC = () => {
 
   return (
     <>
-    <Navbar3/><br/><br/><br/>
+    <Navbar/><br/><br/><br/>
     <div className="contact-us-container">
       <h2>Contact Us</h2>
       <form onSubmit={handleSubmit} className="contact-form">
