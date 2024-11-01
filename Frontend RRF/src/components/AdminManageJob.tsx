@@ -216,7 +216,7 @@ const AdminManageJob = () => {
           {(searchTerm ? filteredJobs : jobs).length > 0 ? (
             <div className="job-list">
               {(searchTerm ? filteredJobs : jobs).map((job) => (
-                <div key={job._id} className="job-card">
+                <div key={job._id} className="jobCard">
                   <h3>{job.title}</h3>
                   <p><strong>Description:</strong> {job.description}</p>
                   <p><strong>Location:</strong> {job.location}</p>

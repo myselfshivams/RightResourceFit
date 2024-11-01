@@ -135,6 +135,10 @@
 
 /* Main content styling */
 .main-content {
+  width: 100%;
+  padding: 20px;
+  padding-top: 0px;
+  padding-right: 0px;
   flex: 1; /* Allow main content to take full width */
   display: flex;
   flex-direction: column; /* Stack children vertically */
