@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: rrf-web
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=production
     volumes:

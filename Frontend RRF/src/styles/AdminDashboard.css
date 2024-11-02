@@ -16,8 +16,8 @@
     justify-content: center;
     align-items: center;
   } */
-  
-  /* .mainContainerCollapsed {
+
+/* .mainContainerCollapsed {
     margin-left: 80px;
     transition: margin-left 0.3s ease;
     padding: 40px;
@@ -34,8 +34,8 @@
     max-width: 960px;
     text-align: center;
   } */
-  
-  /* .welcomeText {
+
+/* .welcomeText {
     font-size: 3rem;
     font-weight: 900;
     margin-bottom: 20px;
@@ -126,8 +126,7 @@
     }
   } */
 
-
-  /* App.css */
+/* App.css */
 .app-container {
   display: flex; /* Ensure main container is flex */
   overflow-x: hidden; /* Prevent horizontal scrolling */
@@ -145,11 +144,11 @@
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
-.Heder{
+.Heder {
   margin-left: 240px;
 }
 
-.Futer{
+.Futer {
   margin-left: 240px;
 }
 /* Styling for dashboard content */

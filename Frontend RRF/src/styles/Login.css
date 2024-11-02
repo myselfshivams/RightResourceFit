@@ -1,268 +1,262 @@
 .bgg {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    background-image: url('/bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .loginPage {
-    display: flex;
-    justify-content: center;
-    min-height: 90vh;
-    width: 80vw;
-    animation: fadeIn 1s ease-in-out;
-    font-family: 'Poppins', sans-serif;
-    max-width: 1200px;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 30px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  min-height: 90vh;
+  width: 80vw;
+  animation: fadeIn 1s ease-in-out;
+  font-family: 'Poppins', sans-serif;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
-
 .leftSection {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .leftSection h1 {
-    font-size: 2.5rem;
-    color: #000000;
-    font-weight: 600;
+  font-size: 2.5rem;
+  color: #000000;
+  font-weight: 600;
 }
 
 .logo {
-    position: relative;
-    max-width: 200px;
-    height: auto;
+  position: relative;
+  max-width: 200px;
+  height: auto;
 }
 
 .heroImage {
-    position: relative;
-    width: 70%;
-    height: auto;
+  position: relative;
+  width: 70%;
+  height: auto;
 }
 
 .rightSection {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-radius: 30px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 30px;
 }
 
 .loginContainer {
-    width: 100%;
-    max-width: 420px;
-    padding: 30px 30px;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-    border-radius: 30px;
-    box-shadow: 0 4px 16px rgba(151, 201, 153, 0.5);
-    animation: popUp 0.5s ease-in-out;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px 30px;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  box-shadow: 0 4px 16px rgba(151, 201, 153, 0.5);
+  animation: popUp 0.5s ease-in-out;
+  transition:
+    transform 0.5s ease,
+    opacity 0.5s ease;
 }
 
 .heading {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #000000;
-    font-weight: 600;
-    text-align: left;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000000;
+  font-weight: 600;
+  text-align: left;
 }
 
 .inputContainer {
-    position: relative;
-    margin-bottom: 20px;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .inputField {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-    background-color: #fff;
-    color: #000000;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  background-color: #fff;
+  color: #000000;
 }
 
 .inputField:focus {
-    border-color: #2E073F;
+  border-color: #2e073f;
 }
 
 .inputLabel {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    font-size: 16px;
-    color: #66666600;
-    transition: 0.2s ease all;
-    pointer-events: none;
-
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 16px;
+  color: #66666600;
+  transition: 0.2s ease all;
+  pointer-events: none;
 }
 
-.inputField:focus+.inputLabel,
-.inputField:not(:placeholder-shown)+.inputLabel {
-    top: -8px;
-    left: 12px;
-    font-size: 12px;
-    color: #2E073F;
-    background: #fff;
-    padding: 0 4px;
+.inputField:focus + .inputLabel,
+.inputField:not(:placeholder-shown) + .inputLabel {
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: #2e073f;
+  background: #fff;
+  padding: 0 4px;
 }
 
 .showPasswordBtn {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: rgb(128, 0, 248);
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: rgb(128, 0, 248);
 }
 
 .loginBtn {
-    width: 100%;
-    padding: 12px;
-    margin-top: 20px;
-    background-color: #2E073F;
-    color: rgb(255, 255, 255);
-    font-weight: 530;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #2e073f;
+  color: rgb(255, 255, 255);
+  font-weight: 530;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
 }
 
 .loginBtn:hover {
-    background-color: #000000;
-    color: #fff;
+  background-color: #000000;
+  color: #fff;
 }
 
 .toggleText {
-    text-align: center;
-    margin-top: 15px;
-    color: #666;
-    font-size: 14px;
+  text-align: center;
+  margin-top: 15px;
+  color: #666;
+  font-size: 14px;
 }
 
 .toggleLink {
-    color: #2E073F;
-    cursor: pointer;
-    font-weight: 600;
+  color: #2e073f;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .toggleLink:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes popUp {
-    0% {
-        transform: scale(0.9);
-        opacity: 0.7;
-    }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
-
-
 
 .leftSection,
 .rightSection {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.6s ease;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.6s ease;
 }
 
-
 .swipeLeft .leftSection {
-    transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .swipeLeft .rightSection {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .swipeRight .leftSection {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 .swipeRight .rightSection {
-    transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 .eyeIcon {
-    position: absolute;
-    right: 10px;
-    top: 55%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #000;
-  }
-  .inputContainer {
-    position: relative;
-  }
-  
+  position: absolute;
+  right: 10px;
+  top: 55%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000;
+}
+.inputContainer {
+  position: relative;
+}
 
-  .forgotPasswordContainer {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .forgotPassword {
-    cursor: pointer;
-    font-size: 0.9rem;
-    text-decoration: underline;
-  }
+.forgotPasswordContainer {
+  display: flex;
+  justify-content: flex-end;
+}
 
-  .authOptionsContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; 
-  }
-  
-  .rememberMeContainer {
-    display: flex;
-    align-items: center;
-  }
-  
-  .forgotPasswordContainer {
-    cursor: pointer;
-  }
-  
-  
+.forgotPassword {
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.authOptionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.rememberMeContainer {
+  display: flex;
+  align-items: center;
+}
+
+.forgotPasswordContainer {
+  cursor: pointer;
+}

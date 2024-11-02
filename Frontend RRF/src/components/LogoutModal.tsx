@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/LogoutModal.module.css';
 
 interface LogoutModalProps {
@@ -7,23 +7,23 @@ interface LogoutModalProps {
 }
 
 const LogoutModal: React.FC<LogoutModalProps> = ({ setIsLogoutModalOpen }) => {
-  const navigate = useNavigate(); 
-  const [modalHidden, setModalHidden] = useState(false); 
+  const navigate = useNavigate();
+  const [modalHidden, setModalHidden] = useState(false);
 
   const handleConfirmLogout = () => {
     localStorage.removeItem('role');
     localStorage.removeItem('avatar');
     localStorage.removeItem('username');
     setIsLogoutModalOpen(false);
-    navigate('/logout'); 
+    navigate('/logout');
   };
 
   const handleCancelLogout = () => {
-    setModalHidden(true); 
+    setModalHidden(true);
 
     setTimeout(() => {
       setIsLogoutModalOpen(false);
-    }, 400); 
+    }, 400);
   };
 
   return (
@@ -32,7 +32,10 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ setIsLogoutModalOpen }) => {
         <h2>Confirm Logout</h2>
         <p>Are you sure you want to log out?</p>
         <div className={styles.buttonGroup}>
-          <button className={styles.confirmButton} onClick={handleConfirmLogout}>
+          <button
+            className={styles.confirmButton}
+            onClick={handleConfirmLogout}
+          >
             Yes, Logout
           </button>
           <button className={styles.cancelButton} onClick={handleCancelLogout}>

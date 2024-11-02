@@ -4,13 +4,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color:#EBD3F8; /* Purple background */
+  background-color: #ebd3f8; /* Purple background */
   color: dark purple;
 }
 
 /* Dashboard Label */
 .dashboard-label {
-  font-size: 18px;  /* Make this a bit larger */
+  font-size: 18px; /* Make this a bit larger */
   font-weight: bold;
 }
 
@@ -18,7 +18,7 @@
 .top-header-right {
   display: flex;
   align-items: center;
-  gap: 20px;  /* Space between search, notification, and profile */
+  gap: 20px; /* Space between search, notification, and profile */
 }
 
 /* Search Bar Styling */

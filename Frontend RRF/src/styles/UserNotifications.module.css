@@ -1,174 +1,173 @@
 .NotificationContentPage {
-    background-image: url('/bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    display: flex;
-    position: relative;
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
 }
 
 .mainContent {
-    margin-left: 240px;
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 240px);
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
+  margin-left: 240px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 240px);
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
-    .mainContent {
-        margin-left: 80px;
-        width: calc(100% - 80px);
-    }
+  .mainContent {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+  }
 }
 
 .mainHeading {
-    font-size: 2.2rem;
-    font-weight: 600;
-    color: #ffffff;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
 }
 
 .mainHeading span {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .notificationListContainer {
-    height: calc(100vh - 100px);
-    width: 100%;
-    overflow-y: auto;
+  height: calc(100vh - 100px);
+  width: 100%;
+  overflow-y: auto;
 }
 
 .notificationList {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding-right: 10px;
 }
 
 .notificationCard {
-    background: rgba(255, 255, 255, 0.565);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
-    width: 90%;
-    padding: 16px;
-    box-shadow: 0 2px 5px rgba(239, 190, 252, 0.64);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 15px;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  width: 90%;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(239, 190, 252, 0.64);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
 }
 
 .icon {
-    font-size: 1.2rem;
-    color: #000000;
+  font-size: 1.2rem;
+  color: #000000;
 }
 
 .notificationText {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .notificationText p {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    color: #000000;
-    font-size: 1rem;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #000000;
+  font-size: 1rem;
 }
 
 .date {
-    font-size: 0.75rem;
-    color: #767676;
-    font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #767676;
+  font-family: 'Poppins', sans-serif;
 }
 
 .deleteButton {
-    background: none;
-    border: none;
-    color: #ff4d4f;
-    cursor: pointer;
-    font-size: 1.2rem;
-    margin-left: auto;
-    margin-right: 20px;
+  background: none;
+  border: none;
+  color: #ff4d4f;
+  cursor: pointer;
+  font-size: 1.2rem;
+  margin-left: auto;
+  margin-right: 20px;
 }
 
 .deleteButton:hover {
-    color: #ff7875;
+  color: #ff7875;
 }
 
 .notificationHeader {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-right: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-right: 40px;
 }
 
 .clearAllButton {
-    background-color: #ca0300;
-    color: #fff;
-    font-family: 'poppins', sans-serif;
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
+  background-color: #ca0300;
+  color: #fff;
+  font-family: 'poppins', sans-serif;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
 
 .clearAllButton:hover {
-    background-color: rgb(74, 0, 0);
+  background-color: rgb(74, 0, 0);
 }
 
-
 @media (max-width: 768px) {
-    .mainContent {
-        margin-left: 0;
-        width: 100%;
-        padding: 20px;
-    }
+  .mainContent {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px;
+  }
 
-    .notificationCard {
-        width: 95%;
-    }
+  .notificationCard {
+    width: 95%;
+  }
 }
 
 .notificationListContainer::-webkit-scrollbar {
-    width: 8px;
-    height: 16px;
+  width: 8px;
+  height: 16px;
 }
 
 .notificationListContainer::-webkit-scrollbar-track {
-    overflow: hidden;
-    background: transparent;
+  overflow: hidden;
+  background: transparent;
 }
 
 .notificationListContainer::-webkit-scrollbar-thumb {
-    background: #bc02dd;
-    border-radius: 5px;
+  background: #bc02dd;
+  border-radius: 5px;
 }
 
 .notificationListContainer::-webkit-scrollbar-thumb:hover {
-    background: #c905f0;
+  background: #c905f0;
 }
 
 .StatusButton {
-    background-color: #000000;
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 8px;
-    margin-left: 70%;
-    margin-bottom: 2%;
+  background-color: #000000;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 8px;
+  margin-left: 70%;
+  margin-bottom: 2%;
 }

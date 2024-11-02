@@ -1,5 +1,5 @@
-import React from "react";
-import "../styles/Forgot.css";
+import React from 'react';
+import '../styles/Forgot.css';
 
 interface PasswordResetModalProps {
   isOpen: boolean;
@@ -10,7 +10,7 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [email, setEmail] = React.useState("");
+  const [email, setEmail] = React.useState('');
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -18,7 +18,7 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
 
   const handlePasswordReset = () => {
     console.log(`Password reset link sent to: ${email}`);
-    onClose(); 
+    onClose();
   };
 
   if (!isOpen) return null;
@@ -26,7 +26,6 @@ const PasswordResetModal: React.FC<PasswordResetModalProps> = ({
   return (
     <div className="modalOverlay">
       <div className="modalContent">
-
         <span className="closeIcon" onClick={onClose}>
           &times;
         </span>

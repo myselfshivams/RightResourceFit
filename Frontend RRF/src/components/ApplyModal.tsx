@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styles from "../styles/ApplyModal.module.css"; 
+import React, { useState, useEffect } from 'react';
+import styles from '../styles/ApplyModal.module.css';
 
 interface ApplyModalProps {
   jobTitle: string;
@@ -8,7 +8,12 @@ interface ApplyModalProps {
   onConfirm: () => void;
 }
 
-const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, isOpen, onClose, onConfirm }) => {
+const ApplyModal: React.FC<ApplyModalProps> = ({
+  jobTitle,
+  isOpen,
+  onClose,
+  onConfirm,
+}) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isApplying, setIsApplying] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -23,7 +28,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, isOpen, onClose, onCo
       }, 400);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, isAnimating, onClose,onConfirm]);
+  }, [isOpen, isAnimating, onClose, onConfirm]);
 
   const handleConfirm = () => {
     setIsApplying(true);
@@ -34,7 +39,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, isOpen, onClose, onCo
     }, 2000);
   };
 
-  if (!isOpen && !isAnimating) return null; 
+  if (!isOpen && !isAnimating) return null;
 
   return (
     <div className={styles.modalOverlay}>
@@ -42,7 +47,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({ jobTitle, isOpen, onClose, onCo
         {isApplying ? (
           <>
             <h2>Applying...</h2>
-            <div className={styles.spinner}></div> 
+            <div className={styles.spinner}></div>
           </>
         ) : isSuccess ? (
           <>

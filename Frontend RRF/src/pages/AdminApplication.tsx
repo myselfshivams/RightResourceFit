@@ -1,11 +1,11 @@
-import AdminSidebar from "../components/AdminSidebar"
+import AdminSidebar from '../components/AdminSidebar';
 
 const AdminApplication = () => {
   return (
     <div>
-      <AdminSidebar/>
+      <AdminSidebar />
     </div>
-  )
-}
+  );
+};
 
-export default AdminApplication
+export default AdminApplication;

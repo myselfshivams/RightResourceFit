@@ -1,5 +1,10 @@
 import React from 'react';
-import { FaClipboardList, FaSuitcase, FaClipboard, FaUserGraduate } from 'react-icons/fa';
+import {
+  FaClipboardList,
+  FaSuitcase,
+  FaClipboard,
+  FaUserGraduate,
+} from 'react-icons/fa';
 import '../styles/Sidebar.css';
 
 const Sidebar: React.FC = () => {

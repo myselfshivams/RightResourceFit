@@ -1,12 +1,11 @@
 import React from 'react';
-import '../styles/WelcomeHeader.css'; 
+import '../styles/WelcomeHeader.css';
 
 const WelcomeHeader: React.FC = () => {
   return (
     <div className="welcome-header">
       <div className="welcome-text">
         <h1>Welcome to Right Resource Fit</h1>
-
       </div>
       <div className="welcome-image">
         {/* <img src="/welcomeimage.png" alt="Welcome" /> */}

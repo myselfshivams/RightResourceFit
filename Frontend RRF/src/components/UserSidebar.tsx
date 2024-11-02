@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   FaHome,
   FaUsers,
@@ -6,18 +6,16 @@ import {
   FaCog,
   FaFileAlt,
   FaSignOutAlt,
-} from "react-icons/fa";
-import { IoMdPersonAdd } from "react-icons/io";
-import { useNavigate } from "react-router-dom"; 
-import styles from "../styles/UserSidebar.module.css";
-import LogoutModal from "../components/LogoutModal";
+} from 'react-icons/fa';
+import { IoMdPersonAdd } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
+import styles from '../styles/UserSidebar.module.css';
+import LogoutModal from '../components/LogoutModal';
 
 const Sidebar: React.FC = () => {
   const [collapsed] = useState<boolean>(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-
-
 
   const handleLogoutClick = () => {
     setIsLogoutModalOpen(true);
@@ -25,22 +23,26 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ""}`}>
-       
-
+      <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
         <div className={styles.userSection}>
           <img
-            src={localStorage.getItem("avatar") || "/assets/user.png"}
+            src={localStorage.getItem('avatar') || '/assets/user.png'}
             alt="User Avatar"
             className={styles.userImage}
           />
-          {!collapsed && <span className={styles.userName}>{localStorage.getItem("username")}</span>}
+          {!collapsed && (
+            <span className={styles.userName}>
+              {localStorage.getItem('username')}
+            </span>
+          )}
         </div>
         <nav className={styles.nav}>
           <a
-            onClick={() => navigate("/user-dashboard")}
+            onClick={() => navigate('/user-dashboard')}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user-dashboard" ? styles.active : ""
+              window.location.pathname === '/user-dashboard'
+                ? styles.active
+                : ''
             }`}
           >
             <FaHome className={styles.icon} />
@@ -56,45 +58,49 @@ const Sidebar: React.FC = () => {
             {!collapsed && <span>Search</span>}
           </a> */}
           <a
-            onClick={() => navigate("/user/applications")}
+            onClick={() => navigate('/user/applications')}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user/applications" ? styles.active : ""
+              window.location.pathname === '/user/applications'
+                ? styles.active
+                : ''
             }`}
           >
             <FaFileAlt className={styles.icon} />
             {!collapsed && <span>My Appilications</span>}
           </a>
           <a
-            onClick={() => navigate("/user/jobs")}
+            onClick={() => navigate('/user/jobs')}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user/jobs" ? styles.active : ""
+              window.location.pathname === '/user/jobs' ? styles.active : ''
             }`}
           >
             <IoMdPersonAdd className={styles.icon} />
             {!collapsed && <span>Active Jobs</span>}
           </a>
           <a
-            onClick={() => navigate("/user/manage")}
+            onClick={() => navigate('/user/manage')}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user/manage" ? styles.active : ""
+              window.location.pathname === '/user/manage' ? styles.active : ''
             }`}
           >
             <FaUsers className={styles.icon} />
             {!collapsed && <span>Manage Applications</span>}
           </a>
           <a
-            onClick={() => navigate("/user/notifications")}
+            onClick={() => navigate('/user/notifications')}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user/notifications" ? styles.active : ""
+              window.location.pathname === '/user/notifications'
+                ? styles.active
+                : ''
             }`}
           >
             <FaBell className={styles.icon} />
             {!collapsed && <span>Notifications</span>}
           </a>
           <a
-            onClick={() => navigate("/user/settings")}
+            onClick={() => navigate('/user/settings')}
             className={`${styles.navItem} ${
-              window.location.pathname === "/user/settings" ? styles.active : ""
+              window.location.pathname === '/user/settings' ? styles.active : ''
             }`}
           >
             <FaCog className={styles.icon} />
@@ -109,33 +115,37 @@ const Sidebar: React.FC = () => {
 
       <div className={styles.footerNav}>
         <a
-          onClick={() => navigate("/user-dashboard")}
-          className={window.location.pathname === "/user-dashboard" ? styles.active : ""}
+          onClick={() => navigate('/user-dashboard')}
+          className={
+            window.location.pathname === '/user-dashboard' ? styles.active : ''
+          }
         >
           <FaHome className={styles.icon} />
         </a>
         <a
-          onClick={() => navigate("/user/applications")}
-          className={window.location.pathname === "/manage" ? styles.active : ""}
+          onClick={() => navigate('/user/applications')}
+          className={
+            window.location.pathname === '/manage' ? styles.active : ''
+          }
         >
           <FaFileAlt className={styles.icon} />
         </a>
         <a
-            onClick={() => navigate("/user/jobs")}
-            className={
-              window.location.pathname === "/user/jobs" ? styles.active : ""
-            }
-          >
-            <IoMdPersonAdd className={styles.icon} />
-          </a>
-          <a
-            onClick={() => navigate("/user/manage")}
-            className={
-              window.location.pathname === "/user/manage" ? styles.active : ""
-            }
-          >
-            <FaUsers className={styles.icon} />
-          </a>
+          onClick={() => navigate('/user/jobs')}
+          className={
+            window.location.pathname === '/user/jobs' ? styles.active : ''
+          }
+        >
+          <IoMdPersonAdd className={styles.icon} />
+        </a>
+        <a
+          onClick={() => navigate('/user/manage')}
+          className={
+            window.location.pathname === '/user/manage' ? styles.active : ''
+          }
+        >
+          <FaUsers className={styles.icon} />
+        </a>
         {/* <a
           onClick={() => navigate("/user/search")}
           className={window.location.pathname === "/user/search" ? styles.active : ""}
@@ -143,28 +153,34 @@ const Sidebar: React.FC = () => {
           <FaSearch className={styles.icon} />
         </a> */}
         <a
-          onClick={() => navigate("/user/notifications")}
-          className={window.location.pathname === "/notifications" ? styles.active : ""}
+          onClick={() => navigate('/user/notifications')}
+          className={
+            window.location.pathname === '/notifications' ? styles.active : ''
+          }
         >
           <FaBell className={styles.icon} />
         </a>
         <a
-            onClick={() => navigate("/user/settings")}
-            className=
-              {window.location.pathname === "/user/settings" ? styles.active : ""}
-            
-          >
-            <FaCog className={styles.icon} />
-          </a>
+          onClick={() => navigate('/user/settings')}
+          className={
+            window.location.pathname === '/user/settings' ? styles.active : ''
+          }
+        >
+          <FaCog className={styles.icon} />
+        </a>
         <a
           onClick={handleLogoutClick}
-          className={window.location.pathname === "/logout" ? styles.active : ""}
+          className={
+            window.location.pathname === '/logout' ? styles.active : ''
+          }
         >
           <FaSignOutAlt className={styles.icon} />
         </a>
       </div>
 
-      {isLogoutModalOpen && <LogoutModal setIsLogoutModalOpen={setIsLogoutModalOpen} />}
+      {isLogoutModalOpen && (
+        <LogoutModal setIsLogoutModalOpen={setIsLogoutModalOpen} />
+      )}
     </>
   );
 };

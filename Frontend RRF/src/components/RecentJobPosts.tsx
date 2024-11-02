@@ -6,7 +6,7 @@ interface JobPost {
   category: string;
   openings: number;
   applications: number;
-  status: 'Active' | 'Inactive';  
+  status: 'Active' | 'Inactive';
 }
 
 const RecentJobPosts: React.FC = () => {
@@ -18,36 +18,36 @@ const RecentJobPosts: React.FC = () => {
       category: 'Full Time',
       openings: 12,
       applications: 135,
-      status: 'Active'
+      status: 'Active',
     },
     {
       title: 'Full Stack Dev',
       category: 'Full Time',
       openings: 0,
       applications: 100,
-      status: 'Inactive'
+      status: 'Inactive',
     },
     {
       title: 'DevOps',
       category: 'Internship',
       openings: 10,
       applications: 50,
-      status: 'Active'
+      status: 'Active',
     },
     {
       title: 'Android Dev',
       category: 'Full Time',
       openings: 4,
       applications: 46,
-      status: 'Active'
+      status: 'Active',
     },
     {
       title: 'iOS Developer',
       category: 'Full Time',
       openings: 19,
       applications: 96,
-      status: 'Inactive'
-    }
+      status: 'Inactive',
+    },
   ];
 
   const handleTabChange = (tab: string) => {
@@ -95,7 +95,9 @@ const RecentJobPosts: React.FC = () => {
               <td>{post.openings}</td>
               <td>{post.applications}</td>
               <td>
-                <span className={post.status === 'Active' ? 'active' : 'inactive'}>
+                <span
+                  className={post.status === 'Active' ? 'active' : 'inactive'}
+                >
                   {post.status}
                 </span>
               </td>
