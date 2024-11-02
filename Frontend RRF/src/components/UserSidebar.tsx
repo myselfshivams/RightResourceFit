@@ -47,7 +47,7 @@ const Sidebar: React.FC = () => {
             <FaHome className={styles.icon} />
             {!collapsed && <span>Home</span>}
           </a>
-          <a
+          {/* <a
             onClick={() => navigate("/user/search")}
             className={`${styles.navItem} ${
               window.location.pathname === "/user/search" ? styles.active : ""
@@ -55,7 +55,7 @@ const Sidebar: React.FC = () => {
           >
             <FaSearch className={styles.icon} />
             {!collapsed && <span>Search</span>}
-          </a>
+          </a> */}
           <a
             onClick={() => navigate("/user/applications")}
             className={`${styles.navItem} ${
@@ -122,17 +122,41 @@ const Sidebar: React.FC = () => {
           <FaFileAlt className={styles.icon} />
         </a>
         <a
+            onClick={() => navigate("/user/jobs")}
+            className={
+              window.location.pathname === "/user/jobs" ? styles.active : ""
+            }
+          >
+            <IoMdPersonAdd className={styles.icon} />
+          </a>
+          <a
+            onClick={() => navigate("/user/manage")}
+            className={
+              window.location.pathname === "/user/manage" ? styles.active : ""
+            }
+          >
+            <FaUsers className={styles.icon} />
+          </a>
+        {/* <a
           onClick={() => navigate("/user/search")}
           className={window.location.pathname === "/user/search" ? styles.active : ""}
         >
           <FaSearch className={styles.icon} />
-        </a>
+        </a> */}
         <a
           onClick={() => navigate("/user/notifications")}
           className={window.location.pathname === "/notifications" ? styles.active : ""}
         >
           <FaBell className={styles.icon} />
         </a>
+        <a
+            onClick={() => navigate("/user/settings")}
+            className=
+              {window.location.pathname === "/user/settings" ? styles.active : ""}
+            
+          >
+            <FaCog className={styles.icon} />
+          </a>
         <a
           onClick={handleLogoutClick}
           className={window.location.pathname === "/logout" ? styles.active : ""}

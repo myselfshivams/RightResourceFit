@@ -203,15 +203,20 @@ const AdminManageJob = () => {
         <div className={`manage-jobs-content ${isEditing ? "blur" : ""}`}>
         <h1>Manage Job Postings</h1>
 
-         {/* Search Bar */}
-         <div className="searchBar">
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={handleSearch}
-              placeholder="Search jobs by title, skills or location"
-            />
-          </div>
+        {/* Search Bar */}
+<div className="searchBar">
+  <input
+    type="text"
+    value={searchTerm}
+    onChange={handleSearch}
+    placeholder="Search jobs by title, skills, or location"
+    aria-label="Search jobs"
+  />
+  <Link to="/admin/createJob" className="create-job-btn">
+    Create New Job
+  </Link>
+</div>
+
 
           {(searchTerm ? filteredJobs : jobs).length > 0 ? (
             <div className="job-list">
@@ -235,7 +240,6 @@ const AdminManageJob = () => {
           ) : (
             <p>No job postings available. <Link to="/admin/createJob">Create a job</Link>.</p>
           )}
-          <Link to="/admin/createJob" className="create-job-btn">Create New Job</Link>
         </div>
       </div>
       {isEditing && currentProduct && (
