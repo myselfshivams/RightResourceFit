@@ -4,7 +4,9 @@
   z-index: 1000;
   opacity: 0;
   transform: translateY(-50px);
-  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transition:
+    opacity 0.8s ease-in-out,
+    transform 0.8s ease-in-out;
 }
 
 #main-nav-content.loaded {
@@ -47,11 +49,13 @@
 .navbar-link {
   text-decoration: none;
   color: #ffffff;
-  font-family: "poppins", sans-serif;
+  font-family: 'poppins', sans-serif;
   font-size: 1.1rem;
   font-weight: 400;
   letter-spacing: 1px;
-  transition: color 0.3s, font-size 0.3s;
+  transition:
+    color 0.3s,
+    font-size 0.3s;
 }
 
 .navbar-link:hover {
@@ -95,8 +99,7 @@
 }
 
 @media (max-width: 768px) {
-
-  .navbar{
+  .navbar {
     margin-top: 0;
     transform: scale(0.9);
     width: 90%;
@@ -141,10 +144,10 @@
   font-size: 17px;
   padding: 10px 25px;
   border-radius: 0.7rem;
-  background-image: linear-gradient(45deg, #a200ff, #3e0058); 
+  background-image: linear-gradient(45deg, #a200ff, #3e0058);
   border: 2px solid rgb(50, 50, 50);
   border-bottom: 5px solid rgb(50, 50, 50);
-  box-shadow: 0px 1px 6px 0px rgba(112, 0, 250, 0.5); 
+  box-shadow: 0px 1px 6px 0px rgba(112, 0, 250, 0.5);
   transform: translate(0, -3px);
   cursor: pointer;
   transition: 0.2s;
@@ -160,8 +163,6 @@
   visibility: hidden;
 }
 
-
-
 .activeLink {
   color: #3e0058;
 }
@@ -170,13 +171,10 @@
   display: none;
 }
 
-
 @media (max-width: 1028px) {
-
   .navbar {
     visibility: hidden;
   }
-
 
   .footerNav {
     display: flex;
@@ -203,7 +201,7 @@
   }
 
   .footerNav a.active {
-    color:  #3e0058; 
+    color: #3e0058;
   }
 
   .active {
@@ -215,7 +213,7 @@
 
 .logo {
   max-width: 50px;
-  height: auto; 
+  height: auto;
 }
 
 img {
@@ -225,6 +223,6 @@ img {
 
 .navbar-logo {
   display: flex;
-  align-items: center; 
+  align-items: center;
   margin-top: 2%;
 }

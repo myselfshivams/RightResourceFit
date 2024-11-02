@@ -1,23 +1,23 @@
-import AdminSidebar from "./AdminSidebar";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-import "../styles/AdminCreateJob.css";
+import AdminSidebar from './AdminSidebar';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import '../styles/AdminCreateJob.css';
 
 const AdminCreateJob = () => {
   const navigate = useNavigate();
 
   // Initial form state
   const initialFormState = {
-    title: "",
-    description: "",
-    location: "",
+    title: '',
+    description: '',
+    location: '',
     skills: [],
     employmentType: [],
     workingSchedule: [],
     salaryAmount: 0,
-    salaryType: "",
-    salaryFrequency: "",
+    salaryType: '',
+    salaryFrequency: '',
     isHiringMultiple: false,
   };
 
@@ -31,10 +31,10 @@ const AdminCreateJob = () => {
   ) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
-  
+
     setJobDetails({
       ...jobDetails,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === 'checkbox' ? checked : value,
     });
   };
 
@@ -86,15 +86,15 @@ const AdminCreateJob = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       );
-      alert("Job created successfully!");
-      navigate("/admin/manageJob");
+      alert('Job created successfully!');
+      navigate('/admin/manageJob');
     } catch (error) {
-      console.error("Error creating job:", error);
-      alert("Failed to create job. Please try again.");
+      console.error('Error creating job:', error);
+      alert('Failed to create job. Please try again.');
     }
   };
 
@@ -224,7 +224,7 @@ const AdminCreateJob = () => {
                     type="radio"
                     name="salaryType"
                     value="Hourly"
-                    checked={jobDetails.salaryType === "Hourly"}
+                    checked={jobDetails.salaryType === 'Hourly'}
                     onChange={handleChange}
                   />
                   <span className="icon">⏰</span> Hourly
@@ -234,7 +234,7 @@ const AdminCreateJob = () => {
                     type="radio"
                     name="salaryType"
                     value="Custom"
-                    checked={jobDetails.salaryType === "Custom"}
+                    checked={jobDetails.salaryType === 'Custom'}
                     onChange={handleChange}
                   />
                   <span className="icon">💵</span> Custom
@@ -287,7 +287,7 @@ const AdminCreateJob = () => {
                   name="isHiringMultiple"
                   checked={jobDetails.isHiringMultiple}
                   onChange={handleChange}
-                />{" "}
+                />{' '}
                 Yes, I am hiring multiple candidates
               </label>
             </div>

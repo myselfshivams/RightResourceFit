@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaEnvelope, FaInstagram, FaGithub, FaArrowUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 import styles from '../styles/Footer.module.css';
 
 const Footer: React.FC = () => {
@@ -22,7 +22,8 @@ const Footer: React.FC = () => {
     e.preventDefault();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const validDomainRegex = /^(.*@gmail\.com|.*@yahoo\.com|.*@outlook\.com|.*@studex\.tech|.*@echotratech\.com|.*@.*\.edu|.*@.*\.ac\.in)$/i;
+    const validDomainRegex =
+      /^(.*@gmail\.com|.*@yahoo\.com|.*@outlook\.com|.*@studex\.tech|.*@echotratech\.com|.*@.*\.edu|.*@.*\.ac\.in)$/i;
 
     if (!emailRegex.test(email) || !validDomainRegex.test(email)) {
       toast.error('Use a valid email address');
@@ -63,7 +64,10 @@ const Footer: React.FC = () => {
             <a href="mailto:contact@itshivam.me" aria-label="Email">
               <FaEnvelope className={styles.icon} />
             </a>
-            <a href="https://www.instagram.com/shivamss.pvt" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/shivamss.pvt"
+              aria-label="Instagram"
+            >
               <FaInstagram className={styles.icon} />
             </a>
             <a href="https://github.com/myselfshivams" aria-label="GitHub">
@@ -99,7 +103,9 @@ const Footer: React.FC = () => {
 
       <div className={styles.bottomSection}>
         <div className={styles.copyright}>
-          <p className={styles.rights}>&copy; {new Date().getFullYear()} All rights reserved.</p>
+          <p className={styles.rights}>
+            &copy; {new Date().getFullYear()} All rights reserved.
+          </p>
         </div>
         <div className={styles.privacyLinks}>
           <Link to="/privacy">Privacy Policy</Link>
@@ -108,7 +114,11 @@ const Footer: React.FC = () => {
       </div>
 
       {showScrollButton && (
-        <button onClick={scrollToTop} className={styles.scrollToTopButton} aria-label="Scroll to top">
+        <button
+          onClick={scrollToTop}
+          className={styles.scrollToTopButton}
+          aria-label="Scroll to top"
+        >
           <FaArrowUp className={styles.arrowUpIcon} />
         </button>
       )}

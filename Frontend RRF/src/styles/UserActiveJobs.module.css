@@ -1,4 +1,3 @@
-
 .background {
   background-image: url('/bg.png');
   background-repeat: no-repeat;
@@ -10,15 +9,14 @@
 .container {
   display: flex;
   flex-direction: row;
-  padding-left: 250px; 
+  padding-left: 250px;
 }
 
 .content {
   flex-grow: 1;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-
 }
 .head {
   font-size: 3.2rem;
@@ -66,7 +64,7 @@
   border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .jobCard h3 {
@@ -89,12 +87,11 @@
   .container {
     padding-left: 0;
   }
-  
 }
 
 .applyButton {
   display: block;
-  margin: 20px auto 0; 
+  margin: 20px auto 0;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
@@ -117,20 +114,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px; 
+  margin-top: 40px;
   text-align: center;
 }
 
 .noJobsImage {
   width: 200px;
   height: auto;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
-
 
 .noJobs p {
   font-size: 1.5rem;
   color: #ffffff;
   text-align: center;
 }
-

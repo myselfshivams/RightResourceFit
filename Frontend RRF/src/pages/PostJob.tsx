@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../styles/PostJob.css";
+import '../styles/PostJob.css';
 import Sidebar from '../components/AdminSidebar';
 
 interface JobFormData {
@@ -30,7 +30,11 @@ const PostJobPage: React.FC = () => {
     jobType: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -99,101 +103,102 @@ const PostJobPage: React.FC = () => {
 
   return (
     <>
-    <Sidebar />
-    
-    <div className="post-job-page">
-      <h1>Post a Job</h1>
-      <form className="job-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="title">Job Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="Enter job title"
-            className={errors.title ? 'error-input' : ''}
-          />
-          {errors.title && <p className="error">{errors.title}</p>}
-        </div>
+      <Sidebar />
 
-        <div className="form-group">
-          <label htmlFor="description">Job Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            placeholder="Enter job description"
-            className={errors.description ? 'error-input' : ''}
-          />
-          {errors.description && <p className="error">{errors.description}</p>}
-        </div>
+      <div className="post-job-page">
+        <h1>Post a Job</h1>
+        <form className="job-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="title">Job Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              placeholder="Enter job title"
+              className={errors.title ? 'error-input' : ''}
+            />
+            {errors.title && <p className="error">{errors.title}</p>}
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            placeholder="Enter job location"
-            className={errors.location ? 'error-input' : ''}
-          />
-          {errors.location && <p className="error">{errors.location}</p>}
-        </div>
+          <div className="form-group">
+            <label htmlFor="description">Job Description</label>
+            <textarea
+              id="description"
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              placeholder="Enter job description"
+              className={errors.description ? 'error-input' : ''}
+            />
+            {errors.description && (
+              <p className="error">{errors.description}</p>
+            )}
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="skills">Required Skills</label>
-          <input
-            type="text"
-            id="skills"
-            name="skills"
-            value={formData.skills}
-            onChange={handleChange}
-            placeholder="Enter required skills (comma-separated)"
-            className={errors.skills ? 'error-input' : ''}
-          />
-          {errors.skills && <p className="error">{errors.skills}</p>}
-        </div>
+          <div className="form-group">
+            <label htmlFor="location">Location</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              placeholder="Enter job location"
+              className={errors.location ? 'error-input' : ''}
+            />
+            {errors.location && <p className="error">{errors.location}</p>}
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="salary">Salary</label>
-          <input
-            type="text"
-            id="salary"
-            name="salary"
-            value={formData.salary}
-            onChange={handleChange}
-            placeholder="Enter salary"
-            className={errors.salary ? 'error-input' : ''}
-          />
-          {errors.salary && <p className="error">{errors.salary}</p>}
-        </div>
+          <div className="form-group">
+            <label htmlFor="skills">Required Skills</label>
+            <input
+              type="text"
+              id="skills"
+              name="skills"
+              value={formData.skills}
+              onChange={handleChange}
+              placeholder="Enter required skills (comma-separated)"
+              className={errors.skills ? 'error-input' : ''}
+            />
+            {errors.skills && <p className="error">{errors.skills}</p>}
+          </div>
 
-        <div className="form-group">
-          <label htmlFor="jobType">Job Type</label>
-          <select
-            id="jobType"
-            name="jobType"
-            value={formData.jobType}
-            onChange={handleChange}
-          >
-            <option value="Full-Time">Full-Time</option>
-            <option value="Part-Time">Part-Time</option>
-            <option value="Contract">Contract</option>
-            <option value="Internship">Internship</option>
-          </select>
-        </div>
+          <div className="form-group">
+            <label htmlFor="salary">Salary</label>
+            <input
+              type="text"
+              id="salary"
+              name="salary"
+              value={formData.salary}
+              onChange={handleChange}
+              placeholder="Enter salary"
+              className={errors.salary ? 'error-input' : ''}
+            />
+            {errors.salary && <p className="error">{errors.salary}</p>}
+          </div>
 
-        <button type="submit" className="submit-btn">
-          Post Job
-        </button>
-      </form>
-    </div>
+          <div className="form-group">
+            <label htmlFor="jobType">Job Type</label>
+            <select
+              id="jobType"
+              name="jobType"
+              value={formData.jobType}
+              onChange={handleChange}
+            >
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time">Part-Time</option>
+              <option value="Contract">Contract</option>
+              <option value="Internship">Internship</option>
+            </select>
+          </div>
 
+          <button type="submit" className="submit-btn">
+            Post Job
+          </button>
+        </form>
+      </div>
     </>
   );
 };

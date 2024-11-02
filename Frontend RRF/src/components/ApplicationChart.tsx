@@ -9,7 +9,7 @@ interface ApplicationData {
 const data: ApplicationData[] = [
   { name: 'Shortlisted', value: 942 },
   { name: 'Hired', value: 25 },
-  { name: 'Rejected', value: 2452 }
+  { name: 'Rejected', value: 2452 },
 ];
 
 const COLORS = ['#0088FE', '#00C49F', '#FF8042'];

@@ -1,19 +1,19 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { ClipLoader } from 'react-spinners';
-import styles from '../styles/Logout.module.css'; 
+import styles from '../styles/Logout.module.css';
 
 const Logout: React.FC = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
-
     localStorage.removeItem('token');
 
-    document.cookie = 'token=; Max-Age=0; Path=/; Secure; HttpOnly; SameSite=Strict';
+    document.cookie =
+      'token=; Max-Age=0; Path=/; Secure; HttpOnly; SameSite=Strict';
 
     setTimeout(() => {
-      navigate('/'); 
+      navigate('/');
     }, 1500);
   }, [navigate]);
 

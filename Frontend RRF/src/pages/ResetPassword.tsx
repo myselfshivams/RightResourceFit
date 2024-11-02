@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { useNavigate,useParams } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { PulseLoader } from "react-spinners";
-import "react-toastify/dist/ReactToastify.css";
-import "../styles/Login.css";
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { PulseLoader } from 'react-spinners';
+import 'react-toastify/dist/ReactToastify.css';
+import '../styles/Login.css';
 
 const ResetPassword = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const { resetToken } = useParams();
   const [formData, setFormData] = useState({
-    newPassword: "",
-    confirmNewPassword: "",
+    newPassword: '',
+    confirmNewPassword: '',
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -23,16 +23,17 @@ const ResetPassword = () => {
   };
 
   const validateInputs = () => {
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!passwordRegex.test(formData.newPassword)) {
       toast.error(
-        "Password must be at least 8 characters, include an uppercase, lowercase, number, and special character."
+        'Password must be at least 8 characters, include an uppercase, lowercase, number, and special character.'
       );
       return false;
     }
     if (formData.newPassword !== formData.confirmNewPassword) {
-      toast.error("Passwords do not match.");
+      toast.error('Passwords do not match.');
       return false;
     }
     return true;
@@ -49,15 +50,14 @@ const ResetPassword = () => {
       setIsLoading(true);
       await axios.patch(url, data);
       setIsLoading(false);
-      toast.success("Password reset successful! Please log in.");
+      toast.success('Password reset successful! Please log in.');
       setTimeout(() => {
-        navigate("/login");
-      }, 2000); 
-      
+        navigate('/login');
+      }, 2000);
     } catch (error) {
       setIsLoading(false);
       const errorMessage =
-        (error as any).response?.data?.message || "Internal server error";
+        (error as any).response?.data?.message || 'Internal server error';
       toast.error(errorMessage);
     }
   };
@@ -76,7 +76,7 @@ const ResetPassword = () => {
             <form onSubmit={handleSubmit}>
               <div className="inputContainer">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   name="newPassword"
                   placeholder="New Password"
                   value={formData.newPassword}
@@ -85,13 +85,16 @@ const ResetPassword = () => {
                   required
                 />
                 <label className="inputLabel">New Password</label>
-                <span className="eyeIcon" onClick={() => setShowPassword((prev) => !prev)}>
+                <span
+                  className="eyeIcon"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
                   {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </span>
               </div>
               <div className="inputContainer">
                 <input
-                  type={showConfirmPassword ? "text" : "password"}
+                  type={showConfirmPassword ? 'text' : 'password'}
                   name="confirmNewPassword"
                   placeholder="Confirm New Password"
                   value={formData.confirmNewPassword}
@@ -100,7 +103,10 @@ const ResetPassword = () => {
                   required
                 />
                 <label className="inputLabel">Confirm New Password</label>
-                <span className="eyeIcon" onClick={() => setShowConfirmPassword((prev) => !prev)}>
+                <span
+                  className="eyeIcon"
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                >
                   {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
                 </span>
               </div>
@@ -112,7 +118,7 @@ const ResetPassword = () => {
                   {isLoading ? (
                     <PulseLoader color="#fff" size={10} />
                   ) : (
-                    "Reset Password"
+                    'Reset Password'
                   )}
                 </button>
               )}

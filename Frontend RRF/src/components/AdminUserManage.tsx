@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
-import AdminSidebar from "./AdminSidebar";
-import "../styles/AdminUserManage.css"
+import AdminSidebar from './AdminSidebar';
+import '../styles/AdminUserManage.css';
 
 const AdminUserManage = () => {
   type User = {
@@ -15,30 +15,33 @@ const AdminUserManage = () => {
     isDeleted: boolean;
     userStatus: string;
   };
-  
+
   const [users, setUsers] = useState<User[]>([]);
-  
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
 
   // Fetch all users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user/all-users`, {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-        });
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/user/all-users`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        );
         setUsers(data);
         setLoading(false);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
         } else {
-          setError("An unknown error occurred");
+          setError('An unknown error occurred');
         }
       }
-      
     };
 
     fetchUsers();
@@ -47,45 +50,70 @@ const AdminUserManage = () => {
   // Grant Admin Access
   const handleGrantAccess = async (id: string) => {
     try {
-      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/user/update-admin/${id}`, { isAdmin: true }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      });
-      setUsers(users.map(user => user._id === id ? { ...user, isAdmin: true } : user));
+      await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/update-admin/${id}`,
+        { isAdmin: true },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        }
+      );
+      setUsers(
+        users.map((user) =>
+          user._id === id ? { ...user, isAdmin: true } : user
+        )
+      );
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("An unknown error occurred");
+        setError('An unknown error occurred');
       }
     }
   };
 
   const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/user/delete-user/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      });
-      setUsers(users.map(user => user._id === id ? { ...user, isDeleted: true, userStatus: 'Deactivated' } : user));
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/delete-user/${id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        }
+      );
+      setUsers(
+        users.map((user) =>
+          user._id === id
+            ? { ...user, isDeleted: true, userStatus: 'Deactivated' }
+            : user
+        )
+      );
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("An unknown error occurred");
+        setError('An unknown error occurred');
       }
     }
   };
 
   const handleUngrantAccess = async (id: string) => {
     try {
-      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/user/update-admin/${id}`, { isAdmin: false }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      });
-      setUsers(users.map(user => user._id === id ? { ...user, isAdmin: false } : user));
+      await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/update-admin/${id}`,
+        { isAdmin: false },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        }
+      );
+      setUsers(
+        users.map((user) =>
+          user._id === id ? { ...user, isAdmin: false } : user
+        )
+      );
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("An unknown error occurred");
+        setError('An unknown error occurred');
       }
     }
   };
@@ -93,15 +121,25 @@ const AdminUserManage = () => {
   // Restore User
   const handleRestore = async (id: string) => {
     try {
-      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/user/restore-user/${id}`, {}, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      });
-      setUsers(users.map(user => user._id === id ? { ...user, isDeleted: false, userStatus: 'Active' } : user));
+      await axios.put(
+        `${import.meta.env.VITE_BACKEND_URL}/api/user/restore-user/${id}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        }
+      );
+      setUsers(
+        users.map((user) =>
+          user._id === id
+            ? { ...user, isDeleted: false, userStatus: 'Active' }
+            : user
+        )
+      );
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("An unknown error occurred");
+        setError('An unknown error occurred');
       }
     }
   };
@@ -113,7 +151,7 @@ const AdminUserManage = () => {
         <h1>User Management</h1>
         {loading && <p>Loading users...</p>}
         {error && <p className="text-danger">{error}</p>}
-        
+
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -128,10 +166,16 @@ const AdminUserManage = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map(user => (
+            {users.map((user) => (
               <tr key={user._id}>
                 <td>{user._id}</td>
-                <td><img src={user.imageUrl} alt={`${user.name}'s avatar`} className="user-avatar" /></td>
+                <td>
+                  <img
+                    src={user.imageUrl}
+                    alt={`${user.name}'s avatar`}
+                    className="user-avatar"
+                  />
+                </td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.phoneNumber}</td>
@@ -139,19 +183,33 @@ const AdminUserManage = () => {
                 <td>{user.userStatus}</td>
                 <td>
                   {user.isDeleted ? (
-                    <Button variant="warning" onClick={() => handleRestore(user._id)}>Restore</Button>
+                    <Button
+                      variant="warning"
+                      onClick={() => handleRestore(user._id)}
+                    >
+                      Restore
+                    </Button>
                   ) : (
                     <>
                       {!user.isAdmin ? (
-                        <Button variant="success" onClick={() => handleGrantAccess(user._id)}>
+                        <Button
+                          variant="success"
+                          onClick={() => handleGrantAccess(user._id)}
+                        >
                           Grant Access
                         </Button>
                       ) : (
-                        <Button variant="info" onClick={() => handleUngrantAccess(user._id)}>
+                        <Button
+                          variant="info"
+                          onClick={() => handleUngrantAccess(user._id)}
+                        >
                           Remove Access
                         </Button>
                       )}
-                      <Button variant="danger" onClick={() => handleDelete(user._id)}>
+                      <Button
+                        variant="danger"
+                        onClick={() => handleDelete(user._id)}
+                      >
                         Delete
                       </Button>
                     </>
@@ -167,4 +225,3 @@ const AdminUserManage = () => {
 };
 
 export default AdminUserManage;
-

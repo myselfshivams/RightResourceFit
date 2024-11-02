@@ -1,84 +1,83 @@
 .post-job-page {
-    padding: 50px;
-    max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    background-color: #fff;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    color: #4a148c;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .job-form .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .job-form label {
-    display: block;
-    font-size: 1rem;
-    color: #4a148c;
-    margin-bottom: 8px;
-    font-weight: 500;
-  }
-  
-  .job-form input,
-  .job-form textarea,
-  .job-form select {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 4px;
-    border: 1px solid #d1c4e9;
-    background-color: #f3e5f5;
-  }
-  
-  .job-form input:focus,
-  .job-form textarea:focus,
-  .job-form select:focus {
-    outline: none;
-    border: 1px solid #7b1fa2;
-    background-color: #ede7f6;
-  }
-  
-  textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  
-  .error-input {
-    border-color: #e53935;
-    background-color: #ffebee;
-  }
-  
-  .error {
-    color: #e53935;
-    font-size: 0.875rem;
-    margin-top: 5px;
-  }
-  
-  .submit-btn {
-    background-color: #4a148c;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-btn:hover {
-    background-color: #6a1b9a;
-  }
-  
-  .submit-btn:focus {
-    outline: none;
-  }
-  
+  padding: 50px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #4a148c;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.job-form .form-group {
+  margin-bottom: 20px;
+}
+
+.job-form label {
+  display: block;
+  font-size: 1rem;
+  color: #4a148c;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.job-form input,
+.job-form textarea,
+.job-form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #d1c4e9;
+  background-color: #f3e5f5;
+}
+
+.job-form input:focus,
+.job-form textarea:focus,
+.job-form select:focus {
+  outline: none;
+  border: 1px solid #7b1fa2;
+  background-color: #ede7f6;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.error-input {
+  border-color: #e53935;
+  background-color: #ffebee;
+}
+
+.error {
+  color: #e53935;
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  background-color: #4a148c;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #6a1b9a;
+}
+
+.submit-btn:focus {
+  outline: none;
+}

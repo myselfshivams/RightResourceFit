@@ -1,107 +1,105 @@
 /* Main container layout */
 .admin-user-manage-container {
-    display: flex;
-  }
-  
-  /* Main content area, positioned right of the sidebar */
-  .admin-user-manage-content {
-    flex: 1;
-    padding: 20px;
-    margin-left: 260px; /* Adjust to match the sidebar's width */
-  }
-
-  .user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-
-  @media (max-width: 869.60px) {
-    .admin-user-manage-content {
-        margin-left: 80px;
-        width: calc(100% - 80px);
-    }
+  display: flex;
 }
-  
-  /* Page title */
-  .admin-user-manage-content h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  /* Loading message */
-  .admin-user-manage-content p {
-    font-size: 16px;
-  }
-  
-  /* Error message styling */
-  .text-danger {
-    color: red;
-    margin-bottom: 10px;
-  }
-  
-  /* Table styling */
-  .table {
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  /* Individual user row styling */
-  .table tbody tr {
-    transition: background-color 0.3s;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #f5f5f5; /* Light gray on hover */
-  }
-  
-  /* Action buttons container */
-  .table td {
-    text-align: center; /* Center action buttons */
-  }
-  
-  /* Individual button styling */
-  .btn {
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  /* Specific button styles */
-  .btn-success {
-    background-color: #542eb3;
-    color: white;
-    border: none;
-    margin-right: 4px;
-  }
 
-  .btn-info {
-    background-color: #542eb3;
-    color: white;
-    border: none;
-    margin-right: 4px;
-  }
-  
-  .btn-danger {
-    background-color: red;
-    color: white;
-    border: none;
-  }
+/* Main content area, positioned right of the sidebar */
+.admin-user-manage-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 260px; /* Adjust to match the sidebar's width */
+}
 
-  .btn-danger:hover{
-    background-color: red;
-  }
-  
-  .btn-warning {
-    background-color: orange;
-    color: white;
-    border: none;
-  }
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-  .btn-warning:hover{
-    background-color: orange;
+@media (max-width: 869.6px) {
+  .admin-user-manage-content {
+    margin-left: 80px;
+    width: calc(100% - 80px);
   }
-  
+}
+
+/* Page title */
+.admin-user-manage-content h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Loading message */
+.admin-user-manage-content p {
+  font-size: 16px;
+}
+
+/* Error message styling */
+.text-danger {
+  color: red;
+  margin-bottom: 10px;
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Individual user row styling */
+.table tbody tr {
+  transition: background-color 0.3s;
+}
+
+.table tbody tr:hover {
+  background-color: #f5f5f5; /* Light gray on hover */
+}
+
+/* Action buttons container */
+.table td {
+  text-align: center; /* Center action buttons */
+}
+
+/* Individual button styling */
+.btn {
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Specific button styles */
+.btn-success {
+  background-color: #542eb3;
+  color: white;
+  border: none;
+  margin-right: 4px;
+}
+
+.btn-info {
+  background-color: #542eb3;
+  color: white;
+  border: none;
+  margin-right: 4px;
+}
+
+.btn-danger {
+  background-color: red;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: red;
+}
+
+.btn-warning {
+  background-color: orange;
+  color: white;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: orange;
+}

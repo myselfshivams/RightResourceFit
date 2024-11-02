@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import Sidebar from "../components/UserSidebar";
-import styles from "../styles/UserSettings.module.css"; 
+import React, { useState } from 'react';
+import Sidebar from '../components/UserSidebar';
+import styles from '../styles/UserSettings.module.css';
 
 const UserSettings: React.FC = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [phone, setLinkedinId] = useState("");
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [phone, setLinkedinId] = useState('');
 
-
-  const handleProfileImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleProfileImageChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -26,7 +27,7 @@ const UserSettings: React.FC = () => {
       profileImage,
       email,
       username,
-      phone
+      phone,
     });
   };
 
@@ -34,10 +35,14 @@ const UserSettings: React.FC = () => {
     <div className={styles.AddPage}>
       <Sidebar />
       <div className={styles.addPage}>
-        <h1 className={styles.pageHeading}>Settings <span>Page</span></h1>
+        <h1 className={styles.pageHeading}>
+          Settings <span>Page</span>
+        </h1>
         <form onSubmit={handleSubmit} className={styles.formContainer}>
           <div className={styles.formGroup}>
-            <label htmlFor="profileImage" className={styles.inputLabel}>Profile Image:</label>
+            <label htmlFor="profileImage" className={styles.inputLabel}>
+              Profile Image:
+            </label>
             <input
               type="file"
               id="profileImage"
@@ -45,10 +50,18 @@ const UserSettings: React.FC = () => {
               onChange={handleProfileImageChange}
               className={styles.inputField}
             />
-            {profileImage && <img src={profileImage} alt="Profile Preview" className={styles.profileImage} />}
+            {profileImage && (
+              <img
+                src={profileImage}
+                alt="Profile Preview"
+                className={styles.profileImage}
+              />
+            )}
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="username" className={styles.inputLabel}>User Name:</label>
+            <label htmlFor="username" className={styles.inputLabel}>
+              User Name:
+            </label>
             <input
               type="text"
               id="name"
@@ -59,7 +72,9 @@ const UserSettings: React.FC = () => {
             />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.inputLabel}>Email:</label>
+            <label htmlFor="email" className={styles.inputLabel}>
+              Email:
+            </label>
             <input
               type="text"
               id="email"
@@ -70,10 +85,10 @@ const UserSettings: React.FC = () => {
             />
           </div>
 
-          
-
           <div className={styles.formGroup}>
-            <label htmlFor="linkedinId" className={styles.inputLabel}>Phone Number:</label>
+            <label htmlFor="linkedinId" className={styles.inputLabel}>
+              Phone Number:
+            </label>
             <input
               type="text"
               id="phone"
@@ -84,7 +99,9 @@ const UserSettings: React.FC = () => {
             />
           </div>
 
-          <button type="submit" className={styles.submitButton}>Save Changes</button>
+          <button type="submit" className={styles.submitButton}>
+            Save Changes
+          </button>
         </form>
       </div>
     </div>

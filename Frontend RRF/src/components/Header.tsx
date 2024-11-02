@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaSearch, FaBell, FaUser } from 'react-icons/fa'; 
+import { FaSearch, FaBell, FaUser } from 'react-icons/fa';
 import '../styles/Header.css';
 
 const Header: React.FC = () => {
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
         </div>
 
         <div className="profile-icon">
-          <FaUser size={40} /> 
+          <FaUser size={40} />
         </div>
       </div>
     </div>

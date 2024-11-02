@@ -35,29 +35,46 @@ const NavBar: React.FC = () => {
       <div id="main-nav-content" className={loaded ? styles.loaded : ''}>
         <nav className={styles.navbar}>
           <div className={styles['navbar-container']}>
-          <img
-  src={logo}
-  alt="logo"
-  style={{ width: '50px', height: 'auto' }} 
-className='logo'
-/>
+            <img
+              src={logo}
+              alt="logo"
+              style={{ width: '50px', height: 'auto' }}
+              className="logo"
+            />
             <div className={styles['navbar-logo']}>
               <h2>RightResourceFit</h2>
             </div>
-            <div className={`${styles['navbar-links']} ${isOpen ? styles.active : ''}`}>
-              <Link to="/" className={`${styles['navbar-link']} ${location.pathname === '/' ? styles.activeLink : ''}`}>
+            <div
+              className={`${styles['navbar-links']} ${isOpen ? styles.active : ''}`}
+            >
+              <Link
+                to="/"
+                className={`${styles['navbar-link']} ${location.pathname === '/' ? styles.activeLink : ''}`}
+              >
                 Home
               </Link>
-              <Link to="/about" className={`${styles['navbar-link']} ${location.pathname === '/about' ? styles.activeLink : ''}`}>
+              <Link
+                to="/about"
+                className={`${styles['navbar-link']} ${location.pathname === '/about' ? styles.activeLink : ''}`}
+              >
                 About
               </Link>
-              <Link to="/services" className={`${styles['navbar-link']} ${location.pathname === '/services' ? styles.activeLink : ''}`}>
+              <Link
+                to="/services"
+                className={`${styles['navbar-link']} ${location.pathname === '/services' ? styles.activeLink : ''}`}
+              >
                 Services
               </Link>
-              <Link to="/contact" className={`${styles['navbar-link']} ${location.pathname === '/contact' ? styles.activeLink : ''}`}>
+              <Link
+                to="/contact"
+                className={`${styles['navbar-link']} ${location.pathname === '/contact' ? styles.activeLink : ''}`}
+              >
                 Contact
               </Link>
-              <Link to="/teams" className={`${styles['navbar-link']} ${location.pathname === '/teams' ? styles.activeLink : ''}`}>
+              <Link
+                to="/teams"
+                className={`${styles['navbar-link']} ${location.pathname === '/teams' ? styles.activeLink : ''}`}
+              >
                 Team
               </Link>
             </div>
@@ -67,7 +84,12 @@ className='logo'
                   <button className={styles['login-button']}>Dashboard</button>
                 </Link>
                 <Link to="/logout">
-                <button onClick={handleLogout} className={styles['login-button']}>Logout</button>
+                  <button
+                    onClick={handleLogout}
+                    className={styles['login-button']}
+                  >
+                    Logout
+                  </button>
                 </Link>
               </>
             ) : (
@@ -91,16 +113,34 @@ className='logo'
         <Link to="/" className={location.pathname === '/' ? styles.active : ''}>
           <FaHome className={styles.footerNavIcon} />
         </Link>
-        <Link to="/services" className={location.pathname === '/services' ? styles.active : ''}>
+        <Link
+          to="/services"
+          className={location.pathname === '/services' ? styles.active : ''}
+        >
           <MdOutlineMiscellaneousServices className={styles.footerNavIcon} />
         </Link>
-        <Link to="/contact" className={location.pathname === '/contact' ? styles.active : ''}>
+        <Link
+          to="/contact"
+          className={location.pathname === '/contact' ? styles.active : ''}
+        >
           <RiContactsBook2Fill className={styles.footerNavIcon} />
         </Link>
-        <Link to="/teams" className={location.pathname === '/teams' ? styles.active : ''}>
+        <Link
+          to="/teams"
+          className={location.pathname === '/teams' ? styles.active : ''}
+        >
           <FaLaptopCode className={styles.footerNavIcon} />
         </Link>
-        <Link to={role ? (role === 'admin' ? '/dashboard' : '/user-dashboard') : '/login'} className={location.pathname === '/login' ? styles.active : ''}>
+        <Link
+          to={
+            role
+              ? role === 'admin'
+                ? '/dashboard'
+                : '/user-dashboard'
+              : '/login'
+          }
+          className={location.pathname === '/login' ? styles.active : ''}
+        >
           <MdOutlineLogin className={styles.footerNavIcon} />
         </Link>
       </div>
