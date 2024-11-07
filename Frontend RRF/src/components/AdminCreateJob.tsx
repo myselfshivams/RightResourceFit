@@ -1,14 +1,38 @@
-import AdminSidebar from "./AdminSidebar";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import axios from "axios";
-import "../styles/AdminCreateJob.css";
+import AdminSidebar from './AdminSidebar';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from 'axios';
+import '../styles/AdminCreateJob.css';
+
+type JobDetails = {
+  title: string;
+  description: string;
+  location: string;
+  skills: string[];
+  employmentType: string[];
+  workingSchedule: string[];
+  salaryAmount: number;
+  salaryType: string;
+  salaryFrequency: string;
+  isHiringMultiple: boolean;
+};
+
+const CreateJobModal = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
+  if (!show) return null;
+  return (
+    <div className="modal_Overlay">
+      <div className="Modal">
+        <h2>Job Created Successfully!</h2>
+        <button onClick={onClose}>Ok</button>
+      </div>
+    </div>
+  );
+};
 
 const AdminCreateJob = () => {
   const navigate = useNavigate();
 
-  // Initial form state
-  const initialFormState = {
+  const initialFormState: JobDetails = {
     title: "",
     description: "",
     location: "",
@@ -151,8 +175,7 @@ const AdminCreateJob = () => {
           },
         }
       );
-      alert("Job created successfully!");
-      navigate("/admin/manageJob");
+      setShowModal(true); // Show success modal
     } catch (error) {
       console.error('Error creating job:', error);
       alert('Failed to create job. Please try again.');
