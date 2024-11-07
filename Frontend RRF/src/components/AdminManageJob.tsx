@@ -1,8 +1,8 @@
-import AdminSidebar from './AdminSidebar';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import '../styles/AdminManageJob.css';
+import AdminSidebar from "./AdminSidebar";
+import { Link} from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import "../styles/AdminManageJob.css";
 
 interface Salary {
   amount: number;
@@ -26,6 +26,9 @@ const AdminManageJob = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [currentProduct, setCurrentProduct] = useState<Job | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState<"delete" | "update" | null>(null);
+  const [jobToDelete, setJobToDelete] = useState<string | null>(null);
   // const navigate = useNavigate();
 
   // Fetch jobs from API
@@ -152,64 +155,53 @@ const AdminManageJob = () => {
     });
   };
 
-  const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
+
+  const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!currentProduct) return;
-
-    const confirmEditing = window.confirm('Do you really want to edit it?');
+  
+    const confirmEditing = window.confirm("Do you really want to edit it?");
     if (confirmEditing) {
       try {
-        const response = await axios.put(
-          `${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings/${currentProduct._id}`,
-          currentProduct,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-          }
-        );
-
+        const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings/${currentProduct._id}`, currentProduct, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+  
         // Update the job in the local `jobs` state to reflect changes instantly
         setJobs((prevJobs) =>
+          prevJobs.map((job) => job._id === currentProduct._id ? response.data : job)
+        );
+
+         // Update filteredJobs to reflect changes without reloading
+         setFilteredJobs((prevJobs) =>
           prevJobs.map((job) =>
             job._id === currentProduct._id ? response.data : job
           )
         );
-
-        // Update filteredJobs to reflect changes without reloading
-        setFilteredJobs((prevJobs) =>
-          prevJobs.map((job) =>
-            job._id === currentProduct._id ? response.data : job
-          )
-        );
-
-        alert('Job updated successfully!');
+  
+        alert("Job updated successfully!");
         setIsEditing(false); // Exit editing mode
       } catch (error) {
         console.error('Error updating job:', error);
         alert('Failed to update job. Please try again.');
       }
-    } else {
-      setIsEditing(false);
     }
   };
+  
 
   // Delete job function
   const handleDelete = async (id: string) => {
-    const confirmDelete = window.confirm(
-      'Are you sure you want to delete this job?'
-    );
+    const confirmDelete = window.confirm('Are you sure you want to delete this job?');
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        }
-      );
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
       setJobs(jobs.filter((job) => job._id !== id));
       alert('Job deleted successfully.');
     } catch (error) {
@@ -294,8 +286,10 @@ const AdminManageJob = () => {
           )}
         </div>
       </div>
+      
+
       {isEditing && currentProduct && (
-        <div className="content modal-overlay">
+        <div className="modal-overlay">
           <div className="modal-container">
             <span
               className="modal-close-btn"
@@ -409,71 +403,73 @@ const AdminManageJob = () => {
                   </label>
                 </div>
 
-                <div className="salary-inputs">
-                  <div className="form-group">
-                    <label>Amount you want to pay</label>
-                    <input
-                      type="number"
-                      name="salaryAmount"
-                      value={currentProduct.salary.amount}
-                      onChange={handleChange}
-                      placeholder="Salary Amount"
-                      required
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>How you want to pay</label>
-                    <select
-                      name="salaryFrequency"
-                      value={currentProduct.salary.frequency}
-                      onChange={handleSalaryFrequencyChange}
-                      required
-                    >
-                      <option value="">Choose Salary Frequency</option>
-                      <option value="Yearly">Yearly</option>
-                      <option value="Monthly">Monthly</option>
-                      <option value="Weekly">Weekly</option>
-                    </select>
-                  </div>
-                </div>
-                <label className="negotiable-checkbox">
-                  <input
-                    type="checkbox"
-                    name="isSalaryNegotiable"
-                    onChange={handleChange}
-                  />
-                  Salary is negotiable
-                </label>
-              </div>
+              <div className="salary-inputs">
               <div className="form-group">
-                <label className="checkbox-container">
-                  <input
-                    type="checkbox"
-                    checked={currentProduct.isHiringMultiple}
-                    onChange={(e) =>
-                      setCurrentProduct((prev) =>
-                        prev
-                          ? { ...prev, isHiringMultiple: e.target.checked }
-                          : prev
-                      )
-                    }
-                  />
-                  Yes, I am hiring multiple candidates
-                </label>
-              </div>
-              <button type="submit" className="update-button">
-                Update Job
-              </button>
-              <button
-                type="submit"
-                className="cancel-btn"
-                onClick={() => setIsEditing(false)}
+              <label>Amount you want to pay</label>
+              <input
+                type="number"
+                name="salaryAmount"
+                value={currentProduct.salary.amount}
+                onChange={handleChange}
+                placeholder="Salary Amount"
+                required
+              />
+            </div>
+               <div className="form-group">
+              <label>How you want to pay</label>
+              <select
+                name="salaryFrequency"
+                value={currentProduct.salary.frequency}
+                onChange={handleSalaryFrequencyChange}
+                required
               >
-                Cancel
-              </button>
-            </form>
-          </div>
+                <option value="">Choose Salary Frequency</option>
+                    <option value="Yearly">Yearly</option>
+                    <option value="Monthly">Monthly</option>
+                    <option value="Weekly">Weekly</option>
+              </select>
+              </div>
+            </div>
+              <label className="negotiable-checkbox">
+             <input
+                   type="checkbox"
+                   name="isSalaryNegotiable"
+                   onChange={handleChange}
+                 />
+                Salary is negotiable
+               </label> 
+            </div>
+            <div className="form-group">
+              <label className="checkbox-container">
+              <input
+                type="checkbox"
+                checked={currentProduct.isHiringMultiple}
+                onChange={(e) => setCurrentProduct((prev) => (prev ? { ...prev, isHiringMultiple: e.target.checked } : prev))}
+              />Yes, I am hiring multiple candidates
+              </label>
+            </div>
+            <button type="submit" className="update-button">Update Job</button>
+            <button type="submit" className="cancel-btn" onClick={() => setIsEditing(false)}>Cancel</button>
+          </form>
         </div>
+        </div>
+      )}
+      {showModal && modalType === "delete" && (
+        <DeleteUpdateModal
+          // title="Delete Job"
+          message="Are you sure you want to delete this job?"
+          onConfirm={confirmDelete}
+          onCancel={() => setShowModal(false)}
+        />
+      )}
+
+      {showModal && modalType === "update" && (
+        <DeleteUpdateModal
+          // title="Update Job"
+          message="Do you really want to update this job?"
+          onConfirm={confirmUpdate}
+          onCancel={() => setShowModal(false)}
+        />
       )}
     </div>
   );

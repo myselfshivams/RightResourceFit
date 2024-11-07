@@ -110,41 +110,55 @@
   background-color: #e74c3c;
 }
 
-/* Modal background overlay */
+  /* Modal background overlay */
 .modal-overlay {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 90vw;
-  height: 10vh;
-  background: #f9f9f9; /* Semi-transparent black background */
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent black background */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(4px); /* Blurs the background */
+  backdrop-filter: blur(4px); /* Optional blur effect */
 }
 
 /* Modal container */
 .modal-container {
   background: #fff;
-  padding: 26px;
-  border-radius: 8px;
+  padding: 20px;
+  /* border-radius: 8px; */
   width: 90%;
-  max-width: 600px;
+  max-width: 610px;
+  max-height: 100vh; /* Limit height */
+  overflow-y: auto; /* Allow vertical scroll if content overflows */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1001;
 }
 
 /* Close button */
-.modal-close-btn {
+.modal-close-btn,
+.close-modal {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 18px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
   cursor: pointer;
   color: #666;
+  z-index: 1002;
+}
+
+/* Content within the modal */
+.modal-content {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 100%;
 }
 
 /* Blur effect on main page when modal is open */
@@ -153,22 +167,6 @@
   pointer-events: none;
 }
 
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-height: 40%;
-  /* overflow-y: auto; */
-}
-
-.close-modal {
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  float: right;
-}
 
 /* .manage-jobs-content {
    filter: blur(5px); /* Apply blur effect when modal is open */
