@@ -1,0 +1,5 @@
+
+User-agent: *
+Disallow: /private
+Allow: /
+Sitemap: https://team4.itshivam.me/sitemap.xml
