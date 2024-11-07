@@ -13,6 +13,7 @@
 
 .manage-jobs-content {
   margin-left: 240px;
+  position: relative;
   flex: 1;
   padding: 20px;
 }
@@ -24,6 +25,9 @@
 
 .create-job-btn {
   padding: 8px 12px;
+  position: absolute;
+  bottom: -40px;
+  right: 20px;
   background-color: #542eb3; /* Button color */
   color: #fff;
   text-decoration: none;
