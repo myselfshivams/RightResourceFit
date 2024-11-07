@@ -19,10 +19,10 @@ import UserJobs from './pages/UserJob';
 import UserApplications from './pages/UserApplications';
 import UserSearch from './pages/search';
 import UserManageApplications from './pages/UserManageApplications';
-
+import { metadata } from './metadata';
 import AdminDashboard from './pages/AdminDashboard';
 // import Notification from "./pages/notifications";
-
+import { Helmet } from 'react-helmet';
 import AdminManageJob from './components/AdminManageJob';
 import AdminCreateJob from './components/AdminCreateJob';
 import AdminUserManage from './components/AdminUserManage';
@@ -32,6 +32,25 @@ import AdminApplication from './pages/AdminApplication';
 function App() {
   return (
     <>
+          <Helmet>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="keywords" content={metadata.keywords.join(', ')} />
+        <meta name="author" content={metadata.author} />
+        <link rel="canonical" href={metadata.url} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={metadata.url} />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:image" content={metadata.image} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={metadata.url} />
+        <meta name="twitter:title" content={metadata.title} />
+        <meta name="twitter:description" content={metadata.description} />
+        <meta name="twitter:image" content={metadata.image} />
+      </Helmet>
       <BrowserRouter>
         <Routes>
           <Route

@@ -4,14 +4,38 @@ import { useState } from 'react';
 import axios from 'axios';
 import '../styles/AdminCreateJob.css';
 
+type JobDetails = {
+  title: string;
+  description: string;
+  location: string;
+  skills: string[];
+  employmentType: string[];
+  workingSchedule: string[];
+  salaryAmount: number;
+  salaryType: string;
+  salaryFrequency: string;
+  isHiringMultiple: boolean;
+};
+
+const CreateJobModal = ({ show, onClose }: { show: boolean; onClose: () => void }) => {
+  if (!show) return null;
+  return (
+    <div className="modal_Overlay">
+      <div className="Modal">
+        <h2>Job Created Successfully!</h2>
+        <button onClick={onClose}>Ok</button>
+      </div>
+    </div>
+  );
+};
+
 const AdminCreateJob = () => {
   const navigate = useNavigate();
 
-  // Initial form state
-  const initialFormState = {
-    title: '',
-    description: '',
-    location: '',
+  const initialFormState: JobDetails = {
+    title: "",
+    description: "",
+    location: "",
     skills: [],
     employmentType: [],
     workingSchedule: [],
@@ -21,7 +45,9 @@ const AdminCreateJob = () => {
     isHiringMultiple: false,
   };
 
-  const [jobDetails, setJobDetails] = useState(initialFormState);
+  const [jobDetails, setJobDetails] = useState<JobDetails>(initialFormState);
+  const [showModal, setShowModal] = useState(false);
+
 
   // Function to handle input changes
   const handleChange = (
@@ -39,17 +65,76 @@ const AdminCreateJob = () => {
   };
 
   // Function to handle multiple selection checkboxes
+  // const handleMultiSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value, checked } = e.target;
+  //   setJobDetails((prevDetails) => ({
+  //     ...prevDetails,
+  //     [name]: checked
+  //       ? [...(prevDetails as any)[name], value]
+  //       : (prevDetails as any)[name].filter((item: string) => item !== value),
+  //   }));
+  // };
+
   const handleMultiSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, checked } = e.target;
+
     setJobDetails((prevDetails) => ({
       ...prevDetails,
       [name]: checked
-        ? [...(prevDetails as any)[name], value]
-        : (prevDetails as any)[name].filter((item: string) => item !== value),
+        ? [...(prevDetails[name as keyof JobDetails] as string[]), value]
+        : (prevDetails[name as keyof JobDetails] as string[]).filter((item) => item !== value),
     }));
   };
 
   // Submit form function
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const {
+  //     title,
+  //     description,
+  //     location,
+  //     skills,
+  //     employmentType,
+  //     workingSchedule,
+  //     salaryAmount,
+  //     salaryType,
+  //     salaryFrequency,
+  //     isHiringMultiple,
+  //   } = jobDetails;
+
+  //   const salary = {
+  //     amount: salaryAmount,
+  //     type: salaryType,
+  //     frequency: salaryFrequency,
+  //   };
+
+  //   try {
+  //     await axios.post(
+  //       `${import.meta.env.VITE_BACKEND_URL}/api/jobs/postings`,
+  //       {
+  //         title,
+  //         description,
+  //         location,
+  //         skills,
+  //         employmentType,
+  //         workingSchedule,
+  //         salary,
+  //         isHiringMultiple,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //         },
+  //       }
+  //     );
+  //     alert("Job created successfully!");
+  //     navigate("/admin/manageJob");
+  //   } catch (error) {
+  //     console.error("Error creating job:", error);
+  //     alert("Failed to create job. Please try again.");
+  //   }
+  // };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const {
@@ -90,12 +175,16 @@ const AdminCreateJob = () => {
           },
         }
       );
-      alert('Job created successfully!');
-      navigate('/admin/manageJob');
+      setShowModal(true); // Show success modal
     } catch (error) {
       console.error('Error creating job:', error);
       alert('Failed to create job. Please try again.');
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    navigate("/admin/manageJob"); // Navigate after closing modal
   };
 
   // Clear form function
@@ -270,14 +359,14 @@ const AdminCreateJob = () => {
                 </div>
               </div>
 
-              <label className="negotiable-checkbox">
+              {/* <label className="negotiable-checkbox">
                 <input
                   type="checkbox"
                   name="isSalaryNegotiable"
                   onChange={handleChange}
                 />
                 Salary is negotiable
-              </label>
+              </label> */}
             </div>
 
             <div className="HiringMultiple">
@@ -298,7 +387,9 @@ const AdminCreateJob = () => {
           </form>
         </div>
       </div>
+      <CreateJobModal show={showModal} onClose={closeModal} />
     </div>
+    
   );
 };
 
