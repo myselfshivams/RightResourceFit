@@ -36,16 +36,40 @@ const getApplicationById = asyncHandler(async (req, res) => {
 
 // @desc    Get all applications for an applicant or job
 // @route   GET /applications
+// @desc    Get all applications with job and applicant details
+// @route   GET /applications
 const getApplications = asyncHandler(async (req, res) => {
   const { applicantID, jobID } = req.query;
   let filter = {};
-
-  if (applicantID) filter.applicantID = applicantID;
-  if (jobID) filter.jobID = jobID;
-
-  const applications = await Application.find(filter);
-  res.json(applications);
+  
+  try {
+    console.log("ss");  // Check if the function is reached
+    
+    if (applicantID) filter.applicantID = applicantID;
+    if (jobID) filter.jobID = jobID;
+    
+    const applications = await Application.find(filter)
+      .populate({
+        path: 'jobID',
+        select: 'title description location skills employmentType workingSchedule salary isHiringMultiple isActive postedBy createdAt updatedAt'
+      })
+      .populate({
+        path: 'applicantID',
+        select: '-password', // Exclude the password field
+      });
+    
+    res.json(applications);
+  } catch (error) {
+    console.error("Error in getApplications:", error);
+    res.status(500).json({
+      title: "Application Retrieval Error",
+      message: error.message || "An error occurred while retrieving applications."
+    });
+  }
 });
+
+
+
 
 // @desc    Update application status
 // @route   PUT /applications/:id
