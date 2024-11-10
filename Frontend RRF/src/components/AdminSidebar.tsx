@@ -164,9 +164,9 @@ const Sidebar: React.FC = () => {
           <FaUsers className={styles.icon} />
         </a>
         <a
-          onClick={() => navigate('/admin/notifications')}
+          onClick={() => navigate('/admin/manageProfile')}
           className={
-            window.location.pathname === '/admin/notifications'
+            window.location.pathname === '/admin/manageProfile'
               ? styles.active
               : ''
           }
