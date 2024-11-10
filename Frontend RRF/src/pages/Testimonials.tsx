@@ -10,19 +10,19 @@ interface TestimonialItem {
 
 const testimonialData: TestimonialItem[] = [
   {
-    name: 'Shivam Singh',
-    role: 'HR',
-    testimonial:
-      "Right Resource Fit has streamlined our hiring process! It's user-friendly and saves us so much time.",
-    avatarUrl: '/assets/uxer avtar/WhatsApp Image 2023-08-27 at 07.48.31.png',
-    rating: 5,
-  },
-  {
     name: 'Pranav Gupta',
     role: 'Recruitment Specialist',
     testimonial:
       'A game changer! The analytics and tracking features have improved our recruitment efficiency significantly.',
     avatarUrl: '/assets/uxer avtar/ai-generated-8772393_1280.png',
+    rating: 5,
+  },
+  {
+    name: 'Shivam Singh',
+    role: 'HR',
+    testimonial:
+      "Right Resource Fit has streamlined our hiring process! It's user-friendly and saves us so much time.",
+    avatarUrl: '/assets/uxer avtar/WhatsApp Image 2023-08-27 at 07.48.31.png',
     rating: 5,
   },
   {

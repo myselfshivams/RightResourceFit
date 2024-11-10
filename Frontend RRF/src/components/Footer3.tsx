@@ -61,16 +61,16 @@ const Footer: React.FC = () => {
         <div className={styles.socialColumn}>
           <h4>Social Links</h4>
           <div className={styles.socialLinks}>
-            <a href="mailto:contact@itshivam.me" aria-label="Email">
+            <a href="mailto:contact@rightresourcefit.me" aria-label="Email">
               <FaEnvelope className={styles.icon} />
             </a>
             <a
-              href="https://www.instagram.com/shivamss.pvt"
+              href="https://www.instagram.com/"
               aria-label="Instagram"
             >
               <FaInstagram className={styles.icon} />
             </a>
-            <a href="https://github.com/myselfshivams" aria-label="GitHub">
+            <a href="https://github.com/" aria-label="GitHub">
               <FaGithub className={styles.icon} />
             </a>
           </div>
