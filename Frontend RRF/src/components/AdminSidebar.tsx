@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   FaHome,
   FaUsers,
-  FaBell,
+  FaUserEdit,
   FaCog,
   FaFileAlt,
   FaSignOutAlt,
@@ -101,15 +101,15 @@ const Sidebar: React.FC = () => {
             {!collapsed && <span>All Appilications</span>}
           </a>
           <a
-            onClick={() => navigate('/admin/notifications')}
+            onClick={() => navigate('/admin/manageProfile')}
             className={`${styles.navItem} ${
-              window.location.pathname === '/admin/notifications'
+              window.location.pathname === '/admin/manageProfile'
                 ? styles.active
                 : ''
             }`}
           >
-            <FaBell className={styles.icon} />
-            {!collapsed && <span>Notifications</span>}
+            <FaUserEdit className={styles.icon} />
+            {!collapsed && <span>Manage Profile</span>}
           </a>
           <a onClick={handleLogoutClick} className={styles.navItem}>
             <FaSignOutAlt className={styles.icon} />
@@ -171,7 +171,7 @@ const Sidebar: React.FC = () => {
               : ''
           }
         >
-          <FaBell className={styles.icon} />
+          <FaUserEdit className={styles.icon} />
         </a>
         <a
           onClick={handleLogoutClick}

@@ -1,0 +1,265 @@
+
+
+  .userAvatar{
+    width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline;
+  gap: 4px;
+  text-align: right;
+  margin-bottom: -24px;
+  }
+
+.Application {
+  margin-left: 250px; /* Sidebar width offset */
+  padding: 20px;
+}
+
+.H2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.tble {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.tble th, .tble td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tble th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+  font-size: larger;
+}
+
+.tble tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.tble tr:hover {
+  background-color: #e2e2e2;
+}
+
+.tble td button {
+  background-color: #542eb3;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.tble td button:hover {
+  background-color: #542eb3;
+}
+
+/* Modal Background */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+  background: #ffffff;
+  width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  max-width: 90%;
+}
+
+/* Header */
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #333333;
+}
+
+/* User Image */
+.userImg {
+  width: 100px;
+  height: 100px;
+  margin-left: 130px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Paragraph styling */
+.modal-content p {
+  margin: 10px 0;
+  font-size: 1em;
+  color: #555555;
+}
+
+/* Strong text */
+.modal-content strong {
+  color: #333333;
+  font-weight: bold;
+}
+
+/* Links */
+.modal-content a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.modal-content a:hover {
+  text-decoration: underline;
+}
+
+/* Label and Select */
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-weight: bold;
+  color:#333333;
+  margin: 15px 0 10px;
+}
+
+/* Select dropdown */
+select {
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 100%;
+  border: 1px solid #cccccc;
+  margin-top: 5px;
+  color: #333;
+}
+
+/* Button styling */
+.Updtebutn {
+  margin-top: 20px;
+  margin-bottom: 36px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Update Status button */
+.Updtebutn {
+  background-color: #542eb3;
+  color: white;
+  margin-right: 10px;
+}
+
+.Updtebutn:hover {
+  background-color: #542eb3;
+}
+
+/* Close button */
+.Cancelbutn {
+  background-color: red;
+  color: white;
+}
+
+.Cancelbutn:hover {
+  background-color: red;
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .userImg {
+    width: 60px;
+    height: 60px;
+  }
+
+  .modal-content h3 {
+    font-size: 1.3em;
+  }
+
+  .modal-content p {
+    font-size: 0.9em;
+  }
+}
+
+.search-container input{
+  width: 49%;
+  padding: 10px;
+  /* margin-bottom: 20px; */
+  border-radius: 5px;
+}
+
+/* Add the base styles for the select */
+select {
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Style for different statuses */
+.applied {
+  color: blue;
+}
+
+.reviewed {
+  color: yellow;
+}
+
+.accepted {
+  color: green;
+}
+
+.rejected {
+  
+  color: red;
+}
+
+/* Style for the dropdown options */
+option {
+  padding: 5px;
+}
+
+
+.modeloverlay{
+   position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modl {
+  background: white;
+  padding: 2rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modl button {
+  margin-top: 15px;
+}

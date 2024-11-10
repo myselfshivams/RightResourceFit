@@ -26,8 +26,8 @@ import { Helmet } from 'react-helmet';
 import AdminManageJob from './components/AdminManageJob';
 import AdminCreateJob from './components/AdminCreateJob';
 import AdminUserManage from './components/AdminUserManage';
-import AdminNotification from './pages/AdminNotification';
 import AdminApplication from './pages/AdminApplication';
+import AdminManageProfile from './pages/AdminManageProfile';
 
 function App() {
   return (
@@ -148,10 +148,10 @@ function App() {
             }
           />
           <Route
-            path="/admin/notifications"
+            path="/admin/manageProfile"
             element={
               <AdminProtectedRoute>
-                <AdminNotification />
+                <AdminManageProfile />
               </AdminProtectedRoute>
             }
           />
