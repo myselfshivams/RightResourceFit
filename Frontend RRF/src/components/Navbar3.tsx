@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaHome, FaLaptopCode } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
 import { RiContactsBook2Fill } from 'react-icons/ri';
 import { MdOutlineMiscellaneousServices, MdOutlineLogin } from 'react-icons/md';
 import logo from '/Landing/logo.svg';
