@@ -19,7 +19,7 @@ const pages = [
 
 async function generateSitemap() {
   const writeStream = createWriteStream(path.resolve(__dirname, 'public', 'sitemap.xml'));
-  const sitemap = new SitemapStream({ hostname: 'https://team4.itshivam.me/' });
+  const sitemap = new SitemapStream({ hostname: 'https://rightresourcefit.onrender.com/' });
   sitemap.pipe(writeStream).on('finish', () => {
     console.log('Sitemap generated successfully');
   });
