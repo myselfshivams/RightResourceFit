@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaLaptopCode } from 'react-icons/fa';
 import { RiContactsBook2Fill } from 'react-icons/ri';
-import {  MdOutlineLogin } from 'react-icons/md';
+import { MdOutlineMiscellaneousServices, MdOutlineLogin } from 'react-icons/md';
 import logo from '/Landing/logo.svg';
 import styles from '../styles/Navbar.module.css';
 
@@ -103,7 +103,12 @@ const NavBar: React.FC = () => {
         <Link to="/" className={location.pathname === '/' ? styles.active : ''}>
           <FaHome className={styles.footerNavIcon} />
         </Link>
-       
+        <Link
+          to="/about"
+          className={location.pathname === '/about' ? styles.active : ''}
+        >
+          <MdOutlineMiscellaneousServices className={styles.footerNavIcon} />
+        </Link>
         <Link
           to="/contact"
           className={location.pathname === '/contact' ? styles.active : ''}
