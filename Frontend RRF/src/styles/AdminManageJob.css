@@ -25,7 +25,7 @@
 
 .create-job-btn {
   padding: 8px 12px;
-  position: absolute;
+  /* position: absolute; */
   bottom: -40px;
   right: 20px;
   background-color: #542eb3; /* Button color */

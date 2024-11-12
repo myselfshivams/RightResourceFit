@@ -1,5 +1,12 @@
 
+  .HH{
+    background-color: #eac1f5;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  }
   .user-profile-container {
+    
     max-width: 400px;
     margin-left: 250px;
     padding: 20px;
@@ -21,6 +28,14 @@
   .profile-editable {
     display: flex;
     align-items: center;
+  }
+
+  .profile-editable input {
+    padding: 10px;
+    width: 400px;
+    background-color: #cdc8db;
+    border-radius: 4px;
+    border: none;
   }
   
   .edit-icon {

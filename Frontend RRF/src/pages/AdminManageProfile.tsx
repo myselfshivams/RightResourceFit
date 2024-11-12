@@ -84,7 +84,7 @@ const AdminManageProfile = () => {
   };
 
   return (
-    <div>
+    <div className="HH">
       <AdminSidebar />
       <div className="user-profile-container">
         <h1>User Profile</h1>

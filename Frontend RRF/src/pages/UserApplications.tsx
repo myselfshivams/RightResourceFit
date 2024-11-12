@@ -80,9 +80,9 @@ const Applications: React.FC = () => {
                     <p>
                       {application.jobID?.title} {/* Accessing title from jobID */}
                     </p>
-                    <span className={styles.date}>
+                    {/* <span className={styles.date}>
                       Applied on: {formatDate(application.createdAt)}
-                    </span>
+                    </span> */}
                   </div>
                   <button
                     className={styles.StatusButton}

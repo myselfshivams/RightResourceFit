@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   FaHome,
   FaBell,
-  FaCog,
+  FaUserEdit,
   FaFileAlt,
   FaSignOutAlt,
 } from 'react-icons/fa';
@@ -94,8 +94,8 @@ const Sidebar: React.FC = () => {
               window.location.pathname === '/user/settings' ? styles.active : ''
             }`}
           >
-            <FaCog className={styles.icon} />
-            {!collapsed && <span>Settings</span>}
+            <FaUserEdit className={styles.icon} />
+            {!collapsed && <span>Manage Profile</span>}
           </a>
           <a onClick={handleLogoutClick} className={styles.navItem}>
             <FaSignOutAlt className={styles.icon} />
@@ -157,7 +157,7 @@ const Sidebar: React.FC = () => {
             window.location.pathname === '/user/settings' ? styles.active : ''
           }
         >
-          <FaCog className={styles.icon} />
+          <FaUserEdit className={styles.icon} />
         </a>
         <a
           onClick={handleLogoutClick}
