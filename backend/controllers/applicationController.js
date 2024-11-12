@@ -43,7 +43,7 @@ const getApplications = asyncHandler(async (req, res) => {
   let filter = {};
   
   try {
-    console.log("ss");  // Check if the function is reached
+    // console.log("ss");  // Check if the function is reached
     
     if (applicantID) filter.applicantID = applicantID;
     if (jobID) filter.jobID = jobID;

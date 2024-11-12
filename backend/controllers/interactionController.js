@@ -3,10 +3,24 @@ const Interaction = require('../models/interactionModel');
 const Application = require('../models/applicationModel');
 
 // @desc    Track application by ID
-// @route   GET /interaction/status/:applicationID
+// @route   GET /interaction/status/:applicantID
 const trackApplication = asyncHandler(async (req, res) => {
-  const interactions = await Interaction.find({ applicationID: req.params.applicationID });
-  res.json(interactions);
+  // Step 1: Find all applications by applicantID
+  const applications = await Application.find({ applicantID: req.params.applicantID });
+
+  if (!applications || applications.length === 0) {
+    res.status(404);
+    throw new Error('No applications found for this applicant');
+  }
+
+  // Step 2: Extract application IDs from the applications
+  const applicationIDs = applications.map(app => app._id);
+
+  // Step 3: Find all interactions (notifications) for these application IDs
+  const notifications = await Interaction.find({ applicationID: { $in: applicationIDs } });
+
+  // Send the notifications in response
+  res.json(notifications);
 });
 
 // @desc    Update application status by HR
@@ -48,42 +62,50 @@ const sendNotification = asyncHandler(async (req, res) => {
 // @desc    Delete all interactions for a specific user based on the applicationID
 // @route   DELETE /interaction/notifications/user/:applicationID
 const deleteAllNotifications = asyncHandler(async (req, res) => {
-  // Step 1: Find the application to get the associated user
-  const application = await Application.findById(req.params.applicationID);
-  
-  if (!application) {
+  // Step 1: Find the applications to get the associated user
+  const applications = await Application.find({ applicantID: req.params.applicantID });
+
+  if (!applications || applications.length === 0) {
     res.status(404);
-    throw new Error('Application not found');
+    throw new Error('No applications found for this applicant');
   }
 
-  // Step 2: Use the applicantID (userID) from the application to find all applications for that user
-  const userID = application.applicantID;
-  
-  // Find all applications associated with this user (applicantID)
-  const userApplications = await Application.find({ applicantID: userID });
-  
-  // Step 3: Extract all applicationIDs from the user's applications
-  const applicationIDs = userApplications.map(app => app._id);
+  // Step 2: Extract application IDs from the applications
+  const applicationIDs = applications.map(app => app._id);
 
-  // Step 4: Delete all interactions associated with any of these applicationIDs
-  await Interaction.deleteMany({ applicationID: { $in: applicationIDs } });
+  // Step 3: Find and delete all interactions (notifications) for these application IDs
+  const deletedNotifications = await Interaction.deleteMany({ applicationID: { $in: applicationIDs } });
 
-  res.json({ message: `All notifications for user ${userID} deleted across all applications` });
+  if (deletedNotifications.deletedCount === 0) {
+    res.status(404);
+    throw new Error('No notifications found to delete for this applicant');
+  }
+
+  // Step 4: Respond with success message
+  res.json({ message: `All notifications for applicant with ID ${req.params.applicantID} deleted across all applications` });
 });
+
 
 // @desc    Delete a specific notification by ID
 // @route   DELETE /interaction/notification/:interactionID
 const deleteNotification = asyncHandler(async (req, res) => {
-  const interaction = await Interaction.findById(req.params.interactionID);
+  try {
+    const interaction = await Interaction.findById(req.params.id);
 
-  if (!interaction) {
-    res.status(404);
-    throw new Error('Notification not found');
+    if (!interaction) {
+      res.status(404);
+      throw new Error('Notification not found');
+    }
+
+    await interaction.deleteOne();
+    res.json({ message: 'Notification deleted' });
+  } catch (error) {
+    console.error('Error deleting notification:', error);
+    res.status(500).json({ message: 'Server error occurred' });
   }
-
-  await interaction.remove();
-  res.json({ message: 'Notification deleted' });
 });
+
+
 
 module.exports = {
   trackApplication,

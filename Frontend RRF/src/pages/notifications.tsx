@@ -1,67 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaBell, FaTrash } from 'react-icons/fa';
 import Sidebar from '../components/UserSidebar';
 import styles from '../styles/UserNotifications.module.css';
 import styles2 from '../styles/LogoutModal.module.css';
 
 interface Notification {
-  id: number;
-  text: string;
-  date: string;
+  _id: string;
+  message: string;
+  notifiedAt: string;
 }
 
-const Notification: React.FC = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([
-    { id: 1, text: 'New job posted: Software Engineer', date: '2024-10-20' },
-    {
-      id: 2,
-      text: 'Your application for Project Manager has been received',
-      date: '2024-10-19',
-    },
-    { id: 3, text: 'New job posting: Data Analyst', date: '2024-10-18' },
-    {
-      id: 4,
-      text: 'Your application status has been updated: Under Review',
-      date: '2024-10-17',
-    },
-    { id: 5, text: 'New job posting: UX Designer', date: '2024-10-16' },
-    {
-      id: 6,
-      text: 'Your application for Frontend Developer has been shortlisted',
-      date: '2024-10-15',
-    },
-    {
-      id: 7,
-      text: 'You have received feedback on your application for Data Scientist',
-      date: '2024-10-14',
-    },
-    {
-      id: 8,
-      text: 'Your application has been rejected for Marketing Specialist',
-      date: '2024-10-13',
-    },
-    { id: 9, text: 'New job posting: HR Coordinator', date: '2024-10-12' },
-    { id: 10, text: 'Reminder: Job fair on 2024-10-25', date: '2024-10-11' },
-  ]);
-
+const NotificationComponent: React.FC = () => {
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
 
-  const handleDelete = (id: number) => {
-    setNotifications(
-      notifications.filter((notification) => notification.id !== id)
-    );
-  };
+  // Fetch all notifications for the applicant
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const applicantID = localStorage.getItem('id'); // Assuming applicant ID is stored in localStorage
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interaction/status/${applicantID}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        const data = await response.json();
+        setNotifications(data);
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
+    };
+    fetchNotifications();
+  }, []);
 
+  // Delete a single notification
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interaction/notification/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+  
+      // Only update notifications if the delete request was successful
+      if (response.ok) {
+        setNotifications(notifications.filter((notification) => notification._id !== id));
+      } else {
+        console.error('Failed to delete notification:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting notification:', error);
+    }
+  };
+  
+
+  // Open modal for clearing all notifications
   const handleClearAll = () => {
     setShowModal(true);
   };
 
-  const confirmClearAll = () => {
-    setNotifications([]);
-    setShowModal(false);
+  // Confirm and clear all notifications
+  const confirmClearAll = async () => {
+    try {
+      const applicantID = localStorage.getItem('id');
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/interaction/notifications/user/${applicantID}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+  
+      // Only clear notifications if the server response is successful
+      if (response.ok) {
+        setNotifications([]);
+        setShowModal(false);
+      } else {
+        console.error('Failed to clear notifications:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error clearing notifications:', error);
+    }
   };
-
+  
+  // Cancel clearing all notifications with fade-out effect
   const cancelClearAll = () => {
     setFadeOut(true);
     setTimeout(() => {
@@ -80,32 +107,29 @@ const Notification: React.FC = () => {
         <div className={styles.notificationListContainer}>
           <div className={styles.notificationHeader}>
             {notifications.length > 0 && (
-              <button
-                className={styles.clearAllButton}
-                onClick={handleClearAll}
-              >
+              <button className={styles.clearAllButton} onClick={handleClearAll}>
                 Clear All
               </button>
             )}
           </div>
           <div className={styles.notificationList}>
             {notifications.length === 0 ? (
-              <p className={styles.noNotifications}>
-                No notifications available.
-              </p>
+              <p className={styles.noNotifications}>No notifications available.</p>
             ) : (
               notifications.map((notification) => (
-                <div key={notification.id} className={styles.notificationCard}>
+                <div key={notification._id} className={styles.notificationCard}>
                   <div className={styles.icon}>
                     <FaBell />
                   </div>
                   <div className={styles.notificationText}>
-                    <p>{notification.text}</p>
-                    <span className={styles.date}>{notification.date}</span>
+                    <p>{notification.message}</p>
+                    <span className={styles.date}>
+                      {new Date(notification.notifiedAt).toLocaleDateString()}
+                    </span>
                   </div>
                   <button
                     className={styles.deleteButton}
-                    onClick={() => handleDelete(notification.id)}
+                    onClick={() => handleDelete(notification._id)}
                     aria-label="Delete Notification"
                   >
                     <FaTrash />
@@ -122,14 +146,10 @@ const Notification: React.FC = () => {
           <div className={`${styles2.modal} ${fadeOut ? styles2.hidden : ''}`}>
             <h2>Clear All Notifications</h2>
             <p>
-              Are you sure you want to clear all notifications? This action
-              cannot be undone.
+              Are you sure you want to clear all notifications? This action cannot be undone.
             </p>
             <div className={styles2.buttonGroup}>
-              <button
-                className={styles2.confirmButton}
-                onClick={confirmClearAll}
-              >
+              <button className={styles2.confirmButton} onClick={confirmClearAll}>
                 Clear
               </button>
               <button className={styles2.cancelButton} onClick={cancelClearAll}>
@@ -143,4 +163,4 @@ const Notification: React.FC = () => {
   );
 };
 
-export default Notification;
+export default NotificationComponent;
