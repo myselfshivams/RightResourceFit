@@ -3,10 +3,7 @@ import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import '../styles/ApplicationChart.css';
 import axios from 'axios';
 
-interface ApplicationData {
-  name: string;
-  value: number;
-}
+
 
 interface Applicant {
   _id: string;
