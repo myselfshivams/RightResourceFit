@@ -21,6 +21,7 @@ const NavBar: React.FC = () => {
     localStorage.removeItem('role');
     localStorage.removeItem('avatar');
     localStorage.removeItem('username');
+    localStorage.removeItem('id');
     setRole(null);
     navigate('/');
   };

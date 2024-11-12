@@ -29,7 +29,7 @@ const ActiveJobPage = () => {
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [appliedJobs, setAppliedJobs] = useState<{ [jobId: string]: boolean }>(
-    {}
+    JSON.parse(localStorage.getItem('appliedJobs') || '{}')
   );
 
   useEffect(() => {
@@ -80,7 +80,9 @@ const ActiveJobPage = () => {
 
   const handleConfirmApply = () => {
     if (selectedJob) {
-      setAppliedJobs((prev) => ({ ...prev, [selectedJob._id]: true }));
+      const updatedAppliedJobs = { ...appliedJobs, [selectedJob._id]: true };
+      setAppliedJobs(updatedAppliedJobs);
+      localStorage.setItem('appliedJobs', JSON.stringify(updatedAppliedJobs));
       setModalOpen(false);
     }
   };
@@ -163,6 +165,7 @@ const ActiveJobPage = () => {
       {selectedJob && (
         <ApplyModal
           jobTitle={selectedJob.title}
+          jobId={selectedJob._id}
           isOpen={isModalOpen}
           onClose={handleModalClose}
           onConfirm={handleConfirmApply}
@@ -173,3 +176,4 @@ const ActiveJobPage = () => {
 };
 
 export default ActiveJobPage;
+
