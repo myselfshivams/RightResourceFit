@@ -1,18 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import '../styles/ApplicationChart.css';
-import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from 'axios';
 
 interface ApplicationData {
   name: string;
   value: number;
 }
 
-
 interface Applicant {
   _id: string;
-  status: string; // Assuming status is a string (e.g., 'shortlisted', 'in review', etc.)
+  status: string;
   jobId: string;
   applicantId: string;
 }
@@ -20,45 +18,43 @@ interface Applicant {
 const COLORS = ['#0088FE', '#00C49F', '#FF8042'];
 
 const ApplicationChart: React.FC = () => {
-
-  const [RejectedApplicants, setRejectedApplicants] = useState<number>(0);
+  const [rejectedApplicants, setRejectedApplicants] = useState<number>(0);
   const [shortlistedApplicants, setShortlistedApplicants] = useState<number>(0);
   const [inReviewApplicants, setInReviewApplicants] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const data: ApplicationData[] = [
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/application`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        });
+
+        const applicants: Applicant[] = response.data;
+
+        setShortlistedApplicants(applicants.filter(applicant => applicant.status === 'Hired').length);
+        setInReviewApplicants(applicants.filter(applicant => applicant.status !== 'Rejected' && applicant.status !== 'Hired').length);
+        setRejectedApplicants(applicants.filter(applicant => applicant.status === 'Rejected').length);
+        
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const data = useMemo(() => [
     { name: 'Shortlisted', value: shortlistedApplicants },
-    { name: 'in Review', value:  inReviewApplicants},
-    { name: 'Rejected', value: RejectedApplicants  },
-  ];
-  
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-     
+    { name: 'In Review', value: inReviewApplicants },
+    { name: 'Rejected', value: rejectedApplicants },
+  ], [shortlistedApplicants, inReviewApplicants, rejectedApplicants]);
 
-      // Fetch all applicants
-      const applicantsResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/application`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-
-      const applicants: Applicant[] = applicantsResponse.data; // Ensure the data matches the Applicant type
-
-      // Count shortlisted applicants
-      const shortlisted = applicants.filter((applicant) => applicant.status === "Accepted");
-      setShortlistedApplicants(shortlisted.length);
-
-      // Count in-review applicants
-      const inReview = applicants.filter((applicant) => applicant.status === "Reviewed");
-      setInReviewApplicants(inReview.length);
-
-      const Reject = applicants.filter((applicant) => applicant.status === "Rejected");
-      setRejectedApplicants(Reject.length);
-    } catch (error) {
-      console.error("Error fetching summary data:", error);
-    }
-  };
-  fetchData();
-}, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="application-chart">
@@ -83,7 +79,7 @@ useEffect(() => {
       <div className="application-data">
         <div>Shortlisted: {shortlistedApplicants}</div>
         <div>In Review: {inReviewApplicants}</div>
-        <div>Rejected: {RejectedApplicants}</div>
+        <div>Rejected: {rejectedApplicants}</div>
       </div>
     </div>
   );

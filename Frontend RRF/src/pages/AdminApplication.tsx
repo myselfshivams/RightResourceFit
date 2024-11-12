@@ -195,6 +195,8 @@ const AllApplicationsPage: React.FC = () => {
                 <option  value="Applied">Applied</option>
                 <option value="Reviewed">Reviewed</option>
                 <option  value="Accepted">Accepted</option>
+                <option  value="Interview">Interview</option>
+                <option  value="Hired">Hired</option>
                 <option  value="Rejected">Rejected</option>
               </select></label>
               

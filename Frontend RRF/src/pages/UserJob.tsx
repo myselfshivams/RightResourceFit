@@ -22,15 +22,19 @@ interface Job {
   isHiringMultiple: boolean;
 }
 
+interface Application {
+  _id: string;
+  jobID: Job;
+  status: 'Applied' | 'Reviewed' | 'Accepted' | 'Rejected'|'Hired'|'Interview';
+}
+
 const ActiveJobPage = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const [appliedJobs, setAppliedJobs] = useState<{ [jobId: string]: boolean }>(
-    JSON.parse(localStorage.getItem('appliedJobs') || '{}')
-  );
+  const [applications, setApplications] = useState<Application[]>([]);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -50,7 +54,24 @@ const ActiveJobPage = () => {
       }
     };
 
+    const fetchApplications = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/application?applicantID=${localStorage.getItem('id')}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        );
+        setApplications(response.data);
+      } catch (error) {
+        console.error('Error fetching applications:', error);
+      }
+    };
+
     fetchJobs();
+    fetchApplications();
   }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,13 +101,16 @@ const ActiveJobPage = () => {
 
   const handleConfirmApply = () => {
     if (selectedJob) {
-      const updatedAppliedJobs = { ...appliedJobs, [selectedJob._id]: true };
-      setAppliedJobs(updatedAppliedJobs);
-      localStorage.setItem('appliedJobs', JSON.stringify(updatedAppliedJobs));
+      // Optionally, update the applications list here after applying.
       setModalOpen(false);
     }
   };
 
+  const isJobApplied = (jobId: string) => {
+    const application = applications.find((app) => app.jobID._id === jobId);
+    return application && application.status !== 'Rejected';
+  };
+  
   return (
     <>
       <Sidebar />
@@ -132,10 +156,15 @@ const ActiveJobPage = () => {
                       <strong>Hiring Multiple Candidates:</strong>{' '}
                       {job.isHiringMultiple ? 'Yes' : 'No'}
                     </p>
-                    {appliedJobs[job._id] ? (
+                    {isJobApplied(job._id) ? (
                       <p className={styles.appliedMessage}>
-                        Successfully Applied!
-                      </p>
+                      {applications.find((app) => app.jobID._id === job._id)?.status === 'Rejected'
+                        ? 'Application Rejected - Apply Again'
+                        : applications.find((app) => app.jobID._id === job._id)?.status === 'Hired'
+                        ? 'You are Hired! Congratulations!'
+                        : 'Successfully Applied!'}
+                    </p>
+                    
                     ) : (
                       <button
                         className={styles.applyButton}
@@ -176,4 +205,3 @@ const ActiveJobPage = () => {
 };
 
 export default ActiveJobPage;
-

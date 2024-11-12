@@ -35,12 +35,11 @@ const SummaryCards = () => {
         setTotalApplicants(applicants.length);
 
         // Count shortlisted applicants
-        const shortlisted = applicants.filter((applicant) => applicant.status === "Accepted");
+        const shortlisted = applicants.filter((applicant) => applicant.status === "Hired");
         setShortlistedApplicants(shortlisted.length);
 
         // Count in-review applicants
-        const inReview = applicants.filter((applicant) => applicant.status === "Reviewed");
-        setInReviewApplicants(inReview.length);
+        setInReviewApplicants(applicants.filter(applicant => applicant.status !== 'Rejected' && applicant.status !== 'Hired').length);
       } catch (error) {
         console.error("Error fetching summary data:", error);
       }

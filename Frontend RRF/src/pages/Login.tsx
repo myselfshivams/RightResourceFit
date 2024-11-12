@@ -250,7 +250,7 @@ const Login = () => {
                         className="inputField"
                         required
                       />
-                      <label className="inputLabel">Full Name</label>
+                      <label className="inputLabel"></label>
                     </div>
                     <div className="inputContainer">
                       <input
@@ -262,7 +262,7 @@ const Login = () => {
                         className="inputField"
                         required
                       />
-                      <label className="inputLabel">Mobile Number</label>
+                      <label className="inputLabel"></label>
                     </div>
                     <div className="inputContainer">
                       <input
@@ -274,7 +274,7 @@ const Login = () => {
                         className="inputField"
                         required
                       />
-                      <label className="inputLabel">E-mail</label>
+                      <label className="inputLabel"></label>
                     </div>
                     <div className="inputContainer">
                       <input
@@ -286,7 +286,7 @@ const Login = () => {
                         className="inputField"
                         required
                       />
-                      <label className="inputLabel">Password</label>
+                      <label className="inputLabel"></label>
                       <span
                         className="eyeIcon"
                         onClick={() => setShowPassword((prev) => !prev)}
@@ -304,7 +304,7 @@ const Login = () => {
                         className="inputField"
                         required
                       />
-                      <label className="inputLabel">Confirm Password</label>
+                      <label className="inputLabel"></label>
                       <span
                         className="eyeIcon"
                         onClick={() => setShowConfirmPassword((prev) => !prev)}
@@ -331,7 +331,7 @@ const Login = () => {
                         className="inputField"
                         required
                       />
-                      <label className="inputLabel">E-mail</label>
+                      <label className="inputLabel"></label>
                     </div>
                     <div className="inputContainer">
                       <input
@@ -343,7 +343,7 @@ const Login = () => {
                         className="inputField"
                         required
                       />
-                      <label className="inputLabel">Password</label>
+                      <label className="inputLabel"></label>
                       <span
                         className="eyeIcon"
                         onClick={() => setShowPassword((prev) => !prev)}
@@ -420,7 +420,7 @@ const Login = () => {
                     className="inputField"
                     required
                   />
-                  <label className="inputLabel">E-mail</label>
+                  <label className="inputLabel"></label>
                 </div>
                 {isLoading ? (
                   <PulseLoader color="#36d7b7" loading={isLoading} size={10} />
