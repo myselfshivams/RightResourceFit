@@ -26,7 +26,7 @@ const testimonialData: TestimonialItem[] = [
     rating: 5,
   },
   {
-    name: 'Rashmi',
+    name: 'Pranav Gupta',
     role: 'Talent Acquisition',
     testimonial:
       "We've attracted higher-quality candidates and reduced our time-to-hire. Very satisfied with the results!",
