@@ -47,7 +47,7 @@ const Login = () => {
     const phoneRegex = /^[0-9]{10}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex =
-      /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (isSignUp) {
       if (!nameRegex.test(formData.name)) {
@@ -155,7 +155,7 @@ const Login = () => {
     if (!validateInputs()) {
       return;
     }
-    const url =` ${import.meta.env.VITE_BACKEND_URL}/api/user/${isSignUp ? 'register' : 'login'}`;
+    const url = `${import.meta.env.VITE_BACKEND_URL}/api/user/${isSignUp ? 'register' : 'login'}`;
     const data = isSignUp
       ? {
           name: formData.name,
