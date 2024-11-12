@@ -83,4 +83,4 @@ For any inquiries or support regarding the project, feel free to Contact us.
 
 ## Acknowledgments
 
-Special thanks to our Mentor for providing tools and support assisted in creating this Project.
+Special thank to our Mentor for providing tools and support assisted in creating this Project.
