@@ -136,12 +136,7 @@ const UserSettings: React.FC = () => {
               </div>
             </div>
 
-            <div className="profile-item">
-              <label>Role</label>
-              <div className="profile-editable">
-                <p>HR Manager</p>
-              </div>
-            </div>
+            
 
             {/* Email (not editable) */}
             <div className="profile-item">
