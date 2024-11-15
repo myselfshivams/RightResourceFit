@@ -139,9 +139,9 @@ const ApplyModal: React.FC<ApplyModalProps> = ({
               {/* Display User Profile Info */}
               {userProfile && (
                 <>
-                  <label>Name: {userProfile.name}</label>
-                  <label>Email: {userProfile.email}</label>
-                  <label>Phone Number: {userProfile.phoneNumber}</label>
+                <label><h4>Name: {userProfile.name}</h4></label>
+                 <label><h4>Email: {userProfile.email}</h4></label>
+                  <label><h4>Phone Number: {userProfile.phoneNumber}</h4></label>
                 </>
               )}
 
