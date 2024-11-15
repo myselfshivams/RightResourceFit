@@ -25,7 +25,7 @@ const uploadFile = async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ message: 'No file uploaded' });
         }
-        const uniqueName = uuidv4(); 
+        const uniqueName = `${uuidv4()}-${Date.now()}`; 
 
         const options = {
             folder: 'uploads',
