@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import {
   FaHome,
-  FaUsers,
   FaBell,
-  FaCog,
+  FaUserEdit,
   FaFileAlt,
   FaSignOutAlt,
 } from 'react-icons/fa';
@@ -48,15 +47,7 @@ const Sidebar: React.FC = () => {
             <FaHome className={styles.icon} />
             {!collapsed && <span>Home</span>}
           </a>
-          {/* <a
-            onClick={() => navigate("/user/search")}
-            className={`${styles.navItem} ${
-              window.location.pathname === "/user/search" ? styles.active : ""
-            }`}
-          >
-            <FaSearch className={styles.icon} />
-            {!collapsed && <span>Search</span>}
-          </a> */}
+         
           <a
             onClick={() => navigate('/user/applications')}
             className={`${styles.navItem} ${
@@ -77,7 +68,7 @@ const Sidebar: React.FC = () => {
             <IoMdPersonAdd className={styles.icon} />
             {!collapsed && <span>Active Jobs</span>}
           </a>
-          <a
+          {/* <a
             onClick={() => navigate('/user/manage')}
             className={`${styles.navItem} ${
               window.location.pathname === '/user/manage' ? styles.active : ''
@@ -85,7 +76,7 @@ const Sidebar: React.FC = () => {
           >
             <FaUsers className={styles.icon} />
             {!collapsed && <span>Manage Applications</span>}
-          </a>
+          </a> */}
           <a
             onClick={() => navigate('/user/notifications')}
             className={`${styles.navItem} ${
@@ -103,8 +94,8 @@ const Sidebar: React.FC = () => {
               window.location.pathname === '/user/settings' ? styles.active : ''
             }`}
           >
-            <FaCog className={styles.icon} />
-            {!collapsed && <span>Settings</span>}
+            <FaUserEdit className={styles.icon} />
+            {!collapsed && <span>Manage Profile</span>}
           </a>
           <a onClick={handleLogoutClick} className={styles.navItem}>
             <FaSignOutAlt className={styles.icon} />
@@ -138,14 +129,14 @@ const Sidebar: React.FC = () => {
         >
           <IoMdPersonAdd className={styles.icon} />
         </a>
-        <a
+        {/* <a
           onClick={() => navigate('/user/manage')}
           className={
             window.location.pathname === '/user/manage' ? styles.active : ''
           }
         >
           <FaUsers className={styles.icon} />
-        </a>
+        </a> */}
         {/* <a
           onClick={() => navigate("/user/search")}
           className={window.location.pathname === "/user/search" ? styles.active : ""}
@@ -166,7 +157,7 @@ const Sidebar: React.FC = () => {
             window.location.pathname === '/user/settings' ? styles.active : ''
           }
         >
-          <FaCog className={styles.icon} />
+          <FaUserEdit className={styles.icon} />
         </a>
         <a
           onClick={handleLogoutClick}

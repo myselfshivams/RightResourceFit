@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f7f0fc; /* Adjust background color */
-  padding: 20px;
+  background-color: #eac1f5; /* Adjust background color */
+  padding: 30px;
   border-radius: 10px;
   margin-bottom: 20px;
   margin-left: 15%;
@@ -15,7 +15,7 @@
 }
 
 .welcome-text h1 {
-  margin: 0;
+  margin: 2px;
   font-size: 28px;
   font-weight: bold;
 }

@@ -2,7 +2,7 @@ export const metadata = {
     title: "Right Resource Fit | Recruitment Platform",
     description:
       "Right Resource Fit is designed to streamline recruitment processes, enabling the Human Resource Management Team to efficiently handle hiring-related tasks. Register as an Applicant or HR to access job postings, apply for jobs, and track application statuses.",
-    url: "https://team4.itshivam.me",
+    url: "https://rightresourcefit.onrender.com/",
     keywords: [
       "Right Resource Fit",
       "recruitment platform",

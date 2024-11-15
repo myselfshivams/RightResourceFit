@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaHome, FaLaptopCode } from 'react-icons/fa';
+import { FaHome } from 'react-icons/fa';
 import { RiContactsBook2Fill } from 'react-icons/ri';
 import { MdOutlineMiscellaneousServices, MdOutlineLogin } from 'react-icons/md';
 import logo from '/Landing/logo.svg';
@@ -21,6 +21,7 @@ const NavBar: React.FC = () => {
     localStorage.removeItem('role');
     localStorage.removeItem('avatar');
     localStorage.removeItem('username');
+    localStorage.removeItem('id');
     setRole(null);
     navigate('/');
   };
@@ -59,24 +60,14 @@ const NavBar: React.FC = () => {
               >
                 About
               </Link>
-              <Link
-                to="/services"
-                className={`${styles['navbar-link']} ${location.pathname === '/services' ? styles.activeLink : ''}`}
-              >
-                Services
-              </Link>
+              
               <Link
                 to="/contact"
                 className={`${styles['navbar-link']} ${location.pathname === '/contact' ? styles.activeLink : ''}`}
               >
                 Contact
               </Link>
-              <Link
-                to="/teams"
-                className={`${styles['navbar-link']} ${location.pathname === '/teams' ? styles.activeLink : ''}`}
-              >
-                Team
-              </Link>
+              
             </div>
             {role ? (
               <>
@@ -114,8 +105,8 @@ const NavBar: React.FC = () => {
           <FaHome className={styles.footerNavIcon} />
         </Link>
         <Link
-          to="/services"
-          className={location.pathname === '/services' ? styles.active : ''}
+          to="/about"
+          className={location.pathname === '/about' ? styles.active : ''}
         >
           <MdOutlineMiscellaneousServices className={styles.footerNavIcon} />
         </Link>
@@ -125,12 +116,7 @@ const NavBar: React.FC = () => {
         >
           <RiContactsBook2Fill className={styles.footerNavIcon} />
         </Link>
-        <Link
-          to="/teams"
-          className={location.pathname === '/teams' ? styles.active : ''}
-        >
-          <FaLaptopCode className={styles.footerNavIcon} />
-        </Link>
+  
         <Link
           to={
             role

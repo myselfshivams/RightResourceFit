@@ -1,52 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaClipboardList } from 'react-icons/fa';
+import axios from 'axios';
 import Sidebar from '../components/UserSidebar';
 import styles from '../styles/UserNotifications.module.css';
 import styles2 from '../styles/LogoutModal.module.css';
 
+// Update the Application interface to reflect that jobID is an object with a title
+interface Job {
+  title: string;
+}
+
 interface Application {
-  id: number;
-  position: string;
-  company: string;
-  dateApplied: string;
+  _id: string;
+  applicantID: string;
+  jobID: Job;  // jobID is an object with a title
+  createdAt: string;
   status: string;
 }
 
 const Applications: React.FC = () => {
-  const [applications] = useState<Application[]>([
-    {
-      id: 1,
-      position: 'Software Engineer',
-      company: 'TechCorp',
-      dateApplied: '2024-10-20',
-      status: 'Under Review',
-    },
-    {
-      id: 2,
-      position: 'Project Manager',
-      company: 'BizSolutions',
-      dateApplied: '2024-10-19',
-      status: 'Received',
-    },
-    {
-      id: 3,
-      position: 'Data Analyst',
-      company: 'DataWorks',
-      dateApplied: '2024-10-18',
-      status: 'Shortlisted',
-    },
-    {
-      id: 4,
-      position: 'UX Designer',
-      company: 'CreativeHub',
-      dateApplied: '2024-10-16',
-      status: 'Rejected',
-    },
-  ]);
-
-  const [selectedApplication, setSelectedApplication] =
-    useState<Application | null>(null);
+  const [applications, setApplications] = useState<Application[]>([]);
+  const [selectedApplication, setSelectedApplication] = useState<Application | null>(null);
   const [fadeOut, setFadeOut] = useState(false);
+
+  // Fetch applications from the backend on component mount
+  useEffect(() => {
+    const fetchApplications = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/application?applicantID=${localStorage.getItem('id')}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+        });
+
+        setApplications(response.data);
+      } catch (error) {
+        console.error("Error fetching applications:", error);
+      }
+    };
+
+    fetchApplications();
+  }, []);
 
   const handleViewStatus = (application: Application) => {
     setSelectedApplication(application);
@@ -58,6 +50,11 @@ const Applications: React.FC = () => {
       setSelectedApplication(null);
       setFadeOut(false);
     }, 400);
+  };
+
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
   return (
@@ -75,17 +72,17 @@ const Applications: React.FC = () => {
               </p>
             ) : (
               applications.map((application) => (
-                <div key={application.id} className={styles.notificationCard}>
+                <div key={application._id} className={styles.notificationCard}>
                   <div className={styles.icon}>
                     <FaClipboardList />
                   </div>
                   <div className={styles.notificationText}>
                     <p>
-                      {application.position} at {application.company}
+                      {application.jobID?.title} {/* Accessing title from jobID */}
                     </p>
-                    <span className={styles.date}>
-                      Applied on: {application.dateApplied}
-                    </span>
+                    {/* <span className={styles.date}>
+                      Applied on: {formatDate(application.createdAt)}
+                    </span> */}
                   </div>
                   <button
                     className={styles.StatusButton}
@@ -106,13 +103,10 @@ const Applications: React.FC = () => {
           <div className={`${styles2.modal} ${fadeOut ? styles2.hidden : ''}`}>
             <h2>Application Status</h2>
             <p>
-              <strong>Position:</strong> {selectedApplication.position}
+              <strong>Position:</strong> {selectedApplication.jobID?.title} {/* Accessing title from jobID */}
             </p>
             <p>
-              <strong>Company:</strong> {selectedApplication.company}
-            </p>
-            <p>
-              <strong>Date Applied:</strong> {selectedApplication.dateApplied}
+              <strong>Date Applied:</strong> {formatDate(selectedApplication.createdAt)}
             </p>
             <p>
               <strong>Status:</strong> {selectedApplication.status}

@@ -202,7 +202,7 @@ const AdminManageJob = () => {
         <AdminSidebar />
         <div className={`manage-jobs-content ${isEditing ? "blur" : ""}`}>
         <h1>Manage Job Postings</h1>
-
+        <Link to="/admin/createJob" className="create-job-btn">Create New Job</Link><br /> <br />
          {/* Search Bar */}
          <div className="searchBar">
             <input
@@ -235,7 +235,7 @@ const AdminManageJob = () => {
           ) : (
             <p>No job postings available. <Link to="/admin/createJob">Create a job</Link>.</p>
           )}
-          <Link to="/admin/createJob" className="create-job-btn">Create New Job</Link>
+         
         </div>
       </div>
       

@@ -8,7 +8,7 @@ const interactionSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Pending', 'Reviewed','Notified', 'Accepted', 'Rejected'],
+    enum: ['Pending', 'Reviewed','Notified', 'Accepted', 'Rejected','Applied','Interview','Hired', 'Reviewed', 'Accepted', 'Rejected'],
     default: 'Pending',
   },
   message: {

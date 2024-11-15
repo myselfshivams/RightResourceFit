@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Sidebar from '../components/UserSidebar';
-import { useEffect } from 'react';
+import "../styles/AdminManageProfile.css"
+import AdminSidebar from '../components/AdminSidebar';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { AiOutlineEdit } from "react-icons/ai";
 
@@ -12,9 +12,7 @@ interface User {
   imageUrl: string;
 }
 
-const UserSettings: React.FC = () => {
-
-
+const AdminManageProfile = () => {
   const [user, setUser] = useState<User | null>(null);
   const [editing, setEditing] = useState<{ name: boolean; phoneNumber: boolean; imageUrl: boolean }>({
     name: false,
@@ -86,8 +84,8 @@ const UserSettings: React.FC = () => {
   };
 
   return (
- <div className='HH'>
-      <Sidebar/>
+    <div className="HH">
+      <AdminSidebar />
       <div className="user-profile-container">
         <h1>User Profile</h1>
 
@@ -129,14 +127,19 @@ const UserSettings: React.FC = () => {
                 ) : (
                   <p>{user.name}</p>
                 )}
-               <AiOutlineEdit
+                <AiOutlineEdit
                   className="edit-icon"
                   onClick={() => setEditing({ ...editing, name: !editing.name })}
                 />
               </div>
             </div>
 
-            
+            <div className="profile-item">
+              <label>Role</label>
+              <div className="profile-editable">
+                <p>HR Manager</p>
+              </div>
+            </div>
 
             {/* Email (not editable) */}
             <div className="profile-item">
@@ -178,4 +181,5 @@ const UserSettings: React.FC = () => {
   );
 };
 
-export default UserSettings;
+export default AdminManageProfile;
+

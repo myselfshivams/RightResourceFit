@@ -37,12 +37,12 @@
 .modal h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333;
+  color: #000000;
 }
 
 .modal p {
   font-size: 1rem;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 30px;
 }
 
@@ -199,4 +199,54 @@
   cursor: pointer;
   border-radius: 10px;
   font-weight: 500;
+}
+
+
+.Resume,
+.coverLetter {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.Resume label,
+.coverLetter label {
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+input[type="file"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 0.95rem;
+  color: #333;
+  cursor: pointer;
+  width: 325px;
+}
+
+input[type="file"]:focus {
+  outline: none;
+  border-color: #3b82f6;
+  
+}
+
+textarea {
+  padding: 0.75rem;
+  width: 325px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #333;
+  background-color: #fff;
+  resize: vertical;
+  min-height: 100px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
 }

@@ -2,4 +2,4 @@
 User-agent: *
 Disallow: /private
 Allow: /
-Sitemap: https://team4.itshivam.me/sitemap.xml
+Sitemap: https://rightresourcefit.onrender.com/sitemap.xml

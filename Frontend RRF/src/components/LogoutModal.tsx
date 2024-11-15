@@ -14,6 +14,7 @@ const LogoutModal: React.FC<LogoutModalProps> = ({ setIsLogoutModalOpen }) => {
     localStorage.removeItem('role');
     localStorage.removeItem('avatar');
     localStorage.removeItem('username');
+    localStorage.removeItem('id');
     setIsLogoutModalOpen(false);
     navigate('/logout');
   };

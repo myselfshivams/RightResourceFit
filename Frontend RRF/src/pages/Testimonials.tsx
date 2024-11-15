@@ -10,6 +10,14 @@ interface TestimonialItem {
 
 const testimonialData: TestimonialItem[] = [
   {
+    name: 'Pranav Gupta',
+    role: 'Recruitment Specialist',
+    testimonial:
+      'A game changer! The analytics and tracking features have improved our recruitment efficiency significantly.',
+    avatarUrl: '/assets/uxer avtar/ai-generated-8772393_1280.png',
+    rating: 5,
+  },
+  {
     name: 'Shivam Singh',
     role: 'HR',
     testimonial:
@@ -19,14 +27,6 @@ const testimonialData: TestimonialItem[] = [
   },
   {
     name: 'Pranav Gupta',
-    role: 'Recruitment Specialist',
-    testimonial:
-      'A game changer! The analytics and tracking features have improved our recruitment efficiency significantly.',
-    avatarUrl: '/assets/uxer avtar/ai-generated-8772393_1280.png',
-    rating: 5,
-  },
-  {
-    name: 'Rashmi',
     role: 'Talent Acquisition',
     testimonial:
       "We've attracted higher-quality candidates and reduced our time-to-hire. Very satisfied with the results!",

@@ -8,6 +8,7 @@ const Logout: React.FC = () => {
 
   useEffect(() => {
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
 
     document.cookie =
       'token=; Max-Age=0; Path=/; Secure; HttpOnly; SameSite=Strict';

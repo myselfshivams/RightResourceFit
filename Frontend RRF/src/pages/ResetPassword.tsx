@@ -84,7 +84,7 @@ const ResetPassword = () => {
                   className="inputField"
                   required
                 />
-                <label className="inputLabel">New Password</label>
+                <label className="inputLabel"></label>
                 <span
                   className="eyeIcon"
                   onClick={() => setShowPassword((prev) => !prev)}
@@ -102,7 +102,7 @@ const ResetPassword = () => {
                   className="inputField"
                   required
                 />
-                <label className="inputLabel">Confirm New Password</label>
+                <label className="inputLabel"></label>
                 <span
                   className="eyeIcon"
                   onClick={() => setShowConfirmPassword((prev) => !prev)}
