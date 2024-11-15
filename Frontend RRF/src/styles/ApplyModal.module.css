@@ -40,6 +40,13 @@
   color: #000000;
 }
 
+.modal h4 {
+  color: rgb(0, 0, 0);
+  background-color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
 .modal p {
   font-size: 1rem;
   color: #ffffff;
