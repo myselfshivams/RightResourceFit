@@ -131,3 +131,20 @@
   text-align: center;
 }
 
+.appliedMessage {
+  display: block;
+  margin: 20px auto 0;
+  width: 240px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  background-color: #ffffffe0;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 40px;
+  border-radius: 8px;
+}
+
+
