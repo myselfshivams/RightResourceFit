@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../styles/ApplyModal.module.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ApplyModalProps {
   jobTitle: string;
@@ -38,7 +40,8 @@ const ApplyModal: React.FC<ApplyModalProps> = ({
         });
         setUserProfile(response.data);
       } catch (error) {
-        console.error("Error fetching user profile:", error);
+        toast.error('Failed to fetch user profile!');
+        console.error('Error fetching user profile:', error);
       }
     };
 
@@ -62,7 +65,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({
 
   const handleSubmitApplication = async () => {
     if (!resume) {
-      alert('Application submitted successfully.');
+      toast.error('Please upload your resume before applying!');
       return;
     }
 
@@ -100,10 +103,11 @@ const ApplyModal: React.FC<ApplyModalProps> = ({
       );
 
       setIsSuccess(true);
+      toast.success('Application submitted successfully!');
       onConfirm();
     } catch (error) {
+      toast.error('Error submitting your application.');
       console.error('Error submitting application:', error);
-      alert('There was an error submitting your application.');
     } finally {
       setIsApplying(false);
     }
@@ -113,6 +117,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({
 
   return (
     <div className={styles.modalOverlay}>
+      <ToastContainer />
       <div className={`${styles.modal} ${isAnimating ? styles.hidden : ''}`}>
         {isApplying ? (
           <>
@@ -135,20 +140,22 @@ const ApplyModal: React.FC<ApplyModalProps> = ({
               {userProfile && (
                 <>
                   <label>Name: {userProfile.name}</label>
-                  
                   <label>Email: {userProfile.email}</label>
-                  
                   <label>Phone Number: {userProfile.phoneNumber}</label>
-                  
                 </>
               )}
-              
+
               {/* Resume Upload */}
               <label className='Resume'>
                 Resume:
-                <input type="file" accept=".pdf,.doc,.docx" onChange={handleResumeChange} required />
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleResumeChange}
+                  required
+                />
               </label>
-              
+
               {/* Cover Letter */}
               <label className='coverLetter'>
                 Cover Letter:
@@ -158,7 +165,7 @@ const ApplyModal: React.FC<ApplyModalProps> = ({
                   placeholder="Write a brief cover letter"
                 />
               </label>
-              
+
               <div className={styles.buttonGroup}>
                 <button
                   type="button"
