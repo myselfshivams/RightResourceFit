@@ -27,6 +27,7 @@ import AdminManageJob from './components/AdminManageJob';
 import AdminCreateJob from './components/AdminCreateJob';
 import AdminUserManage from './components/AdminUserManage';
 import AdminApplication from './pages/AdminApplication';
+import JobReport from './components/report';
 import AdminManageProfile from './pages/AdminManageProfile';
 
 function App() {
@@ -155,6 +156,15 @@ function App() {
               </AdminProtectedRoute>
             }
           />
+           <Route
+           path="/admin/job-report/:jobId" // Use :jobId for dynamic routing
+           element={
+           <AdminProtectedRoute>
+            <JobReport />
+            </AdminProtectedRoute>
+          }
+          />
+
           <Route
             path="/admin/createJob"
             element={
