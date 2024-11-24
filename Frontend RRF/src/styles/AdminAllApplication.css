@@ -12,20 +12,28 @@
   }
 
 .Application {
-  margin-left: 250px; /* Sidebar width offset */
+  margin-left: 250px; 
   padding: 20px;
-}
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+} 
 
 .H2 {
-  font-size: 24px;
+  font-size: 44px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
 }
 
 .tble {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .tble th, .tble td {
@@ -40,12 +48,10 @@
   font-size: larger;
 }
 
-.tble tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
+
 
 .tble tr:hover {
-  background-color: #e2e2e2;
+  background-color: #e2e2e257;
 }
 
 .tble td button {
@@ -204,10 +210,13 @@ select {
 }
 
 .search-container input{
-  width: 49%;
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
   /* margin-bottom: 20px; */
-  border-radius: 5px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 /* Add the base styles for the select */
