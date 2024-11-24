@@ -224,7 +224,7 @@ const UserSettings: React.FC = () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 250px;
+  
   }
 
   .user-profile-container {
@@ -316,6 +316,33 @@ const UserSettings: React.FC = () => {
   .edit-profile-button:hover {
     background-color: #218838;
   }
+    @media (max-width: 768px) {
+      .user-profile-container {
+        padding: 10px;
+        margin-top: 10px;
+        min-width: 5%;
+      }
+
+      .user-profile-container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .profile-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      input[type="text"] {
+        width: 150px;
+      }
+
+      .edit-profile-button {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
 `}</style>
     </div>
   );
