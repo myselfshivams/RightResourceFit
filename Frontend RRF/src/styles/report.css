@@ -9,15 +9,18 @@ body {
 }
 
 h1, h2, h3 {
-    color: #333;
-    font-weight: 600;
+    color: #fff;
+    font-weight: 700;
 }
 
 p {
-    color: #555;
+    color: #fff;
 }
 /* Job Report Section */
 .qw {
+    background-image: url('/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover; 
     margin-left: 240px; /* Sidebar width */
     padding: 20px;
     max-width: 1200px;
@@ -39,7 +42,7 @@ p {
 }
 
 .summary-card {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -59,7 +62,7 @@ p {
 
 /* Job Info Section */
 .job-info {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -72,7 +75,7 @@ p {
 }
 
 .job-info strong {
-    color: #333;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Table Styling */
@@ -80,7 +83,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 30px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

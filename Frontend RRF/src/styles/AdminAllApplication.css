@@ -12,7 +12,7 @@
   }
 
 .Application {
-  margin-left: 250px; 
+  margin-left: 230px; 
   padding: 20px;
   background-image: url('/bg.png');
   background-repeat: no-repeat;
@@ -43,7 +43,7 @@
 }
 
 .tble th {
-  background-color: #f4f4f4;
+  background-color: #542eb3;
   font-weight: 600;
   font-size: larger;
 }
@@ -171,7 +171,7 @@ select {
 .Updtebutn {
   background-color: #542eb3;
   color: white;
-  margin-right: 10px;
+  margin-right: 80px;
 }
 
 .Updtebutn:hover {
@@ -190,6 +190,11 @@ select {
 
 /* Responsive adjustments */
 @media (max-width: 500px) {
+  .Application {
+    margin-left: 0px; 
+    overflow-x: auto;
+    
+  } 
   .modal-content {
     width: 90%;
     padding: 15px;

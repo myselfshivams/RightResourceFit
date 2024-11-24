@@ -1,8 +1,8 @@
-import "../styles/AdminManageProfile.css"
+import "../styles/AdminManageProfile.css";
 import AdminSidebar from '../components/AdminSidebar';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { AiOutlineEdit } from "react-icons/ai";
+// import { AiOutlineEdit } from "react-icons/ai";
 
 interface User {
   _id: string;
@@ -14,15 +14,11 @@ interface User {
 
 const AdminManageProfile = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [editing, setEditing] = useState<{ name: boolean; phoneNumber: boolean; imageUrl: boolean }>({
-    name: false,
-    phoneNumber: false,
-    imageUrl: false,
-  });
+  const [editMode, setEditMode] = useState<boolean>(false);
   const [newName, setNewName] = useState<string>('');
   const [newPhoneNumber, setNewPhoneNumber] = useState<string>('');
   const [newImageUrl, setNewImageUrl] = useState<string>('');
-  const [imageFile, setImageFile] = useState<File | null>(null); // To store the uploaded image file
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -32,10 +28,10 @@ const AdminManageProfile = () => {
         });
         setUser(response.data);
         setNewName(response.data.name);
-        localStorage.setItem('username', response.data.name)
+        localStorage.setItem('username', response.data.name);
         setNewPhoneNumber(response.data.phoneNumber);
         setNewImageUrl(response.data.imageUrl);
-        localStorage.setItem('avatar', response.data.imageUrl)
+        localStorage.setItem('avatar', response.data.imageUrl);
       } catch (error) {
         console.error("Error fetching user profile:", error);
       }
@@ -56,9 +52,8 @@ const AdminManageProfile = () => {
     try {
       let updatedImageUrl = newImageUrl;
       if (imageFile) {
-        // Upload the new image to the server if there's a file selected
         const formData = new FormData();
-        formData.append('image', imageFile); // 'image' is the field name used in multer
+        formData.append('image', imageFile);
 
         const uploadResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/upload`, formData, {
           headers: {
@@ -66,7 +61,7 @@ const AdminManageProfile = () => {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
-        updatedImageUrl = uploadResponse.data.fileUrl; // Get the Cloudinary URL
+        updatedImageUrl = uploadResponse.data.fileUrl;
       }
 
       const response = await axios.put(
@@ -75,7 +70,7 @@ const AdminManageProfile = () => {
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       );
       setUser(response.data);
-      setEditing({ name: false, phoneNumber: false, imageUrl: false });
+      setEditMode(false);
       alert('Profile updated successfully');
     } catch (error) {
       console.error("Error updating profile:", error);
@@ -88,88 +83,63 @@ const AdminManageProfile = () => {
       <AdminSidebar />
       <div className="user-profile-container">
         <h1>User Profile</h1>
-
         {user && (
           <div className="user-profile-details">
-            {/* Profile Picture */}
             <div className="profile-item">
-              <label></label>
-              <div className="profile-editable">
-                {editing.imageUrl ? (
+              <label>Profile Picture</label>
+              <div className="profile-imgg">
+                {editMode ? (
                   <>
-                    <input
-                      type="file"
-                      onChange={handleImageChange}
-                      accept="image/*"
-                    />
+                    <input type="file" onChange={handleImageChange} accept="image/*" />
+                    {newImageUrl && <img src={newImageUrl} alt="Preview" className="profile-image" />}
                   </>
                 ) : (
                   <img src={user.imageUrl} alt="User Profile" className="profile-image" />
                 )}
-                <AiOutlineEdit
-                  className="edit-icon"
-                  onClick={() => setEditing({ ...editing, imageUrl: !editing.imageUrl })}
-                />
               </div>
             </div>
 
-            {/* Name */}
             <div className="profile-item">
               <label>Name:</label>
-              <div className="profile-editable">
-                {editing.name ? (
-                  <input
-                    type="text"
-                    value={newName}
-                    onChange={(e) => setNewName(e.target.value)}
-                    placeholder="Enter new name"
-                  />
-                ) : (
-                  <p>{user.name}</p>
-                )}
-                <AiOutlineEdit
-                  className="edit-icon"
-                  onClick={() => setEditing({ ...editing, name: !editing.name })}
+              {editMode ? (
+                <input
+                  type="text"
+                  value={newName}
+                  onChange={(e) => setNewName(e.target.value)}
                 />
-              </div>
+              ) : (
+                <p>{user.name}</p>
+              )}
             </div>
 
             <div className="profile-item">
-              <label>Role</label>
-              <div className="profile-editable">
-                <p>HR Manager</p>
-              </div>
+              <label>Role:</label>
+              <p>HR Manager</p>
             </div>
 
-            {/* Email (not editable) */}
             <div className="profile-item">
               <label>Email:</label>
               <p>{user.email}</p>
             </div>
 
-            {/* Phone Number */}
             <div className="profile-item">
               <label>Phone Number:</label>
-              <div className="profile-editable">
-                {editing.phoneNumber ? (
-                  <input
-                    type="text"
-                    value={newPhoneNumber}
-                    onChange={(e) => setNewPhoneNumber(e.target.value)}
-                    placeholder="Enter new phone number"
-                  />
-                ) : (
-                  <p>{user.phoneNumber}</p>
-                )}
-                <AiOutlineEdit
-                  className="edit-icon"
-                  onClick={() => setEditing({ ...editing, phoneNumber: !editing.phoneNumber })}
+              {editMode ? (
+                <input
+                  type="text"
+                  value={newPhoneNumber}
+                  onChange={(e) => setNewPhoneNumber(e.target.value)}
                 />
-              </div>
+              ) : (
+                <p>{user.phoneNumber}</p>
+              )}
             </div>
 
-            {/* Save Changes Button */}
-            {(editing.name || editing.phoneNumber || editing.imageUrl) && (
+            {!editMode ? (
+              <button onClick={() => setEditMode(true)} className="edit-profile-button">
+                Edit Profile
+              </button>
+            ) : (
               <button onClick={handleSaveChanges} className="save-changes-button">
                 Save Changes
               </button>
@@ -182,4 +152,3 @@ const AdminManageProfile = () => {
 };
 
 export default AdminManageProfile;
-
