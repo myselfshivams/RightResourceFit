@@ -4,7 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "../styles/AdminManageJob.css";
 import DeleteUpdateModal from "../pages/DeleteUpdateModel";
-import { IoMdColorFill } from "react-icons/io";
+// import { IoMdColorFill } from "react-icons/io";
 
 interface Salary {
   amount: number;
