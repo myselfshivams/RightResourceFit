@@ -147,4 +147,122 @@
   border-radius: 8px;
 }
 
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .content {
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+    box-shadow: none;
+  }
+
+  .head {
+    font-size: 2.5rem;
+  }
+
+  .searchBar {
+    margin-bottom: 20px;
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .searchBar input {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .jobList {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .jobCard {
+    padding: 15px;
+  }
+
+  .jobCard h3 {
+    font-size: 1.5rem;
+  }
+
+  .jobCard p {
+    font-size: 0.9rem;
+  }
+
+  .applyButton {
+    width: 180px;
+    font-size: 0.9rem;
+    padding: 12px 25px;
+  }
+
+  .noJobs {
+    margin-top: 20px;
+  }
+
+  .noJobsImage {
+    width: 150px;
+  }
+
+  .noJobs p {
+    font-size: 1.2rem;
+  }
+
+  .appliedMessage {
+    width: 200px;
+    font-size: 0.9rem;
+    padding: 12px 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .head {
+    font-size: 2rem;
+  }
+
+  .searchBar {
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+
+  .jobList {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 20%;
+  }
+
+  .jobCard {
+    padding: 10px;
+  }
+
+  .jobCard h3 {
+    font-size: 1.2rem;
+  }
+
+  .jobCard p {
+    font-size: 0.8rem;
+  }
+
+  .applyButton {
+    width: 150px;
+    font-size: 0.8rem;
+    padding: 10px 20px;
+  }
+
+  .noJobsImage {
+    width: 120px;
+  }
+
+  .noJobs p {
+    font-size: 1rem;
+  }
+
+  .appliedMessage {
+    width: 180px;
+    font-size: 0.8rem;
+    padding: 10px 20px;
+  }
+}
 
