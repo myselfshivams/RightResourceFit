@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/UserSidebar';
 import axios from 'axios';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface User {
   _id: string;
@@ -13,7 +15,7 @@ interface User {
 
 const UserSettings: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [editMode, setEditMode] = useState<boolean>(false); 
+  const [editMode, setEditMode] = useState<boolean>(false);
   const [editing, setEditing] = useState<{
     name: boolean;
     phoneNumber: boolean;
@@ -26,7 +28,7 @@ const UserSettings: React.FC = () => {
   const [newName, setNewName] = useState<string>('');
   const [newPhoneNumber, setNewPhoneNumber] = useState<string>('');
   const [newImageUrl, setNewImageUrl] = useState<string>('');
-  const [imageFile, setImageFile] = useState<File | null>(null); 
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -47,6 +49,7 @@ const UserSettings: React.FC = () => {
         localStorage.setItem('avatar', response.data.imageUrl);
       } catch (error) {
         console.error('Error fetching user profile:', error);
+        toast.error('Failed to fetch user profile.');
       }
     };
 
@@ -57,7 +60,7 @@ const UserSettings: React.FC = () => {
     const file = e.target.files?.[0];
     if (file) {
       setImageFile(file);
-      setNewImageUrl(URL.createObjectURL(file)); 
+      setNewImageUrl(URL.createObjectURL(file));
     }
   };
 
@@ -65,9 +68,8 @@ const UserSettings: React.FC = () => {
     try {
       let updatedImageUrl = newImageUrl;
       if (imageFile) {
-     
         const formData = new FormData();
-        formData.append('image', imageFile); 
+        formData.append('image', imageFile);
 
         const uploadResponse = await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
@@ -79,7 +81,7 @@ const UserSettings: React.FC = () => {
             },
           }
         );
-        updatedImageUrl = uploadResponse.data.fileUrl; 
+        updatedImageUrl = uploadResponse.data.fileUrl;
       }
 
       const response = await axios.put(
@@ -91,13 +93,14 @@ const UserSettings: React.FC = () => {
       );
       setUser(response.data);
       setEditing({ name: false, phoneNumber: false, imageUrl: false });
-      setEditMode(false); 
-      alert('Profile updated successfully');
+      setEditMode(false);
+      toast.success('Profile updated successfully!');
     } catch (error) {
       console.error('Error updating profile:', error);
-      alert('Failed to update profile');
+      toast.error('Failed to update profile.');
     }
   };
+
 
   return (
     <div className="HH">
@@ -302,20 +305,28 @@ const UserSettings: React.FC = () => {
     width: 200px;
   }
 
-  .edit-profile-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    align-self: flex-start;
-    margin-top: 20px;
+  .edit-profile-button, .save-changes-button {
+    display: block;
+  margin: 20px auto 0;
+  width: 200px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  background-color: #000000e0;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 35px;
+  border-radius: 8px;
   }
 
   .edit-profile-button:hover {
-    background-color: #218838;
+     background-color: #ffffff9a;
+  color: #000000;
   }
+        
+  
     @media (max-width: 768px) {
       .user-profile-container {
         padding: 10px;
@@ -344,6 +355,7 @@ const UserSettings: React.FC = () => {
       }
     }
 `}</style>
+   <ToastContainer />
     </div>
   );
 };
