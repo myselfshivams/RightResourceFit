@@ -1,5 +1,6 @@
 const { Readable } = require('stream');
 const cloudinary = require('cloudinary').v2;
+const { v4: uuidv4 } = require('uuid'); // Import uuid
 
 // Function to upload files to Cloudinary
 const uploadToCloudinary = (fileBuffer, options) => {
@@ -24,10 +25,11 @@ const uploadFile = async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ message: 'No file uploaded' });
         }
+        const uniqueName = `${uuidv4()}-${Date.now()}`; 
 
         const options = {
             folder: 'uploads',
-            public_id: req.body.public_id || 'default_file',
+            public_id: req.body.public_id || uniqueName,
         };
 
         // Determine file type and set appropriate resource type and transformations if needed

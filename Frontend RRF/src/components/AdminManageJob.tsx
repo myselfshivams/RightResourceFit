@@ -1,5 +1,5 @@
 import AdminSidebar from "./AdminSidebar";
-import { Link} from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../styles/AdminManageJob.css";
@@ -30,7 +30,7 @@ const AdminManageJob = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState<"delete" | "update" | null>(null);
   const [jobToDelete, setJobToDelete] = useState<string | null>(null);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // Fetch jobs from API
   useEffect(() => {
@@ -171,6 +171,11 @@ const AdminManageJob = () => {
       }
     }
   };
+  const handleReport = (jobId: string) => {
+    
+    navigate(`/admin/job-report/${jobId}`);  // This will navigate to the correct URL
+  };
+  
 
   const handleDelete = (id: string) => {
     setJobToDelete(id);
@@ -226,6 +231,13 @@ const AdminManageJob = () => {
                   <p><strong>Salary:</strong> {job.salary.amount} {job.salary.type} ({job.salary.frequency})</p>
                   <p><strong>Hiring Multiple Candidates:</strong> {job.isHiringMultiple ? "Yes" : "No"}</p>
                   <div className="job-actions">
+                    <button
+                      onClick={() => handleReport(job._id)}
+                      className="update-btn"
+                    >
+                      Report
+                    </button>
+                 
                     <button onClick={() => editProduct(job)} className="update-btn">Update Job</button>
                     <button onClick={() => handleDelete(job._id)} className="delete-btn">Delete</button>
                   </div>
