@@ -3,10 +3,25 @@
   justify-content: space-between;
   gap: 20px;
   margin-left: 15%;
+  
 }
 
-.summary-card {
-  background-color: #fff;
+.summary-cards p {
+  font-size: 1.5rem;
+  color: azure;
+  margin: auto 0; 
+  flex-grow: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+}
+  
+
+.summary-card1, .summary-card2, .summary-card3, .summary-card4{
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -14,39 +29,15 @@
   text-align: center;
 }
 
-.TotalJob{
-  color: purple;
-}
 
-.TotalApplicant{
-  color: blue;
-}
+@media (max-width: 1024px) {
+  .summary-cards {
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-left: 0%; 
+    margin-right: 2%;
+  }
+ 
+  }
 
-.Shortlisted{
-  color: green;
-}
-
-.InReview{
-  color: rgb(181, 125, 30);
-}
-.summary-card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.summary-card.card p {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.summary-card span {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: green;
-}
-
-/* Responsive container for the charts */
-.responsive-container {
-  margin-top: 10px;
-}

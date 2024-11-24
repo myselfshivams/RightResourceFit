@@ -49,21 +49,21 @@ const SummaryCards = () => {
 
   return (
     <div className="summary-cards">
-      <div className="summary-card">
+      <div className="summary-card1">
         <h2>Total Jobs</h2>
-        <p className="TotalJob">{totalJobs}</p>
+        <p>{totalJobs}</p>
       </div>
-      <div className="summary-card">
+      <div className="summary-card2">
         <h2>Total Applicants</h2>
-        <p className="TotalApplicant">{totalApplicants}</p>
+        <p>{totalApplicants}</p>
       </div>
-      <div className="summary-card">
+      <div className="summary-card3">
         <h2>Shortlisted Applicants</h2>
-        <p className="Shortlisted">{shortlistedApplicants}</p>
+        <p>{shortlistedApplicants}</p>
       </div>
-      <div className="summary-card">
+      <div className="summary-card4">
         <h2>In Review</h2>
-        <p className="InReview">{inReviewApplicants}</p>
+        <p>{inReviewApplicants}</p>
       </div>
     </div>
   );
