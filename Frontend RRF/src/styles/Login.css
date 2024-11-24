@@ -1,3 +1,4 @@
+
 .bgg {
   display: flex;
   justify-content: center;
@@ -259,4 +260,181 @@
 
 .forgotPasswordContainer {
   cursor: pointer;
+}
+
+
+@media screen and (max-width: 767px) {
+  .loginPage {
+    flex-direction: column;
+    width: 90vw;
+    min-height: auto;
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .leftSection {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .leftSection h1 {
+    font-size: 2rem;
+  }
+
+  .logo,
+  .heroImage {
+    max-width: 150px;
+    width: 50%;
+  }
+
+ 
+
+  
+  .swipeLeft .leftSection {
+    transform: translateX(0%);
+  }
+  
+  .swipeLeft .rightSection {
+    transform: translateX(0%);
+  }
+  
+  .swipeRight .leftSection {
+    transform: translateX(0%);
+  }
+  
+  .swipeRight .rightSection {
+    transform: translateX(0%);
+  }
+ 
+  .leftSection {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .leftSection h1 {
+    font-size: 2rem;
+  }
+
+  .logo,
+  .heroImage {
+    max-width: 150px;
+    width: 50%;
+  }
+
+  .rightSection {
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .loginContainer {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .inputField {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  .inputLabel {
+    font-size: 14px;
+  }
+
+  .loginBtn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .toggleText {
+    font-size: 12px;
+  }
+}
+
+/* For medium screens: tablets (768px - 1024px) */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .loginPage {
+    flex-direction: row;
+    width: 85vw;
+    min-height: 85vh;
+    padding: 20px;
+    border-radius: 25px;
+  }
+
+  .leftSection {
+    padding: 20px;
+  }
+
+  .rightSection {
+    padding: 20px;
+    border-radius: 25px;
+  }
+
+  .loginContainer {
+    max-width: 100%;
+    padding: 25px;
+  }
+
+  .heading {
+    font-size: 1.9rem;
+  }
+
+  .inputField {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  .inputLabel {
+    font-size: 15px;
+  }
+
+  .loginBtn {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .toggleText {
+    font-size: 13px;
+  }
+}
+
+/* For large screens: desktops (>1024px) */
+@media screen and (min-width: 1025px) {
+  .loginPage {
+    width: 80vw;
+    min-height: 90vh;
+  }
+
+  .leftSection {
+    padding: 30px;
+  }
+
+  .rightSection {
+    padding: 30px;
+  }
+
+  .loginContainer {
+    padding: 30px 40px;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .inputField {
+    font-size: 15px;
+  }
+
+  .loginBtn {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .toggleText {
+    font-size: 14px;
+  }
 }
