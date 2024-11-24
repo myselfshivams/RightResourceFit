@@ -14,6 +14,7 @@
 .Application {
   margin-left: 230px; 
   padding: 20px;
+  min-height:100vh;
   background-image: url('/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
