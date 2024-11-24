@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import "../styles/AdminManageJob.css";
 import DeleteUpdateModal from "../pages/DeleteUpdateModel";
+import { IoMdColorFill } from "react-icons/io";
 
 interface Salary {
   amount: number;
@@ -206,7 +207,9 @@ const AdminManageJob = () => {
       <div className="manage-jobs-container">
         <AdminSidebar />
         <div className={`manage-jobs-content ${isEditing ? "blur" : ""}`}>
-        <h1>Manage Job Postings</h1>
+        <h1 style={{ color: 'white', textAlign: 'center' }}>Manage Job Postings</h1>
+
+
         <Link to="/admin/createJob" className="create-job-btn">Create New Job</Link><br /> <br />
          {/* Search Bar */}
          <div className="searchBar">

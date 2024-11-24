@@ -1,7 +1,12 @@
 .manage-jobs-container {
   display: flex;
   min-height: 100vh;
-  background-color: #f9f9f9;
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
 }
 
 .admin-sidebar {
@@ -9,6 +14,10 @@
   background-color: #2c3e50;
   color: white;
   padding: 20px;
+}
+
+.headi {
+  color: #fff;
 }
 
 .manage-jobs-content {
@@ -28,10 +37,18 @@
   /* position: absolute; */
   bottom: -40px;
   right: 20px;
-  background-color: #542eb3; /* Button color */
-  color: #fff;
-  text-decoration: none;
+  display: block;
+  margin: 20px auto 0;
+  width: 200px;
   border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  background-color: #000000e0;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 35px;
+  border-radius: 8px;
 }
 
 .create-job-btn:hover {
@@ -45,7 +62,9 @@
 }
 
 .jobCard {
-  background-color: white;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -176,8 +195,63 @@
    filter: blur(5px); /* Apply blur effect when modal is open */
 
 .searchBar input {
-  width: 49%;
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
   margin-bottom: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+
+@media (max-width: 768px) {
+  .manage-jobs-content {
+    margin-left: 0px;
+  }
+  
+}
+@media (max-width: 768px) {
+
+
+  .manage-jobs-content {
+    margin-left: 0; 
+    padding: 10px; 
+    margin-bottom: 40px;
+  }
+
+  .create-job-btn {
+    width: 100%; 
+    padding: 10px; 
+    margin: 10px 0; 
+    text-align: center;
+  }
+
+  .job-list {
+    grid-template-columns: 1fr; 
+    gap: 16px;
+  }
+
+  .jobCard {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .searchBar input {
+    width: 100%; 
+    padding: 15px; 
+    margin-bottom: 10px; 
+  }
+
+  .modal-container {
+    width: 95%; 
+    max-width: 480px; 
+    padding: 15px; 
+  }
+
+  .update-btn, .cancel-btn, .delete-btn {
+    padding: 10px; 
+    font-size: 12px;
+    margin-right: 10px; 
+  }
 }

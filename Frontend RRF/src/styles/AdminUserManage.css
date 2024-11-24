@@ -1,6 +1,12 @@
 /* Main container layout */
 .admin-user-manage-container {
   display: flex;
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
 }
 
 /* Main content area, positioned right of the sidebar */
@@ -26,8 +32,10 @@
 
 /* Page title */
 .admin-user-manage-content h1 {
-  font-size: 24px;
+  font-size: 44px;
   margin-bottom: 20px;
+  color: azure;
+  text-align: center;
 }
 
 /* Loading message */
@@ -45,6 +53,9 @@
 .table {
   width: 100%;
   margin-top: 20px;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
 }
 
 /* Individual user row styling */
@@ -53,7 +64,7 @@
 }
 
 .table tbody tr:hover {
-  background-color: #f5f5f5; /* Light gray on hover */
+  background-color: #f5f5f565; /* Light gray on hover */
 }
 
 /* Action buttons container */
@@ -103,3 +114,5 @@
 .btn-warning:hover {
   background-color: orange;
 }
+
+
