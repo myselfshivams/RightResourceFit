@@ -146,81 +146,84 @@ const AdminUserManage = () => {
 
   return (
     <div className="admin-user-manage-container">
-      <AdminSidebar />
-      <div className="admin-user-manage-content">
-        <h1>User Management</h1>
-        {loading && <p>Loading users...</p>}
-        {error && <p className="text-danger">{error}</p>}
+  <AdminSidebar  />
+  <div className="admin-user-manage-content">
+    <h1>User Management</h1>
+    {loading && <p>Loading users...</p>}
+    {error && <p className="text-danger">{error}</p>}
 
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>User Id</th>
-              <th>Avatar</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Admin Access</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>
-                  <img
-                    src={user.imageUrl}
-                    alt={`${user.name}'s avatar`}
-                    className="user-avatar"
-                  />
-                </td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.phoneNumber}</td>
-                <td>{user.isAdmin ? 'Yes' : 'No'}</td>
-                <td>{user.userStatus}</td>
-                <td>
-                  {user.isDeleted ? (
-                    <Button
-                      variant="warning"
-                      onClick={() => handleRestore(user._id)}
-                    >
-                      Restore
-                    </Button>
-                  ) : (
-                    <>
-                      {!user.isAdmin ? (
-                        <Button
-                          variant="success"
-                          onClick={() => handleGrantAccess(user._id)}
-                        >
-                          Grant Access
-                        </Button>
-                      ) : (
-                        <Button
-                          variant="info"
-                          onClick={() => handleUngrantAccess(user._id)}
-                        >
-                          Remove Access
-                        </Button>
-                      )}
+    <div className="table-container">
+      <Table striped bordered hover className="table">
+        <thead>
+          <tr>
+            <th>User Id</th>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Admin Access</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user._id}>
+              <td>{user._id}</td>
+              <td>
+                <img
+                  src={user.imageUrl}
+                  alt={`${user.name}'s avatar`}
+                  className="user-avatar"
+                />
+              </td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.phoneNumber}</td>
+              <td>{user.isAdmin ? 'Yes' : 'No'}</td>
+              <td>{user.userStatus}</td>
+              <td>
+                {user.isDeleted ? (
+                  <Button
+                    variant="warning"
+                    onClick={() => handleRestore(user._id)}
+                  >
+                    Restore
+                  </Button>
+                ) : (
+                  <>
+                    {!user.isAdmin ? (
                       <Button
-                        variant="danger"
-                        onClick={() => handleDelete(user._id)}
+                        variant="success"
+                        onClick={() => handleGrantAccess(user._id)}
                       >
-                        Delete
+                        Grant Access
                       </Button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </div>
+                    ) : (
+                      <Button
+                        variant="info"
+                        onClick={() => handleUngrantAccess(user._id)}
+                      >
+                        Remove Access
+                      </Button>
+                    )}
+                    <Button
+                      variant="danger"
+                      onClick={() => handleDelete(user._id)}
+                    >
+                      Delete
+                    </Button>
+                  </>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
+  </div>
+</div>
+
   );
 };
 
