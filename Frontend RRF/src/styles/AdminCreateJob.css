@@ -1,5 +1,11 @@
 .job-posting-container {
   display: flex;
+  background-image: url('/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  position: relative;
 }
 
 .content {
@@ -10,15 +16,22 @@
 }
 
 .content h1 {
+  color: white;
+  text-align: center;
+}
+
+.content h1 {
   font-size: 24px;
   margin-bottom: 10px;
 }
 
 .job-posting-form {
-  background-color: #f9f9f9;
+ background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 20px;
   border-radius: 8px;
-  max-width: 700px;
+  max-width: 100%;
 }
 
 .form-group {
@@ -213,13 +226,19 @@
 }
 
 button {
-  margin-top: 20px;
-  background-color: #542eb3;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+  display: block;
+  margin: 20px auto 0;
+  width: 200px;
   border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  background-color: #000000e0;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 35px;
+  border-radius: 8px;
 }
 
 button:hover {
@@ -227,17 +246,16 @@ button:hover {
 }
 
 .clear-btn {
-  margin-top: 20px;
+  /* margin-top: 20px;
   background-color: white;
   color: #542eb3;
   padding: 10px 20px;
-  /* border: none; */
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid #542eb3;
-  /* border-color: ; */
   font-weight: bold;
-  margin-right: 29.9rem;
+  margin-right: 29.9rem; */
+  visibility: hidden;
 }
 
   .clear-btn:hover{
@@ -265,4 +283,12 @@ button:hover {
   
   .Modal button {
     margin-top: 15px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .content {
+      margin-left: 0px;
+      margin-bottom: 40px;
+    }
+    
   }
