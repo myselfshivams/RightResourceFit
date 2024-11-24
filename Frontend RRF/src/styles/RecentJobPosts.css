@@ -2,6 +2,12 @@
   margin: 20px 0; /* Optional: add some margin for spacing */
 }
 
+.tit {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  
+}
+
 .tab-container {
   display: flex;
   justify-content: space-between;
@@ -30,6 +36,9 @@
   width: 100%;
   height: auto; /* Change to auto for dynamic height based on content */
   border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 .recent-job-posts th,
@@ -45,4 +54,12 @@
 
 .recent-job-posts .inactive {
   color: red;
+}
+
+
+@media screen and (max-width: 768px) {
+  .recent-job-posts table {
+    visibility: hidden;
+  }
+  
 }

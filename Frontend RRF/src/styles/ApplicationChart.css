@@ -3,12 +3,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background: rgba(255, 255, 255, 0.565);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  width: 300px;
+  min-width: 300px;
   margin-left: 15%;
 }
 
@@ -25,6 +27,7 @@
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
+  
 }
 
 .application-data div {
@@ -56,18 +59,9 @@
   background-color: #ff8042; /* Orange */
 }
 
-/* Responsive Chart */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .application-chart {
-    width: 100%;
-    padding: 15px;
+    margin-left: 5%;
   }
-
-  .application-chart h3 {
-    font-size: 16px;
-  }
-
-  .application-data div {
-    font-size: 12px;
-  }
+  
 }
