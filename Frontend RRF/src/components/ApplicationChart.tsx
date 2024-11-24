@@ -54,7 +54,7 @@ const ApplicationChart: React.FC = () => {
   }
 
   return (
-    <div className="application-chart">
+    <div className="application-charts">
       <h3>Application Response</h3>
       <PieChart width={200} height={200}>
         <Pie

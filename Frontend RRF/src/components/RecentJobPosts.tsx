@@ -42,7 +42,7 @@ const RecentJobPosts: React.FC = () => {
  
   return (
     <div className="recent-job-posts">
-      <h3>Recent Job Posts</h3>
+      {/* <h3 className="tit">Recent Job Posts</h3> */}
       
       <table>
         <thead>
