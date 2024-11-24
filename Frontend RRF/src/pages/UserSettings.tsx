@@ -302,20 +302,28 @@ const UserSettings: React.FC = () => {
     width: 200px;
   }
 
-  .edit-profile-button {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    align-self: flex-start;
-    margin-top: 20px;
+  .edit-profile-button, .save-changes-button {
+    display: block;
+  margin: 20px auto 0;
+  width: 200px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  background-color: #000000e0;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 15px 35px;
+  border-radius: 8px;
   }
 
   .edit-profile-button:hover {
-    background-color: #218838;
+     background-color: #ffffff9a;
+  color: #000000;
   }
+        
+  
     @media (max-width: 768px) {
       .user-profile-container {
         padding: 10px;
