@@ -13,6 +13,7 @@ interface User {
 
 const UserSettings: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [editMode, setEditMode] = useState<boolean>(false); 
   const [editing, setEditing] = useState<{
     name: boolean;
     phoneNumber: boolean;
@@ -25,7 +26,7 @@ const UserSettings: React.FC = () => {
   const [newName, setNewName] = useState<string>('');
   const [newPhoneNumber, setNewPhoneNumber] = useState<string>('');
   const [newImageUrl, setNewImageUrl] = useState<string>('');
-  const [imageFile, setImageFile] = useState<File | null>(null); // To store the uploaded image file
+  const [imageFile, setImageFile] = useState<File | null>(null); 
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -56,7 +57,7 @@ const UserSettings: React.FC = () => {
     const file = e.target.files?.[0];
     if (file) {
       setImageFile(file);
-      setNewImageUrl(URL.createObjectURL(file)); // Preview the image locally
+      setNewImageUrl(URL.createObjectURL(file)); 
     }
   };
 
@@ -64,9 +65,9 @@ const UserSettings: React.FC = () => {
     try {
       let updatedImageUrl = newImageUrl;
       if (imageFile) {
-        // Upload the new image to the server if there's a file selected
+     
         const formData = new FormData();
-        formData.append('image', imageFile); // 'image' is the field name used in multer
+        formData.append('image', imageFile); 
 
         const uploadResponse = await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/api/upload`,
@@ -78,7 +79,7 @@ const UserSettings: React.FC = () => {
             },
           }
         );
-        updatedImageUrl = uploadResponse.data.fileUrl; // Get the Cloudinary URL
+        updatedImageUrl = uploadResponse.data.fileUrl; 
       }
 
       const response = await axios.put(
@@ -90,6 +91,7 @@ const UserSettings: React.FC = () => {
       );
       setUser(response.data);
       setEditing({ name: false, phoneNumber: false, imageUrl: false });
+      setEditMode(false); 
       alert('Profile updated successfully');
     } catch (error) {
       console.error('Error updating profile:', error);
@@ -109,7 +111,7 @@ const UserSettings: React.FC = () => {
             <div className="profile-item">
               <label></label>
               <div className="profile-imgg">
-                {editing.imageUrl ? (
+                {editing.imageUrl && editMode ? (
                   <>
                     <input
                       type="file"
@@ -124,12 +126,14 @@ const UserSettings: React.FC = () => {
                     className="profile-image"
                   />
                 )}
-                <AiOutlineEdit
-                  className="edit-icon"
-                  onClick={() =>
-                    setEditing({ ...editing, imageUrl: !editing.imageUrl })
-                  }
-                />
+                {editMode && (
+                  <AiOutlineEdit
+                    className="edit-icon"
+                    onClick={() =>
+                      setEditing({ ...editing, imageUrl: !editing.imageUrl })
+                    }
+                  />
+                )}
               </div>
             </div>
 
@@ -137,7 +141,7 @@ const UserSettings: React.FC = () => {
             <div className="profile-item">
               <label>Name:</label>
               <div className="profile-editable">
-                {editing.name ? (
+                {editing.name && editMode ? (
                   <input
                     type="text"
                     value={newName}
@@ -147,12 +151,14 @@ const UserSettings: React.FC = () => {
                 ) : (
                   <p>{user.name}</p>
                 )}
-                <AiOutlineEdit
-                  className="edit-icon"
-                  onClick={() =>
-                    setEditing({ ...editing, name: !editing.name })
-                  }
-                />
+                {editMode && (
+                  <AiOutlineEdit
+                    className="edit-icon"
+                    onClick={() =>
+                      setEditing({ ...editing, name: !editing.name })
+                    }
+                  />
+                )}
               </div>
             </div>
 
@@ -166,7 +172,7 @@ const UserSettings: React.FC = () => {
             <div className="profile-item">
               <label>Phone Number:</label>
               <div className="profile-editable">
-                {editing.phoneNumber ? (
+                {editing.phoneNumber && editMode ? (
                   <input
                     type="text"
                     value={newPhoneNumber}
@@ -176,20 +182,29 @@ const UserSettings: React.FC = () => {
                 ) : (
                   <p>{user.phoneNumber}</p>
                 )}
-                <AiOutlineEdit
-                  className="edit-icon"
-                  onClick={() =>
-                    setEditing({
-                      ...editing,
-                      phoneNumber: !editing.phoneNumber,
-                    })
-                  }
-                />
+                {editMode && (
+                  <AiOutlineEdit
+                    className="edit-icon"
+                    onClick={() =>
+                      setEditing({
+                        ...editing,
+                        phoneNumber: !editing.phoneNumber,
+                      })
+                    }
+                  />
+                )}
               </div>
             </div>
 
-            {/* Save Changes Button */}
-            {(editing.name || editing.phoneNumber || editing.imageUrl) && (
+            {/* Edit Profile Button */}
+            {!editMode ? (
+              <button
+                onClick={() => setEditMode(true)}
+                className="edit-profile-button"
+              >
+                Edit Profile
+              </button>
+            ) : (
               <button
                 onClick={handleSaveChanges}
                 className="save-changes-button"
@@ -202,14 +217,14 @@ const UserSettings: React.FC = () => {
       </div>
 
       <style>{`
-  .HH {
+      .HH {
     background-image: url('/bg.png');
   background-repeat: no-repeat;
   background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 250px;
+  
   }
 
   .user-profile-container {
@@ -287,9 +302,9 @@ const UserSettings: React.FC = () => {
     width: 200px;
   }
 
-  .save-changes-button {
+  .edit-profile-button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 4px;
@@ -298,18 +313,36 @@ const UserSettings: React.FC = () => {
     margin-top: 20px;
   }
 
-  .save-changes-button:hover {
-    background-color: #0056b3;
+  .edit-profile-button:hover {
+    background-color: #218838;
   }
-
-@media (max-width: 768px) {
-  .HH {
-  padding-left: 0;
-  }
-  .user-profile-container{
-  transform: scale(0.6);
-  }
+    @media (max-width: 768px) {
+      .user-profile-container {
+        padding: 10px;
+        margin-top: 10px;
+        min-width: 5%;
       }
+
+      .user-profile-container h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .profile-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      input[type="text"] {
+        width: 150px;
+      }
+
+      .edit-profile-button {
+        padding: 8px 16px;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
 `}</style>
     </div>
   );
