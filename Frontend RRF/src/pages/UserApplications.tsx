@@ -89,7 +89,7 @@ const Applications: React.FC = () => {
                     onClick={() => handleViewStatus(application)}
                     aria-label="View Status"
                   >
-                    View Status
+                    Status
                   </button>
                 </div>
               ))

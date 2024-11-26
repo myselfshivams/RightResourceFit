@@ -164,6 +164,7 @@
   background-color: #000000;
   color: white;
   border: none;
+  width: max-content;
   padding: 10px 25px;
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
