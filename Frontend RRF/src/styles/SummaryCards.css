@@ -8,7 +8,7 @@
 
 .summary-cards p {
   font-size: 1.5rem;
-  color: azure;
+  color: rgb(0, 9, 189);
   margin: auto 0; 
   flex-grow: 1; 
   display: flex;
@@ -27,8 +27,12 @@
   padding: 20px;
   flex: 1;
   text-align: center;
+  color: black;
 }
 
+.summary-card1 h2, .summary-card2 h2, .summary-card3 h2, .summary-card4 h2{
+  color: black;
+}
 
 @media (max-width: 1024px) {
   .summary-cards {
