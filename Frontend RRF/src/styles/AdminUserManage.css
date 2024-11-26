@@ -162,3 +162,11 @@
     font-size: 0.9rem;
   }
 }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
