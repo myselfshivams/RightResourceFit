@@ -50,7 +50,26 @@ const JobReport: React.FC = () => {
   const [inRejectApplicants, setInRejectApplicants] = useState<number>(0);
   
   if (!jobId) {
-    return <div>Job ID is missing!</div>;
+    return <><div className='qw23'>
+    <AdminSidebar />
+    </div> <div 
+    style={{ 
+      height: '100vh', 
+      width: '100%', 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      textAlign: 'center', 
+      backgroundImage: 'url(/bg.png)', 
+      backgroundRepeat: 'no-repeat', 
+      backgroundSize: 'cover' 
+    }}
+  >
+    Job ID is missing!
+  </div>
+    </>
+    
+    
   }
 
   const [applications, setApplications] = useState<Application[]>([]);
@@ -189,7 +208,24 @@ const JobReport: React.FC = () => {
   };
 
   if (!applications.length) {
-    return <div>Loading job details...</div>;
+    return <><div className='qw23'>
+    <AdminSidebar />
+    </div> <div 
+    style={{ 
+      height: '100vh', 
+      width: '100%', 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      textAlign: 'center', 
+      backgroundImage: 'url(/bg.png)', 
+      backgroundRepeat: 'no-repeat', 
+      backgroundSize: 'cover' 
+    }}
+  >
+    Loading job details...
+  </div>
+    </>
   }
 
   return (

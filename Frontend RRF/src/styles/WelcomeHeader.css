@@ -9,7 +9,9 @@
   border-radius: 10px;
   margin-bottom: 20px;
   margin-left: 15%;
-}
+} 
+
+
 
 .welcome-text {
   color: #333;
@@ -22,6 +24,7 @@
   font-size: 28px;
   font-weight: bold;
   text-align: center;
+  color: black;
 }
 
 .welcome-text p {

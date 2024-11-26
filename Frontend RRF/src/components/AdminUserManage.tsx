@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, Button } from 'react-bootstrap';
 import AdminSidebar from './AdminSidebar';
+import { PulseLoader } from 'react-spinners'; 
 import '../styles/AdminUserManage.css';
 
 const AdminUserManage = () => {
@@ -17,11 +18,9 @@ const AdminUserManage = () => {
   };
 
   const [users, setUsers] = useState<User[]>([]);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch all users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -34,13 +33,14 @@ const AdminUserManage = () => {
           }
         );
         setUsers(data);
-        setLoading(false);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
         } else {
           setError('An unknown error occurred');
         }
+      } finally {
+        setLoading(false); // Ensure loading is stopped after the request
       }
     };
 
@@ -63,11 +63,7 @@ const AdminUserManage = () => {
         )
       );
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred');
-      }
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };
 
@@ -87,11 +83,7 @@ const AdminUserManage = () => {
         )
       );
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred');
-      }
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };
 
@@ -110,15 +102,10 @@ const AdminUserManage = () => {
         )
       );
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred');
-      }
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };
 
-  // Restore User
   const handleRestore = async (id: string) => {
     try {
       await axios.put(
@@ -136,11 +123,7 @@ const AdminUserManage = () => {
         )
       );
     } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError('An unknown error occurred');
-      }
+      setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };
 
@@ -149,76 +132,83 @@ const AdminUserManage = () => {
       <AdminSidebar />
       <div className="admin-user-manage-content">
         <h1>User Management</h1>
-        {loading && <p>Loading users...</p>}
-        {error && <p className="text-danger">{error}</p>}
-
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>User Id</th>
-              <th>Avatar</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Admin Access</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>
-                  <img
-                    src={user.imageUrl}
-                    alt={`${user.name}'s avatar`}
-                    className="user-avatar"
-                  />
-                </td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.phoneNumber}</td>
-                <td>{user.isAdmin ? 'Yes' : 'No'}</td>
-                <td>{user.userStatus}</td>
-                <td>
-                  {user.isDeleted ? (
-                    <Button
-                      variant="warning"
-                      onClick={() => handleRestore(user._id)}
-                    >
-                      Restore
-                    </Button>
-                  ) : (
-                    <>
-                      {!user.isAdmin ? (
+        {loading ? (
+          <div className="spinner-container">
+            <PulseLoader size={25} color="#fff" /> 
+          </div>
+        ) : error ? (
+          <p className="text-danger">{error}</p>
+        ) : (
+          <div className="table-container">
+            <Table striped bordered hover className="table">
+              <thead>
+                <tr>
+                  <th>User Id</th>
+                  <th>Avatar</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Admin Access</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => (
+                  <tr key={user._id}>
+                    <td>{user._id}</td>
+                    <td>
+                      <img
+                        src={user.imageUrl}
+                        alt={`${user.name}'s avatar`}
+                        className="user-avatar"
+                      />
+                    </td>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.phoneNumber}</td>
+                    <td>{user.isAdmin ? 'Yes' : 'No'}</td>
+                    <td>{user.userStatus}</td>
+                    <td>
+                      {user.isDeleted ? (
                         <Button
-                          variant="success"
-                          onClick={() => handleGrantAccess(user._id)}
+                          variant="warning"
+                          onClick={() => handleRestore(user._id)}
                         >
-                          Grant Access
+                          Restore
                         </Button>
                       ) : (
-                        <Button
-                          variant="info"
-                          onClick={() => handleUngrantAccess(user._id)}
-                        >
-                          Remove Access
-                        </Button>
+                        <>
+                          {!user.isAdmin ? (
+                            <Button
+                              variant="success"
+                              onClick={() => handleGrantAccess(user._id)}
+                            >
+                              Grant Access
+                            </Button>
+                          ) : (
+                            <Button
+                              variant="info"
+                              onClick={() => handleUngrantAccess(user._id)}
+                            >
+                              Remove Access
+                            </Button>
+                          )}
+                          <Button
+                            variant="danger"
+                            onClick={() => handleDelete(user._id)}
+                          >
+                            Delete
+                          </Button>
+                        </>
                       )}
-                      <Button
-                        variant="danger"
-                        onClick={() => handleDelete(user._id)}
-                      >
-                        Delete
-                      </Button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -5,17 +5,85 @@
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
-  display: flex;
+  width: 100%;
   position: relative;
+  overflow: hidden;
 }
 
-/* Main content area, positioned right of the sidebar */
+/* Sidebar handling for responsiveness */
+.admin-sidebar {
+  width: 230px;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .admin-sidebar {
+    width: 80px;
+  }
+}
+
+/* Main content area */
 .admin-user-manage-content {
   flex: 1;
   padding: 20px;
-  margin-left: 260px; /* Adjust to match the sidebar's width */
+  margin-left: 230px;
+  transition: margin-left 0.3s ease-in-out;
 }
 
+@media (max-width: 768px) {
+  .admin-user-manage-content {
+    margin-left: 80px;
+  }
+}
+
+/* Title styling */
+.admin-user-manage-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Error message styling */
+.text-danger {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Table styling */
+.table-container {
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+.table {
+  width: 100%;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+  background: #542eb3;
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+.table tbody td {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 8px;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Avatar styling */
 .user-avatar {
   width: 40px;
   height: 40px;
@@ -23,96 +91,82 @@
   object-fit: cover;
 }
 
-@media (max-width: 869.6px) {
-  .admin-user-manage-content {
-    margin-left: 80px;
-    width: calc(100% - 80px);
-  }
-}
-
-/* Page title */
-.admin-user-manage-content h1 {
-  font-size: 44px;
-  margin-bottom: 20px;
-  color: azure;
-  text-align: center;
-}
-
-/* Loading message */
-.admin-user-manage-content p {
-  font-size: 16px;
-}
-
-/* Error message styling */
-.text-danger {
-  color: red;
-  margin-bottom: 10px;
-}
-
-/* Table styling */
-.table {
-  width: 100%;
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.565);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-}
-
-/* Individual user row styling */
-.table tbody tr {
-  transition: background-color 0.3s;
-}
-
-.table tbody tr:hover {
-  background-color: #f5f5f565; /* Light gray on hover */
-}
-
-/* Action buttons container */
-.table td {
-  text-align: center; /* Center action buttons */
-}
-
-/* Individual button styling */
+/* Buttons */
 .btn {
   padding: 8px 12px;
-  border-radius: 5px;
   font-size: 14px;
-  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px;
 }
 
-/* Specific button styles */
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
 .btn-success {
-  background-color: #542eb3;
+  background-color: #28a745;
   color: white;
   border: none;
-  margin-right: 4px;
 }
 
 .btn-info {
   background-color: #542eb3;
   color: white;
   border: none;
-  margin-right: 4px;
 }
 
 .btn-danger {
-  background-color: red;
+  background-color: #dc3545;
   color: white;
   border: none;
-}
-
-.btn-danger:hover {
-  background-color: red;
 }
 
 .btn-warning {
-  background-color: orange;
+  background-color: #ffc107;
   color: white;
   border: none;
 }
 
-.btn-warning:hover {
-  background-color: orange;
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+  .admin-user-manage-content h1 {
+    font-size: 2rem;
+  }
+
+  .table tbody td {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }
 
+@media (max-width: 576px) {
+  .admin-user-manage-container {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+  }
+
+  .admin-user-manage-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
 
