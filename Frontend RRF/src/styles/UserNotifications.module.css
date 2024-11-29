@@ -98,9 +98,10 @@
   border: none;
   color: #ff4d4f;
   cursor: pointer;
+  width: max-content;
   font-size: 1.2rem;
   margin-left: auto;
-  margin-right: 20px;
+  margin-right: 5px;
 }
 
 .deleteButton:hover {

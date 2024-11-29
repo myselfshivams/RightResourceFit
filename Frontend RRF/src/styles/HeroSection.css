@@ -63,7 +63,11 @@
 }
 
 .btn-get-started {
-  background-color: #a258e7;
+  background-color: #542eb3;
+  color: white;
+}
+.btn-get-started a{
+  background-color: #542eb3;
   color: white;
 }
 

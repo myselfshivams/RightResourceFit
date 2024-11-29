@@ -235,20 +235,26 @@ const AdminManageJob = () => {
                   <p><strong>Hiring Multiple Candidates:</strong> {job.isHiringMultiple ? "Yes" : "No"}</p>
                   <div className="job-actions">
                     <button
-                      onClick={() => handleReport(job._id)}
-                      className="update-btn"
-                    >
-                      Report
-                    </button>
-                 
-                    <button onClick={() => editProduct(job)} className="update-btn">Update Job</button>
-                    <button onClick={() => handleDelete(job._id)} className="delete-btn">Delete</button>
+                    onClick={() => handleReport(job._id)}
+                    className="action-btn report-btn"
+                    >Report </button>
+                    <button
+                    onClick={() => editProduct(job)}
+                     className="action-btn update-btn">
+                        Update
+                        </button>
+                        <button
+                        onClick={() => handleDelete(job._id)}
+                         className="action-btn delete-btn">
+                          Delete
+                           </button>
                   </div>
+
                 </div>
               ))}
             </div>
           ) : (
-            <p>No job postings available. <Link to="/admin/createJob">Create a job</Link>.</p>
+            <p className="as">No job postings available. <Link to="/admin/createJob">Create a job</Link>.</p>
           )}
          
         </div>
@@ -408,8 +414,11 @@ const AdminManageJob = () => {
               />Yes, I am hiring multiple candidates
               </label>
             </div>
-            <button type="submit" className="update-button">Update Job</button>
-            <button type="submit" className="cancel-btn" onClick={() => setIsEditing(false)}>Cancel</button>
+            <div className="job-actions">
+              <button type="submit" className="action-btn update-btn">Update</button>
+              <button type="submit" className="action-btn delete-btn" onClick={() => setIsEditing(false)}>Cancel</button>
+            </div>
+           
           </form>
         </div>
         </div>

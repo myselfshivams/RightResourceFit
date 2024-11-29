@@ -12,7 +12,7 @@ const Header1: React.FC = () => {
       <Navbar />
       <div className="banner">
         <div id="container5">
-          <h1 id="banner-title1">ABOUT</h1>
+          <h1 id="banner-title1">About</h1>
         </div>
       </div>
     </header>
@@ -42,10 +42,9 @@ const MainSection: React.FC = () => {
             </h2>
             <p>
               <i>
-                The soul creativity or love put the essence of yourself that is
-                put into your work. ReelBite is the world's most popular and
-                authoritative source for movie, TV and celebrity content. This
-                site also has an exit-the-plugin feature. The site was created
+              The soul creativity or love put the essence of yourself that is
+                put into your work. Right Reaource Fit is the world's most popular and
+                authoritative source for job recruitment. The site was created
                 by Pranav Gupta. It is operated by P's, Inc.
               </i>
             </p>
