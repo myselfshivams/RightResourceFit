@@ -89,34 +89,74 @@
   color: #34495e;
 }
 
+
+/* Container styling */
 .job-actions {
-  margin-top: 15px;
+  display: flex; /* Align buttons in a row */
+  gap: 10px; /* Add spacing between buttons */
+  align-items: center; /* Vertically center buttons */
+  justify-content: flex-start; /* Align buttons to the left */
+  margin-top: 10px; /* Add some spacing above the button group */
 }
 
+/* Shared button styles */
+.action-btn {
+  width: 100px;
+  padding: 8px 16px; /* Add padding to make buttons more clickable */
+  border: none; /* Remove default button border */
+  border-radius: 4px; /* Round the corners of the button */
+  font-size: 13px; /* Set font size */
+  font-weight: bold; /* Make text bold */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  color: white; /* Default text color */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effect */
+}
+
+/* Report button styles */
+.report-btn {
+  background-color: #f39c12; /* Orange background color */
+}
+
+.report-btn:hover {
+  background-color: #e67e22; /* Slightly darker orange on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Update button styles */
+.update-btn {
+  background-color: #542eb3; /* Blue background color */
+}
+
+.update-btn:hover {
+  background-color: #542eb3; /* Slightly darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Delete button styles */
 .delete-btn {
-  padding: 8px 18px;
-  background-color: #e74c3c;
-  color: white;
-  margin-right:500px ;
+  background-color: #e74c3c; /* Red background color */
 }
 
 .delete-btn:hover {
-  background-color: #e74c3c;
+  background-color: #c0392b; /* Slightly darker red on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-.update-btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 8px 18px;
-  background-color: #542eb3;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 14px;
-  margin-right: 22rem;
+/* Optional: Add focus styles for accessibility */
+.action-btn:focus {
+  outline: 2px solid #333; /* Visible outline for focused buttons */
+  outline-offset: 2px; /* Space between outline and button */
 }
+
+
+.as a{
+  color:#fff
+}
+
+
 
 .update-button {
+  
   display: inline-block;
   margin-top: 20px;
   padding: 8px 18px;
@@ -216,6 +256,17 @@
   }
   
 }
+@media (max-width: 1170px) {
+
+
+
+  .job-list {
+    grid-template-columns: 1fr; 
+    gap: 16px;
+  }
+
+  
+}
 @media (max-width: 768px) {
 
 
@@ -259,6 +310,6 @@
   .update-btn, .cancel-btn, .delete-btn {
     padding: 10px; 
     font-size: 12px;
-    margin-right: 130px; 
+    /* margin-right: 130px;  */
   }
 }

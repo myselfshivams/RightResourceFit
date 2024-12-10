@@ -2,8 +2,8 @@
   background: linear-gradient(135deg, #170021, #2a003c);
   color: #fff;
   padding: 20px;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
+  /* border-top-left-radius: 50px; */
+  /* border-top-right-radius: 50px; */
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;

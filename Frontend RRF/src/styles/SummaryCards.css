@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  margin-left: 15%;
+  margin-left: 240px;
   
 }
 
@@ -30,8 +30,10 @@
   color: black;
 }
 
+
 .summary-card1 h2, .summary-card2 h2, .summary-card3 h2, .summary-card4 h2{
   color: black;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 1024px) {

@@ -1,6 +1,6 @@
-.recent-job-posts {
+/* .recent-job-posts {
   margin: 20px 0; /* Optional: add some margin for spacing */
-}
+/* } */ */
 
 .tit {
   color: rgb(0, 0, 0);
@@ -38,13 +38,15 @@
   border-collapse: collapse;
   background: rgba(255, 255, 255, 0.565);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
 }
 
 .recent-job-posts th,
 .recent-job-posts td {
+  background-color: transparent;
   padding: 10px;
-  border: 1px solid #ddd;
+  border-radius: 10px;
+  /* border: 1px solid #ddd; */
   text-align: left;
 }
 

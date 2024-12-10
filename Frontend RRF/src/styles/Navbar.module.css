@@ -59,7 +59,7 @@
 }
 
 .navbar-link:hover {
-  color: rgb(68, 0, 102);
+  color: white;
   transform: scale(1.2);
   transition: all;
 }
@@ -164,7 +164,7 @@
 }
 
 .activeLink {
-  color: #3e0058;
+  color: #fff;
 }
 
 .footerNav {

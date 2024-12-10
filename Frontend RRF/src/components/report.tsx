@@ -251,7 +251,7 @@ const JobReport: React.FC = () => {
         )}
       </div>
 
-      <div className="summary-cards">
+      <div className="summary-cards22">
         <div className="summary-card">
           <h2>Total Applicants</h2>
           <p className="TotalApplicant">{totalApplicants}</p>

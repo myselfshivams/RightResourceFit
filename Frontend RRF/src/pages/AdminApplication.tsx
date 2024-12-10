@@ -135,6 +135,7 @@ const AllApplicationsPage: React.FC = () => {
           <thead>
             <tr className="tr">
               <th >Applicant</th>
+              <th >Name</th>
               <th>Applicant Email</th>
               <th>Applied Job</th>
               <th>Applied Date</th>
@@ -150,7 +151,8 @@ const AllApplicationsPage: React.FC = () => {
                     src={application.avatar}
                     alt={`${application.applicantName}'s avatar`}
                     className="userAvatar"
-                  />{application.applicantName}</td>
+                  /></td>
+                  <td>{application.applicantName}</td>
                   <td>{application.mail}</td>
                   <td>{application.jobTitle}</td>
                   <td>{formatDate(application.createdAt)}</td>
